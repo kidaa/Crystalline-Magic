@@ -1,0 +1,35 @@
+itemGroup.tabMod=Crystalline Magic
+
+item.crystalinfusedmetal.name=Crystal Infused Metal
+item.crystalinfusedgem.name=Crystal Infused Gem
+item.soulorb.name=Soul Orb
+item.parchment.name=Spell Parchment
+item.spell.name=Spell
+item.invishelmet.name=Cyrstal Infused Hood
+item.invischestplate.name=Cyrstal Infused Robes
+item.invisleggings.name=Cyrstal Infused Leggings
+item.invisboots.name=Cyrstal Infused Boots
+item.bluecrystal.name=Blue Crystal
+item.greencrystal.name=Green Crystal
+item.redcrystal.name=Red Crystal
+item.chargedcrystal.name=Charged Crystal
+item.invisibilitycore.name=Invisibility Core
+item.crystalsilk.name=Crystal Infused Silk
+item.crystalblade.name=Crystal Blade
+item.crystalpickaxe.name=Crystal Pickaxe
+
+tile.powercrystal.name=Power Crystal
+tile.energybattery.name=Energy Battery
+tile.magicalinfuser.name=Magical Infuser
+tile.infusedgemblock.name=Crystal Infused Gem Block
+tile.infusedmetalblock.name=Crystal Infused Metal Block
+tile.magicalenergyrecharger.name=Magical Energy Recharger
+tile.magicaldeconstructor.name=Magical Material Deconstructor
+tile.bluecrystalore.name=Blue Crystal ore
+tile.greencrystalore.name=Green Crystal ore
+tile.redcrystalore.name=Red Crystal ore
+
+items.desc.soulorb.bound=Orb bound to: $player
+items.desc.soulorb.unbound=Orb not bound
+
+damage.soulorb.overuse=%1$s overused his magical abilities
