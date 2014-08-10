@@ -1,6 +1,6 @@
 package CrystallineMagic.Rendering;
 
-import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Utils.Ref;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -19,8 +19,8 @@ public class PowerCrystalItemRender implements IItemRenderer
     ResourceLocation rs;
 
     public PowerCrystalItemRender() {
-        model = AdvancedModelLoader.loadModel(new ResourceLocation(CrystMagic.ModId.toLowerCase(), "Models/BigCrystal.obj"));
-        rs = new ResourceLocation(CrystMagic.ModId.toLowerCase(), "textures/models/BigCrystalAlphaTexture.png");
+        model = AdvancedModelLoader.loadModel(new ResourceLocation(Ref.ModId.toLowerCase(), "Models/BigCrystal.obj"));
+        rs = new ResourceLocation(Ref.ModId.toLowerCase(), "textures/models/BigCrystalAlphaTexture.png");
     }
 
 

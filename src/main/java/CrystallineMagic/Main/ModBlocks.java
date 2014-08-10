@@ -1,6 +1,6 @@
 package CrystallineMagic.Main;
 
-import CrystallineMagic.Blocks.ModBLockMagicalEnergyRecharger;
+import CrystallineMagic.Blocks.ModBlockMagicalEnergyRecharger;
 import CrystallineMagic.Blocks.ModBlockBlueCrystalOre;
 import CrystallineMagic.Blocks.ModBlockEnergyBattery;
 import CrystallineMagic.Blocks.ModBlockGreenCrystalOre;
@@ -15,6 +15,7 @@ import CrystallineMagic.TileEntities.TileEntityMagicalDecontructor;
 import CrystallineMagic.TileEntities.TileEntityMagicalEnergyRecharger;
 import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Utils.Register.BlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCompressed;
@@ -33,20 +34,19 @@ public class ModBlocks {
     
     
     public static void RegisterBlocks(){
-        BlockRegister Utils = new BlockRegister(CrystMagic.config, CrystMagic.ModId);
+        BlockRegister Utils = new BlockRegister(CrystMagic.config, Ref.ModId);
 
 
-        BlueCrystalOre = new ModBlockBlueCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId.toLowerCase() + ":BlueCrystalOre");
+        BlueCrystalOre = new ModBlockBlueCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId.toLowerCase() + ":BlueCrystalOre");
         Utils.Register(BlueCrystalOre, "BlueCrystalOre");
 
-        GreenCrystalOre = new ModBlockGreenCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId.toLowerCase() + ":GreenCrystalOre");
+        GreenCrystalOre = new ModBlockGreenCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId.toLowerCase() + ":GreenCrystalOre");
         Utils.Register(GreenCrystalOre, "GreenCrystalOre");
 
-        RedCrystalOre = new ModBlockRedCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId.toLowerCase() + ":RedCrystalOre");
+        RedCrystalOre = new ModBlockRedCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId.toLowerCase() + ":RedCrystalOre");
         Utils.Register(RedCrystalOre, "RedCrystalOre");
 
-
-        PowerCrystal = new ModBlockPowerCrystal().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId + ":PowerCrystal");
+        PowerCrystal = new ModBlockPowerCrystal().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":PowerCrystal");
         Utils.Register(PowerCrystal, ModItemBlockPowerCrystal.class, "PowerCrystal", TileEntityPowerCrystal.class);
 
         MagicalDeconstructor = new ModBlockMagicalDeconstructor().setCreativeTab(CrystMagic.CreativeTab);
@@ -55,16 +55,16 @@ public class ModBlocks {
         MagicalInfuser = new ModBlockMagicalInfuser().setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(MagicalInfuser, "MagicalInfuser", TileEntityMagicalInfuser.class);
 
-        EnergyBattery = new ModBlockEnergyBattery().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId + ":EnergyBattery");
+        EnergyBattery = new ModBlockEnergyBattery().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":EnergyBattery");
         Utils.Register(EnergyBattery, ModItemBlockEnergyBattery.class, "EnergyBattery", TileEntityEnergyBattery.class);
 
-        MagicalRecharger = new ModBLockMagicalEnergyRecharger().setCreativeTab(CrystMagic.CreativeTab);
+        MagicalRecharger = new ModBlockMagicalEnergyRecharger().setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(MagicalRecharger, "MagicalEnergyRecharger", TileEntityMagicalEnergyRecharger.class);
 
-        InfusedGemBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId + ":InfusedGemBlock").setHardness(2F);
+        InfusedGemBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":InfusedGemBlock").setHardness(2F);
         Utils.Register(InfusedGemBlock, "InfusedGemBlock");
 
-        InfusedMetalBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(CrystMagic.ModId + ":InfusedMetalBlock").setHardness(2F);
+        InfusedMetalBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":InfusedMetalBlock").setHardness(2F);
         Utils.Register(InfusedMetalBlock, "InfusedMetalBlock");
         
         

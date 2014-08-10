@@ -1,8 +1,8 @@
 package CrystallineMagic.Gui;
 
 import CrystallineMagic.Container.ContainerMagicalInfuser;
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
+import CrystallineMagic.Utils.Ref;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class GuiMagicalInfuser extends GuiContainer {
 
-    private final ResourceLocation Texture = new ResourceLocation(CrystMagic.ModId , "textures/gui/MagicalInfuserGui.png");
+    private final ResourceLocation Texture = new ResourceLocation(Ref.ModId.toLowerCase() , "textures/gui/MagicalInfuserGui.png");
 
 
     TileEntityMagicalInfuser tile;

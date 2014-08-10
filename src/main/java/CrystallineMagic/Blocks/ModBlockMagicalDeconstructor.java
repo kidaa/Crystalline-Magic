@@ -2,6 +2,7 @@ package CrystallineMagic.Blocks;
 
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.TileEntities.TileEntityMagicalDecontructor;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Block.ModBlockContainer;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.block.material.Material;
@@ -30,9 +31,9 @@ public class ModBlockMagicalDeconstructor extends ModBlockContainer{
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
 
-        this.IconTop = par1IconRegister.registerIcon(CrystMagic.ModId + ":" + "MagicalDeconstructorTop");
-        this.IconSide = par1IconRegister.registerIcon(CrystMagic.ModId + ":" + "MagicalDeconstructorSide");
-        this.IconBottom = par1IconRegister.registerIcon(CrystMagic.ModId + ":" + "MagicalDeconstructorBottom");
+        this.IconTop = par1IconRegister.registerIcon(Ref.ModId + ":" + "MagicalDeconstructorTop");
+        this.IconSide = par1IconRegister.registerIcon(Ref.ModId + ":" + "MagicalDeconstructorSide");
+        this.IconBottom = par1IconRegister.registerIcon(Ref.ModId + ":" + "MagicalDeconstructorBottom");
 
         blockIcon = IconSide;
 

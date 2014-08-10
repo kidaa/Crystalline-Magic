@@ -20,20 +20,21 @@ public class GuiHandler implements IGuiHandler {
 
         TileEntity tile_entity = world.getTileEntity(x, y, z);
 
-        if(tile_entity instanceof TileEntityMagicalInfuser){
 
+
+        if(tile_entity instanceof TileEntityMagicalInfuser)
             return new ContainerMagicalInfuser(player.inventory, (TileEntityMagicalInfuser) tile_entity);
-        }
 
-        if(tile_entity instanceof TileEntityMagicalEnergyRecharger){
 
+
+        if(tile_entity instanceof TileEntityMagicalEnergyRecharger)
             return new ContainerMagicalCharger(player.inventory, (TileEntityMagicalEnergyRecharger) tile_entity);
-        }
 
-        if(tile_entity instanceof TileEntityMagicalDecontructor){
 
+
+        if(tile_entity instanceof TileEntityMagicalDecontructor)
             return new ContainerMagicalDeconstructor(player.inventory, (TileEntityMagicalDecontructor) tile_entity);
-        }
+
 
 
         return null;
@@ -48,20 +49,19 @@ public class GuiHandler implements IGuiHandler {
         TileEntity tile_entity = world.getTileEntity(x, y, z);
 
 
-        if(tile_entity instanceof TileEntityMagicalInfuser){
 
+        if(tile_entity instanceof TileEntityMagicalInfuser)
             return new GuiMagicalInfuser(player.inventory, (TileEntityMagicalInfuser) tile_entity);
-        }
 
-        if(tile_entity instanceof TileEntityMagicalEnergyRecharger){
 
+
+        if(tile_entity instanceof TileEntityMagicalEnergyRecharger)
             return new GuiMagicalCharger(player.inventory, (TileEntityMagicalEnergyRecharger) tile_entity);
-        }
 
-        if(tile_entity instanceof TileEntityMagicalDecontructor){
 
+
+        if(tile_entity instanceof TileEntityMagicalDecontructor)
             return new GuiMagicalDeconstructor(player.inventory, (TileEntityMagicalDecontructor) tile_entity);
-        }
 
 
 

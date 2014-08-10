@@ -1,7 +1,7 @@
 package CrystallineMagic.Gui.Overlay;
 
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Utils.MagicInfoStorage;
+import CrystallineMagic.Utils.Ref;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +29,7 @@ public class GuiOverlayMagicEnergy extends GuiIngame {
     }
 
 
-    private ResourceLocation texture = new ResourceLocation(CrystMagic.ModId, "textures/gui/MagicEnergyOverlay.png");
+    private ResourceLocation texture = new ResourceLocation(Ref.ModId.toLowerCase(), "textures/gui/MagicEnergyOverlay.png");
 
 
     @SuppressWarnings("unused")

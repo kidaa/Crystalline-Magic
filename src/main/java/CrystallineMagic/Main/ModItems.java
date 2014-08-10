@@ -7,6 +7,7 @@ import CrystallineMagic.Items.ModItemInvisArmor;
 import CrystallineMagic.Items.ModItemInvisibilityCore;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Utils.Register.ItemRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -30,7 +31,7 @@ public class ModItems {
     public static Item.ToolMaterial CrystalMaterial = EnumHelper.addToolMaterial("Crystal", Item.ToolMaterial.EMERALD.getHarvestLevel(), 0, Item.ToolMaterial.EMERALD.getEfficiencyOnProperMaterial(), Item.ToolMaterial.EMERALD.getDamageVsEntity(), 0);
 
     public static void RegisterItems(){
-        ItemRegister Utils = new ItemRegister(CrystMagic.config, CrystMagic.ModId);
+        ItemRegister Utils = new ItemRegister(CrystMagic.config, Ref.ModId);
 
 
         InvisHelmet =  (new ModItemInvisArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 0, 1)).setUnlocalizedName("InvisHelmet").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisHelmet");
@@ -45,8 +46,6 @@ public class ModItems {
         InvisBoots =  (new ModItemInvisArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 3, 4)).setUnlocalizedName("InvisBoots").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisBoots");
         Utils.Register(InvisBoots, "InvisBoots");
 
-
-
         BlueCrystal = new Item().setUnlocalizedName("BlueCrystal").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:BlueCrystal");
         Utils.Register(BlueCrystal, "BlueCrystal");
 
@@ -59,7 +58,7 @@ public class ModItems {
         ChargedCrystal = new ModItemChargedCrystal().setUnlocalizedName("ChargedCrystal").setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(ChargedCrystal, "ChargedCrystal");
 
-        SoulOrb = new ModItemSoulOrb().setUnlocalizedName("SoulOrb").setCreativeTab(CrystMagic.CreativeTab).setTextureName(CrystMagic.ModId + ":SoulOrb");
+        SoulOrb = new ModItemSoulOrb().setUnlocalizedName("SoulOrb").setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":SoulOrb");
         Utils.Register(SoulOrb, "SoulOrb");
 
         InvisibilityCore = new ModItemInvisibilityCore().setUnlocalizedName("InvisibilityCore").setCreativeTab(CrystMagic.CreativeTab);
@@ -71,23 +70,23 @@ public class ModItems {
         CrystalBlade = new ModItemCrystalBlade().setCreativeTab(CrystMagic.CreativeTab).setUnlocalizedName("CrystalBlade").setTextureName("crystmagic:CrystalBlade");
         Utils.Register(CrystalBlade, "CrystalBlade");
 
-        CrystalPickaxe = new ModItemCrystalPickaxe().setTextureName(CrystMagic.ModId + ":CrystalPickaxe").setCreativeTab(CrystMagic.CreativeTab);
+        CrystalPickaxe = new ModItemCrystalPickaxe().setTextureName(Ref.ModId + ":CrystalPickaxe").setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(CrystalPickaxe, "CrystalPickaxe");
 
-        CrystalInfusedMetal = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(CrystMagic.ModId + ":CrystalInfusedMetal");
+        CrystalInfusedMetal = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":CrystalInfusedMetal");
         Utils.Register(CrystalInfusedMetal, "CrystalInfusedMetal");
 
-        CrystalInfusedGem = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(CrystMagic.ModId + ":CrystalInfusedGem");
+        CrystalInfusedGem = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":CrystalInfusedGem");
         Utils.Register(CrystalInfusedGem, "CrystalInfusedGem");
 
-        Parchment = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(CrystMagic.ModId + ":Parchment").setMaxStackSize(1);
+        Parchment = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":Parchment").setMaxStackSize(1);
         Utils.Register(Parchment, "Parchment");
 
-        Spell = new ModItemSpell().setTextureName(CrystMagic.ModId + ":Spell").setMaxStackSize(1);
+        Spell = new ModItemSpell().setTextureName(Ref.ModId + ":Spell").setMaxStackSize(1).setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(Spell, "Spell");
 
 
-        SpellIconItem = new Item().setTextureName(CrystMagic.ModId + ":SpellPar");
+        SpellIconItem = new Item().setTextureName(Ref.ModId + ":SpellPar");
         Utils.SilentRegister(SpellIconItem);
 
 

@@ -2,6 +2,7 @@ package CrystallineMagic.Blocks;
 
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Block.ModBlockContainer;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.block.Block;
@@ -34,9 +35,9 @@ public class ModBlockMagicalInfuser extends ModBlockContainer {
 
     public void registerBlockIcons(IIconRegister icon)
     {
-        Top = icon.registerIcon(CrystMagic.ModId + ":MagicalInfuserTop");
-        Side = icon.registerIcon(CrystMagic.ModId + ":MagicalInfuserSide");
-        Bottom = icon.registerIcon(CrystMagic.ModId + ":MagicalInfuserBottom");
+        Top = icon.registerIcon(Ref.ModId + ":MagicalInfuserTop");
+        Side = icon.registerIcon(Ref.ModId + ":MagicalInfuserSide");
+        Bottom = icon.registerIcon(Ref.ModId + ":MagicalInfuserBottom");
 
     }
 

@@ -3,7 +3,7 @@ package CrystallineMagic.Utils.NEI.CustomRecipes;
 import CrystallineApi.Recipes.InfusionRecipe;
 import CrystallineApi.Recipes.RecipeHandler;
 import CrystallineMagic.Gui.GuiMagicalInfuser;
-import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Utils.Ref;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
@@ -139,7 +139,7 @@ int OffsetY = 0;
 
     @Override
     public String getGuiTexture() {
-        return new ResourceLocation(CrystMagic.ModId, "textures/gui/NEI/MagicalInfuserGui.png").toString();
+        return new ResourceLocation(Ref.ModId, "textures/gui/NEI/MagicalInfuserGui.png").toString();
     }
 
     @Override

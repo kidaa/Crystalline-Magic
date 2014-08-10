@@ -1,8 +1,8 @@
 package CrystallineMagic.Gui;
 
 import CrystallineMagic.Container.ContainerMagicalDeconstructor;
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.TileEntities.TileEntityMagicalDecontructor;
+import CrystallineMagic.Utils.Ref;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class GuiMagicalDeconstructor extends GuiContainer {
 
-    private final ResourceLocation Texture = new ResourceLocation(CrystMagic.ModId, "textures/gui/MagicalDeconstructorGui.png");
+    private final ResourceLocation Texture = new ResourceLocation(Ref.ModId.toLowerCase(), "textures/gui/MagicalDeconstructorGui.png");
 
 
     TileEntityMagicalDecontructor tile;

@@ -1,8 +1,8 @@
 package CrystallineMagic.Blocks;
 
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.TileEntities.TileEntityEnergyBattery;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Block.ModBlockContainer;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -42,8 +42,8 @@ public class ModBlockEnergyBattery extends ModBlockContainer {
 
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        off = par1IconRegister.registerIcon(CrystMagic.ModId + ":" + "EnergyBatteryOff");
-        on = par1IconRegister.registerIcon(CrystMagic.ModId + ":" + "EnergyBatteryOn");
+        off = par1IconRegister.registerIcon(Ref.ModId + ":" + "EnergyBatteryOff");
+        on = par1IconRegister.registerIcon(Ref.ModId + ":" + "EnergyBatteryOn");
 
     }
 

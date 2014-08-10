@@ -42,10 +42,6 @@ import java.util.EnumMap;
 @Mod(modid = Ref.ModId, name = Ref.ModName, version = Ref.ModVersion, dependencies = "required-after:MiscUtils;after:NEI")
 public class CrystMagic {
 
-    public static String ModId = Ref.ModId.toLowerCase();
-    public static final String ModName = Ref.ModName;
-    public static final String ModVersion = Ref.ModVersion;
-    public static final String ModChannel = Ref.ModChannel;
 
 
     @Mod.Instance(Ref.ModId)
@@ -60,8 +56,6 @@ public class CrystMagic {
     public static ChannelUtils Utils;
 
     public static CreativeTabs CreativeTab = new CreativeTabs("tabMod") {
-
-
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {

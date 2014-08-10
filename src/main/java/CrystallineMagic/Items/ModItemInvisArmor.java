@@ -1,7 +1,7 @@
 package CrystallineMagic.Items;
 
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModItems;
+import CrystallineMagic.Utils.Ref;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -27,12 +27,12 @@ public class ModItemInvisArmor extends ItemArmor {
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 
         if (stack.getItem() == ModItems.InvisChestPlate || stack.getItem() == ModItems.InvisHelmet || stack.getItem() == ModItems.InvisBoots) {
-            return CrystMagic.ModId.toLowerCase() + ":" + "textures/models/armor/InvisArmor_layer_1.png";
+            return Ref.ModId.toLowerCase() + ":" + "textures/models/armor/InvisArmor_layer_1.png";
 
         }
         if (stack.getItem() == ModItems.InvisLeggings) {
 
-            return CrystMagic.ModId.toLowerCase() + ":" + "textures/models/armor/InvisArmor_layer_2.png";
+            return Ref.ModId.toLowerCase() + ":" + "textures/models/armor/InvisArmor_layer_2.png";
 
         } else {
 

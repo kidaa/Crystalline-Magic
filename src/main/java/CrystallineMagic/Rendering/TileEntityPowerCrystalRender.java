@@ -1,7 +1,7 @@
 package CrystallineMagic.Rendering;
 
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
+import CrystallineMagic.Utils.Ref;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -18,8 +18,8 @@ public class TileEntityPowerCrystalRender extends TileEntitySpecialRenderer {
     ResourceLocation rs;
 
     public TileEntityPowerCrystalRender() {
-        model = AdvancedModelLoader.loadModel(new ResourceLocation(CrystMagic.ModId.toLowerCase(), "Models/BigCrystal.obj"));
-        rs = new ResourceLocation(CrystMagic.ModId.toLowerCase(), "textures/models/BigCrystalAlphaTexture.png");
+        model = AdvancedModelLoader.loadModel(new ResourceLocation(Ref.ModId.toLowerCase(), "Models/BigCrystal.obj"));
+        rs = new ResourceLocation(Ref.ModId.toLowerCase(), "textures/models/BigCrystalAlphaTexture.png");
     }
 
 

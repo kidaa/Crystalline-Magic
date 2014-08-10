@@ -1,9 +1,9 @@
 package CrystallineMagic.Items;
 
 import CrystallineApi.Magic.IEnergyStorageItem;
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Utils.InvisibilityUtils;
 import CrystallineMagic.Utils.Proxies.ClientProxy;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Item.ModItemWithDamage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -52,8 +52,8 @@ public class ModItemInvisibilityCore extends ModItemWithDamage implements IEnerg
     public void registerIcons(IIconRegister par1IconRegister)
     {
 
-        Active = par1IconRegister.registerIcon(CrystMagic.ModId.toLowerCase() + ":InvisibilityCoreActive");
-        InActive = par1IconRegister.registerIcon(CrystMagic.ModId.toLowerCase() + ":InvisibilityCoreInActive");
+        Active = par1IconRegister.registerIcon(Ref.ModId.toLowerCase() + ":InvisibilityCoreActive");
+        InActive = par1IconRegister.registerIcon(Ref.ModId.toLowerCase() + ":InvisibilityCoreInActive");
 
         itemIcon = InActive;
     }

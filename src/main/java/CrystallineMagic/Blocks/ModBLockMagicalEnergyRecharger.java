@@ -2,6 +2,7 @@ package CrystallineMagic.Blocks;
 
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.TileEntities.TileEntityMagicalEnergyRecharger;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Block.ModBlockContainer;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.block.Block;
@@ -15,8 +16,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class ModBLockMagicalEnergyRecharger extends ModBlockContainer{
-    public ModBLockMagicalEnergyRecharger() {
+public class ModBlockMagicalEnergyRecharger extends ModBlockContainer{
+    public ModBlockMagicalEnergyRecharger() {
         super(Material.iron);
         this.setHardness(4);
     }
@@ -32,9 +33,9 @@ public class ModBLockMagicalEnergyRecharger extends ModBlockContainer{
 
     public void registerBlockIcons(IIconRegister icon)
     {
-        Top = icon.registerIcon(CrystMagic.ModId + ":MagicalChargerTop");
-        Side = icon.registerIcon(CrystMagic.ModId + ":MagicalChargerSide");
-        Bottom = icon.registerIcon(CrystMagic.ModId + ":MagicalChargerBottom");
+        Top = icon.registerIcon(Ref.ModId + ":MagicalChargerTop");
+        Side = icon.registerIcon(Ref.ModId + ":MagicalChargerSide");
+        Bottom = icon.registerIcon(Ref.ModId + ":MagicalChargerBottom");
 
     }
 

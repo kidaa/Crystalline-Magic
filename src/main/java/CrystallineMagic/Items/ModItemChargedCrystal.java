@@ -1,7 +1,7 @@
 package CrystallineMagic.Items;
 
 import CrystallineApi.Magic.IEnergyStorageItem;
-import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Utils.Ref;
 import MiscUtils.Item.ModItemWithDamage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +28,7 @@ public class ModItemChargedCrystal extends ModItemWithDamage implements IEnergyS
     public void registerIcons(IIconRegister par1IconRegister)
     {
 
-        this.itemIcon = par1IconRegister.registerIcon(CrystMagic.ModId.toLowerCase() + ":ChargedCrystal");
+        this.itemIcon = par1IconRegister.registerIcon(Ref.ModId.toLowerCase() + ":ChargedCrystal");
     }
 
     @Override
