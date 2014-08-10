@@ -11,9 +11,12 @@ public class Config extends ConfigBase{
 
     protected Configuration config;
 
+
+
     public Config(String Loc){
 
         config = new Configuration(new File(Loc + "/tm1990's mods/CrystallineMagic.cfg"));
+        InitConfig();
     }
 
     @Override
@@ -22,7 +25,7 @@ public class Config extends ConfigBase{
     }
 
     @Override
-    public void InitConfig(String t) {
+    public void InitConfig() {
 
         config.addCustomCategoryComment(CATEGORY_CLIENT_SETTINGS, "Client side only settings. Settings that does not affect gameplay");
         config.addCustomCategoryComment(CATEGORY_SERVER_SETTINGS, "Server side settings which can affect gameplay");

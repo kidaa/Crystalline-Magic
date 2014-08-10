@@ -1,7 +1,7 @@
 package CrystallineMagic.Utils.Spells;
 
+import CrystallineMagic.Main.CrystMagic;
 import MiscUtils.Utils.Handlers.ParticleHelper;
-import com.miscitems.MiscItemsAndBlocks.Utils.ConfigUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -83,7 +83,7 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         this.Shooter = p_i1756_2_;
 
         this.Components = Components;
-        this.helper = new ParticleHelper(worldObj, ConfigUtils.SpawnParticles);
+        this.helper = new ParticleHelper(worldObj, CrystMagic.config.CanSpawnParticles());
 
         this.setSize(0.5F, 0.5F);
         this.setLocationAndAngles(p_i1756_2_.posX, p_i1756_2_.posY + (double)p_i1756_2_.getEyeHeight(), p_i1756_2_.posZ, p_i1756_2_.rotationYaw, p_i1756_2_.rotationPitch);

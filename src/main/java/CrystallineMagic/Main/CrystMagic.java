@@ -18,7 +18,7 @@ import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
 import CrystallineMagic.WorldGen.ModWorlGen;
-import MiscUtils.Network.ChannelHandler;
+import MiscUtils.Network.ChannelUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -36,7 +36,6 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.util.EnumMap;
-import java.util.Map;
 
 
 
@@ -58,8 +57,7 @@ public class CrystMagic {
     public static Config config;
 
     public static EnumMap<Side, FMLEmbeddedChannel> channels;
-
-    public static ChannelHandler handler = new ChannelHandler(ModChannel);
+    public static ChannelUtils Utils;
 
     public static CreativeTabs CreativeTab = new CreativeTabs("tabMod") {
 
@@ -76,8 +74,11 @@ public class CrystMagic {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
+        Utils = new ChannelUtils(Ref.ModChannel, Ref.ModId);
         RegisterPackets();
-        channels = getNewChannelHandler(handler.channel);
+        channels = Utils.getNewChannelHandler();
+
+
 
         config = new Config(event.getModConfigurationDirectory() + "");
 
@@ -136,27 +137,12 @@ public class CrystMagic {
     public static void RegisterPackets(){
 
 
-        handler.RegisterPacket(MagicReciveParticleEffects.class);
-        handler.RegisterPacket(SyncPlayerPropsPacket.class);
-        handler.RegisterPacket(ClientSyncInvisPlayers.class);
-        handler.RegisterPacket(ServerSyncInvisPlayers.class);
+        Utils.handler.RegisterPacket(MagicReciveParticleEffects.class);
+        Utils.handler.RegisterPacket(SyncPlayerPropsPacket.class);
+        Utils.handler.RegisterPacket(ClientSyncInvisPlayers.class);
+        Utils.handler.RegisterPacket(ServerSyncInvisPlayers.class);
 
     }
 
-    public static EnumMap<Side, FMLEmbeddedChannel> getNewChannelHandler(String modId)
-    {
 
-        EnumMap<Side, FMLEmbeddedChannel> handlers = NetworkRegistry.INSTANCE.newChannel(modId, handler);
-
-        ChannelHandler.PacketExecuter executer = new ChannelHandler.PacketExecuter();
-
-        for(Map.Entry<Side, FMLEmbeddedChannel> e : handlers.entrySet())
-        {
-            FMLEmbeddedChannel channel = e.getValue();
-            String codec = channel.findChannelHandlerNameForType(ChannelHandler.class);
-            channel.pipeline().addAfter(codec, "PacketExecuter", executer);
-        }
-
-        return handlers;
-    }
 }

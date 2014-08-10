@@ -7,7 +7,7 @@ import CrystallineMagic.Items.ModItemInvisArmor;
 import CrystallineMagic.Items.ModItemInvisibilityCore;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
-import MiscUtils.Utils.ItemRegister;
+import MiscUtils.Utils.Register.ItemRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;

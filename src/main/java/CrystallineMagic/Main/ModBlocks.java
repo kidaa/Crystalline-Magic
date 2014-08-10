@@ -15,7 +15,7 @@ import CrystallineMagic.TileEntities.TileEntityMagicalDecontructor;
 import CrystallineMagic.TileEntities.TileEntityMagicalEnergyRecharger;
 import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
-import MiscUtils.Utils.BlockRegister;
+import MiscUtils.Utils.Register.BlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;
