@@ -32,5 +32,9 @@ tile.redcrystalore.name=Red Crystal ore
 
 items.desc.soulorb.bound=Orb bound to: $player
 items.desc.soulorb.unbound=Orb not bound
+items.desc.spell.cost=Energy Cost: $cost
+items.desc.spell.empty=Empty spell
 
 damage.soulorb.overuse=%1$s overused his magical abilities
+
+chat.message.spell.noEng=Was not able to cast spell. Not enough energy

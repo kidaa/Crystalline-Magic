@@ -40,6 +40,7 @@ public class ModItemSpellComponent extends Item {
 
           stack.setTagCompound(new NBTTagCompound());
           stack.getTagCompound().setString("Comp", MagicUtils.Components.get(i).GetName());
+          stack.getTagCompound().setString("CompId", MagicUtils.Components.get(i).GetId());
 
           list.add(stack);
 

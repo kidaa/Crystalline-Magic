@@ -1,5 +1,8 @@
 package CrystallineMagic.Utils;
 
+import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Packets.SyncPlayerPropsPacket;
+import MiscUtils.Network.PacketHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.client.Minecraft;
@@ -124,6 +127,9 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
         if(MagicEnergy > MaxMagicEnergy)
             MagicEnergy = MaxMagicEnergy;
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+
     }
 
     public void IncreasePlayerEnergy(double i){
@@ -132,6 +138,8 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         if(MagicEnergy > MaxMagicEnergy)
             MagicEnergy = MaxMagicEnergy;
 
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+
     }
 
     public void DecreasePlayerEnergy(double i){
@@ -139,7 +147,10 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
         if(MagicEnergy < 0)
             MagicEnergy = 0;
-    }
+
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+  }
 
 
     public double GetPlayerMaxEnergy(){
@@ -148,10 +159,16 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
     public void SetPlayerMaxEnergy(double i){
         MaxMagicEnergy = i;
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+
     }
 
     public void SetHasMagic(boolean t){
         HasMagic = t;
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+
     }
 
     public boolean HasMagic(){

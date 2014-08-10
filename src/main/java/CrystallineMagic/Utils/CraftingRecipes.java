@@ -6,6 +6,7 @@ import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Utils.RecipeUtils.CrystalToolUpgradeRecipe;
 import CrystallineMagic.Utils.RecipeUtils.ItemRechargeRecipe;
+import CrystallineMagic.Utils.RecipeUtils.SpellCreationRecipe;
 import MiscUtils.Utils.CraftingUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
@@ -67,10 +68,13 @@ public class CraftingRecipes {
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.blaze_rod), Enchantment.silkTouch, 1));
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.ender_pearl), Enchantment.fortune, 2));
 
+        Utils.AddRecipe(new SpellCreationRecipe(new ItemStack(ModItems.Spell)));
+
         Utils.AddRecipe(new ItemRechargeRecipe(50, 0, new ItemStack(ModItems.InvisibilityCore), new ItemStack(ModItems.ChargedCrystal, 1, 0)));
         Utils.AddRecipe(new ItemRechargeRecipe(2, 0, new ItemStack(ModItems.ChargedCrystal), new ItemStack(Items.redstone, 1)));
         Utils.AddRecipe(new ItemRechargeRecipe(5, 0, new ItemStack(ModItems.ChargedCrystal), new ItemStack(Items.glowstone_dust, 1)));
         Utils.AddRecipe(new ItemStack(ModItems.Parchment), new Object[]{"S  ", " P ", "  S", 'S', Items.stick, 'P', Items.paper});
+        Utils.AddRecipe(new ItemStack(ModItems.Spell), new Object[]{"PPP", "PBP", "PPP", 'P', Items.paper, 'B', ModItems.Parchment});
 
         Utils.AddRecipe(new ItemStack(ModBlocks.PowerCrystal), new Object[]{"BPB", "GRG", "BPB", 'B', ModItems.BlueCrystal, 'P', ModItems.ChargedCrystal, 'G', ModItems.GreenCrystal, 'R', ModItems.RedCrystal});
 
@@ -96,7 +100,6 @@ public class CraftingRecipes {
             ShapelessRecipes res = new ShapelessRecipes(Output, list);
 
             Utils.AddRecipe(res);
-
         }
 
 

@@ -185,25 +185,23 @@ public class EntitySpellProjectile extends Entity implements IProjectile
 
                 this.setDead();
 
-                
+
             }
         }
 
             ++this.ticksInAir;
 
 
+        if(ticksInAir > 5) {
             Vec3 vec31 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
             Vec3 vec3 = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
             MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec31, vec3, false, true, false);
             vec31 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
             vec3 = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
-            if (movingobjectposition != null)
-            {
+            if (movingobjectposition != null) {
                 vec3 = Vec3.createVectorHelper(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
             }
-
-
 
 
             Entity entity = null;
@@ -213,24 +211,18 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             float f1;
 
 
+            for (i = 0; i < list.size(); ++i) {
+                Entity entity1 = (Entity) list.get(i);
 
-
-            for (i = 0; i < list.size(); ++i)
-            {
-                Entity entity1 = (Entity)list.get(i);
-
-                if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5))
-                {
+                if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5)) {
                     f1 = 0.3F;
-                    AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand((double)f1, (double)f1, (double)f1);
+                    AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand((double) f1, (double) f1, (double) f1);
                     MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec31, vec3);
 
-                    if (movingobjectposition1 != null)
-                    {
+                    if (movingobjectposition1 != null) {
                         double d1 = vec31.distanceTo(movingobjectposition1.hitVec);
 
-                        if (d1 < d0 || d0 == 0.0D)
-                        {
+                        if (d1 < d0 || d0 == 0.0D) {
                             entity = entity1;
                             d0 = d1;
                         }
@@ -238,57 +230,43 @@ public class EntitySpellProjectile extends Entity implements IProjectile
                 }
             }
 
-            if (entity != null)
-            {
+            if (entity != null) {
                 movingobjectposition = new MovingObjectPosition(entity);
             }
 
 
+            if (movingobjectposition != null && movingobjectposition.entityHit != null && movingobjectposition.entityHit instanceof EntityPlayer) {
+                EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 
-
-
-            if (movingobjectposition != null && movingobjectposition.entityHit != null && movingobjectposition.entityHit instanceof EntityPlayer)
-            {
-                EntityPlayer entityplayer = (EntityPlayer)movingobjectposition.entityHit;
-
-                if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer && !((EntityPlayer)this.shootingEntity).canAttackPlayer(entityplayer) || entityplayer == this.Shooter)
-                {
+                if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer) || entityplayer == this.Shooter) {
 
                     movingobjectposition = null;
                 }
             }
 
 
+            if (movingobjectposition != null) {
+                if (movingobjectposition.entityHit != null) {
 
-            if (movingobjectposition != null)
-            {
-
-                System.out.println(movingobjectposition);
-                if (movingobjectposition.entityHit != null)
-                {
-
-                        if (Components != null && Components.length > 0)
-                            for (int g = 0; g < Components.length; g++) {
-                                Components[g].OnHitEntity(worldObj, movingobjectposition.entityHit, this);
-                            }
+                    if (Components != null && Components.length > 0)
+                        for (int g = 0; g < Components.length; g++) {
+                            Components[g].OnHitEntity(worldObj, movingobjectposition.entityHit, this);
+                        }
 
                     this.setDead();
 
-                }
-                else
-                {
+                } else {
                     this.x = movingobjectposition.blockX;
                     this.y = movingobjectposition.blockY;
                     this.z = movingobjectposition.blockZ;
                     this.field_145790_g = this.worldObj.getBlock(this.x, this.y, this.z);
 
 
-                    if (this.field_145790_g.getMaterial() != Material.air)
-                    {
+                    if (this.field_145790_g.getMaterial() != Material.air) {
 
-                        if(Components != null && Components.length > 0)
+                        if (Components != null && Components.length > 0)
                             for (int g = 0; g < Components.length; g++)
-                                Components[g].OnBlockHit(worldObj, x,y,z, this);
+                                Components[g].OnBlockHit(worldObj, x, y, z, this);
 
 
                         this.setDead();
@@ -296,6 +274,8 @@ public class EntitySpellProjectile extends Entity implements IProjectile
                     }
                 }
             }
+
+        }
 
             this.posX += this.motionX;
             this.posY += this.motionY;
@@ -306,7 +286,7 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
             this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
             float f3 = 0.99F;
-            f1 = 0.05F;
+
 
 
 
