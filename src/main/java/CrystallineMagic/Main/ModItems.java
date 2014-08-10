@@ -7,6 +7,7 @@ import CrystallineMagic.Items.ModItemInvisArmor;
 import CrystallineMagic.Items.ModItemInvisibilityCore;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
+import CrystallineMagic.Items.ModItemSpellComponent;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Utils.Register.ItemRegister;
 import net.minecraft.item.Item;
@@ -22,6 +23,7 @@ public class ModItems {
     public static Item SoulOrb;
     public static Item Parchment;
     public static Item Spell;
+    public static Item SpellComponent;
 
     public static Item SpellIconItem;
 
@@ -84,6 +86,11 @@ public class ModItems {
 
         Spell = new ModItemSpell().setTextureName(Ref.ModId + ":Spell").setMaxStackSize(1).setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(Spell, "Spell");
+
+        SpellComponent = new ModItemSpellComponent().setMaxStackSize(1).setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":SpellComponent");
+        Utils.Register(SpellComponent, "SpellComponent");
+
+
 
 
         SpellIconItem = new Item().setTextureName(Ref.ModId + ":SpellPar");

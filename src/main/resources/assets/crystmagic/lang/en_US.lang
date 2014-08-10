@@ -17,6 +17,7 @@ item.invisibilitycore.name=Invisibility Core
 item.crystalsilk.name=Crystal Infused Silk
 item.crystalblade.name=Crystal Blade
 item.crystalpickaxe.name=Crystal Pickaxe
+item.spellcomponent.name=Spell Component
 
 tile.powercrystal.name=Power Crystal
 tile.energybattery.name=Energy Battery

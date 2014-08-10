@@ -13,10 +13,12 @@ import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
+import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
+import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -80,13 +82,16 @@ public class CrystMagic {
         MagicalMaterialUtils.RegisterManualValues();
         MagicalMaterialUtils.RegisterAutomaticValues();
 
+        RegisterComponents();
+
         ModItems.RegisterItems();
         ModBlocks.RegisterBlocks();
 
         CraftingRecipes.RegisterRecipes();
 
-
         proxy.registerRenderThings();
+
+        proxy.RegisterChestLoot();
 
         MinecraftForge.EVENT_BUS.register(new EntityConstructingEvent());
         MinecraftForge.EVENT_BUS.register(new JoinWorld());
@@ -104,7 +109,6 @@ public class CrystMagic {
 
         if(event.getSide() == Side.CLIENT){
             MinecraftForge.EVENT_BUS.register(new GuiOverlayMagicEnergy());
-
 
         }
 
@@ -135,6 +139,12 @@ public class CrystMagic {
         Utils.handler.RegisterPacket(SyncPlayerPropsPacket.class);
         Utils.handler.RegisterPacket(ClientSyncInvisPlayers.class);
         Utils.handler.RegisterPacket(ServerSyncInvisPlayers.class);
+
+    }
+
+    public static void RegisterComponents(){
+
+        MagicUtils.RegisterComponents(new Fire());
 
     }
 

@@ -1,12 +1,17 @@
 package CrystallineMagic.Utils.Proxies;
 
 import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.MagicInfoStorage;
+import CrystallineMagic.Utils.MagicUtils;
 import MiscUtils.Network.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,5 +61,48 @@ public class ServerProxy {
         if (savedData != null) { playerData.loadNBTData(savedData); }
 
         PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), (EntityPlayerMP) player, CrystMagic.channels);
+    }
+
+    public static void RegisterChestLoot(){
+
+        for(int i = 0; i < MagicUtils.Components.size(); i++){
+            ItemStack stack = new ItemStack(ModItems.SpellComponent);
+
+            stack.setTagCompound(new NBTTagCompound());
+            stack.getTagCompound().setString("Comp", MagicUtils.Components.get(i).GetName());
+
+
+            int i1 = 1;
+            int i2 = 1;
+            int i3 = 8;
+
+
+
+            ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+            chestGen = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+            chestGen = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+            chestGen = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+            chestGen = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY);
+            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
+
+
+
+        }
+
+
     }
 }
