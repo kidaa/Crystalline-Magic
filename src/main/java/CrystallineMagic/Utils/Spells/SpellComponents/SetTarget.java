@@ -12,14 +12,17 @@ public class SetTarget implements SpellComponent {
 
 
     @Override
-    public void OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
+    public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
 
+        return false;
     }
 
     @Override
-    public void OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block, EntityPlayer player, int Side) {
+    public boolean OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block, EntityPlayer player, int Side) {
         MagicInfoStorage mag = MagicInfoStorage.get(player);
         mag.SetTarget(x,y,z);
+
+        return true;
     }
 
     @Override

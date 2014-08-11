@@ -15,6 +15,6 @@ public class StrengthUpgrade implements SpellModifier {
 
     @Override
     public double EnergyMultiplier() {
-        return 1.4;
+        return 1.3;
     }
 }

@@ -4,6 +4,7 @@ import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -24,7 +25,7 @@ public class Projectile implements SpellType {
         return SpellUseType.Ranged;
     }
 
-    public boolean OnUse(ItemStack SpellStack, EntityPlayer player,World world, int x, int y, int z, int BlockSide){
+    public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide){
         EntitySpellProjectile EntSpell = new EntitySpellProjectile(world, player, 2.0F, MagicUtils.GetSpellComponents(SpellStack), SpellStack);
 
         if (!world.isRemote) {

@@ -18,9 +18,11 @@ import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
+import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
 import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
 import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
 import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
+import CrystallineMagic.Utils.Spells.SpellComponents.TeleportRandom;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportTarget;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
@@ -165,6 +167,8 @@ public class CrystMagic {
         MagicUtils.RegisterComponents(new Heal());
         MagicUtils.RegisterComponents(new SetTarget());
         MagicUtils.RegisterComponents(new TeleportTarget());
+        MagicUtils.RegisterComponents(new TeleportRandom());
+        MagicUtils.RegisterComponents(new Dig());
 
         MagicUtils.RegisterTypes(new Projectile());
         MagicUtils.RegisterTypes(new Self());

@@ -15,15 +15,15 @@ public class Fire implements SpellComponent {
 
 
     @Override
-    public void OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
+    public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
         entityHit.setFire(5 + (5 * MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())));
         entityHit.attackEntityFrom(DamageSource.onFire, MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
 
-
+        return true;
     }
 
     @Override
-    public void OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block,  EntityPlayer player, int Side) {
+    public boolean OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block,  EntityPlayer player, int Side) {
 
         if (Side == 0)
         {
@@ -62,7 +62,10 @@ public class Fire implements SpellComponent {
             {
                 world.setBlock(x, y, z, Blocks.fire);
 
+                return true;
             }
+
+        return false;
 
     }
 

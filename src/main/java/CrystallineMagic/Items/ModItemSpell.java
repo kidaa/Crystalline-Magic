@@ -1,5 +1,6 @@
 package CrystallineMagic.Items;
 
+import CrystallineMagic.Event.Custom.EventSpellCast;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
@@ -9,6 +10,7 @@ import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -16,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.List;
 
@@ -34,6 +37,57 @@ public class ModItemSpell extends Item {
         return EnumAction.bow;
     }
 
+    @Override
+    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target)
+    {
+
+     World world = target.worldObj;
+
+
+        if(MagicUtils.GetSpellType(stack) != null && MagicUtils.GetSpellType(stack).GetUseType() == SpellUseType.Touch) {
+            if (stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
+
+
+                double Eng = MagicUtils.GetSpellCost(stack);
+                if (MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
+                    if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
+
+
+                        if (MagicUtils.GetSpellType(stack) != null) {
+
+                            SpellType type = MagicUtils.GetSpellType(stack);
+
+                            if (!world.isRemote) {
+
+                                EventSpellCast event = new EventSpellCast(player, stack);
+                                MinecraftForge.EVENT_BUS.post(event);
+
+                                if(event.isCanceled())
+                                    return false;
+
+                                if (type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, 0)) {
+                                    if (!player.capabilities.isCreativeMode)
+                                        MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+                                }
+
+
+                                return true;
+                            }
+                        }
+
+                    } else {
+
+                        if (player.worldObj.isRemote)
+                            ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
+                    }
+                }
+
+            }
+
+        }
+
+        return false;
+    }
 
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int sd, float p_77648_8_, float p_77648_9_, float p_77648_10_)
     {
@@ -53,7 +107,13 @@ public class ModItemSpell extends Item {
 
                             if (!world.isRemote) {
 
-                                if(type.OnUse(stack, player, world, x, y, z, sd))
+                                EventSpellCast event = new EventSpellCast(player, stack);
+                                MinecraftForge.EVENT_BUS.post(event);
+
+                                if(event.isCanceled())
+                                    return false;
+
+                                if(type.OnUse(stack, player, null, world, x, y, z, sd))
                                 if (!player.capabilities.isCreativeMode)
                                     MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
 
@@ -103,7 +163,13 @@ public class ModItemSpell extends Item {
 
                       if (!world.isRemote) {
 
-                          if(type.OnUse(stack, player, world, (int)player.posX, (int)player.posY, (int)player.posZ, 0))
+                          EventSpellCast event = new EventSpellCast(player, stack);
+                          MinecraftForge.EVENT_BUS.post(event);
+
+                          if(event.isCanceled())
+                              return stack;
+
+                          if(type.OnUse(stack, player, null, world, (int)player.posX, (int)player.posY, (int)player.posZ, 0))
                           if (!player.capabilities.isCreativeMode)
                               MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
 

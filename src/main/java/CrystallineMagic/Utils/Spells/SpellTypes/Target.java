@@ -6,6 +6,7 @@ import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
@@ -28,8 +29,11 @@ public class Target implements SpellType {
     }
 
     @Override
-    public boolean OnUse(ItemStack SpellStack, EntityPlayer player, World world, int x, int y, int z, int BlockSide) {
+    public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide) {
         MagicInfoStorage storage = MagicInfoStorage.get(player);
+
+        boolean t = false;
+
         if(storage.GetTargetX() != 0 || storage.GetTargetY() != 0 || storage.GetTargetZ() != 0){
 
                 SpellComponent[] Components = MagicUtils.GetSpellComponents(SpellStack);
@@ -37,7 +41,8 @@ public class Target implements SpellType {
                 if(Components != null && Components.length > 0) {
                     for (int i = 0; i < Components.length; i++) {
                         if (Components[i] != null) {
-                            Components[i].OnUseOnBlock(SpellStack, world, storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ(), world.getBlock(storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ()), player, -1);
+                            if(Components[i].OnUseOnBlock(SpellStack, world, storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ(), world.getBlock(storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ()), player, -1))
+                                t = true;
 
                         }
 
@@ -53,6 +58,6 @@ public class Target implements SpellType {
 
 
 
-        return true;
+        return t;
     }
 }

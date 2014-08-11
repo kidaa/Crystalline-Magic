@@ -4,6 +4,7 @@ import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -25,20 +26,21 @@ public class Self implements SpellType {
     }
 
     @Override
-    public boolean OnUse(ItemStack SpellStack, EntityPlayer player, World world, int x, int y, int z, int BlockSide) {
+    public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide) {
         SpellComponent[] Comps = MagicUtils.GetSpellComponents(SpellStack);
+
+        boolean t = false;
 
         if(Comps != null && Comps.length > 0){
             for(int i = 0; i < Comps.length; i++){
-                Comps[i].OnUseOnEntity(SpellStack, world, player, player);
+              if(Comps[i].OnUseOnEntity(SpellStack, world, player, player))
+                  t = true;
+
 
 
             }
-
-
-
         }
 
-        return true;
+        return t;
     }
 }
