@@ -32,6 +32,11 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
     int TargetX, TargetY, TargetZ;
 
+    int Level = 1;
+    int Xp;
+
+    static int XpPerLevel = 38;
+
 
     public static EntityPlayer GetPlayerFromStack(ItemStack stack){
         EntityPlayer player = null;
@@ -63,6 +68,8 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         MaxMagicEnergy = MagicRef.BaseMaxEnergy;
 
         Recharge = MagicRef.BaseRechargeTime;
+
+        Level = MagicRef.BaseLevel;
 
         HasMagic = false;
 
@@ -102,6 +109,9 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         properties.setInteger("Recharge", Recharge);
         properties.setInteger("RechargeTime", RechargeTime);
 
+        properties.setInteger("Level", Level);
+        properties.setInteger("Xp", Xp);
+
 
 
         compound.setTag(EXT_PROP_NAME, properties);
@@ -121,9 +131,53 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         Recharge = properties.getInteger("Recharge");
         RechargeTime = properties.getInteger("RechargeTime");
 
+        Level = properties.getInteger("Level");
+        Xp = properties.getInteger("Xp");
+
 
     }
 
+    public int GetPlayerLevel(){
+        return Level;
+    }
+
+    public int GetPlayerXp(){
+        return Xp;
+    }
+
+    public int GetRequiredXp(){
+        return Level * XpPerLevel;
+    }
+
+
+    public void SetPlayerLevel(int i){
+        Level = i;
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+    }
+
+    public void SetPlayerXp(int i){
+        Xp = i;
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+    }
+
+    public void IncreasePlayerLevel(int i){
+        SetPlayerLevel(GetPlayerLevel() + i);
+    }
+
+    public void DecreasePlayerLevel(int i){
+        SetPlayerLevel(GetPlayerLevel() - i);
+    }
+
+
+    public void IncreasePlayerXp(int i){
+        SetPlayerXp(GetPlayerXp() + i);
+    }
+
+    public void DecreasePlayerXp(int i){
+        SetPlayerXp(GetPlayerXp() - i);
+    }
 
     public double GetPlayerEnergy(){
         return MagicEnergy;

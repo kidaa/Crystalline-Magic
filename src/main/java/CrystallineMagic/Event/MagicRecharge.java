@@ -20,7 +20,7 @@ public class MagicRecharge {
               if(data.RechargeTime >= data.Recharge){
                   data.RechargeTime = 0;
 
-                 data.IncreasePlayerEnergy(1);
+                 data.IncreasePlayerEnergy(1 + (2 * data.GetPlayerLevel() / 3));
 
 
               }else{
@@ -29,7 +29,6 @@ public class MagicRecharge {
 
 
           }
-
 
         }
 

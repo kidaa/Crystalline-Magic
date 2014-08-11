@@ -92,11 +92,12 @@ public class ModItems {
         SpellType = new ModItemSpellType().setTextureName(Ref.ModId + ":SpellType");
         Utils.Register(SpellType, "SpellType");
 
+        SpellComponent = new ModItemSpellComponent().setTextureName(Ref.ModId + ":SpellComponent");
+        Utils.Register(SpellComponent, "SpellComponent");
+
         SpellModifier = new ModItemSpellModifier().setTextureName(Ref.ModId + ":SpellModifier");
         Utils.Register(SpellModifier, "SpellModifier");
 
-        SpellComponent = new ModItemSpellComponent().setTextureName(Ref.ModId + ":SpellComponent");
-        Utils.Register(SpellComponent, "SpellComponent");
 
 
 

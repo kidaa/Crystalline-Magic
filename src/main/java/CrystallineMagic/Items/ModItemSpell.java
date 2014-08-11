@@ -37,6 +37,17 @@ public class ModItemSpell extends Item {
         return EnumAction.bow;
     }
 
+    public String getItemStackDisplayName(ItemStack stack)
+    {
+        if(MagicUtils.GetSpellType(stack) != null){
+            if(MagicUtils.GetSpellComponents(stack).length > 1){
+                return StatCollector.translateToLocal("item.spell.compound.name");
+            }
+        }
+
+        return StatCollector.translateToLocal("item.spell.name");
+    }
+
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target)
     {

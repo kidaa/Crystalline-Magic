@@ -3,8 +3,10 @@ package CrystallineMagic.Main;
 import CrystallineMagic.Event.EntityConstructingEvent;
 import CrystallineMagic.Event.InvisibilityEvents;
 import CrystallineMagic.Event.JoinWorld;
+import CrystallineMagic.Event.LevelUpHandeling;
 import CrystallineMagic.Event.MagicRecharge;
 import CrystallineMagic.Event.OnPlayerRespawn;
+import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
@@ -117,9 +119,12 @@ public class CrystMagic {
         MinecraftForge.EVENT_BUS.register(new OnPlayerRespawn());
 
         MinecraftForge.EVENT_BUS.register(new InvisibilityEvents());
-        FMLCommonHandler.instance().bus().register(new InvisibilityEvents());
+        MinecraftForge.EVENT_BUS.register(new SpellCastEvent());
 
+
+        FMLCommonHandler.instance().bus().register(new InvisibilityEvents());
         FMLCommonHandler.instance().bus().register(new MagicRecharge());
+        FMLCommonHandler.instance().bus().register(new LevelUpHandeling());
 
 
         EntityRegistry.registerGlobalEntityID(EntitySpellProjectile.class, "SpellProjectile", EntityRegistry.findGlobalUniqueEntityId());

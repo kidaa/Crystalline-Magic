@@ -29,7 +29,7 @@ public class TeleportTarget implements SpellComponent {
                     entityHit.setPosition(x + 0.5, y+1, z + 0.5);
                 }
 
-                world.playSoundEffect(x, y, z, "mob.endermen.portal", 1.0F, 1.0F);
+                world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
                 return true;
 
             }else{

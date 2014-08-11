@@ -30,6 +30,7 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
      */
 
 
+
     public TileEntitySpellCreationTable() {
         super(22, "SpellCreationTable", 1);
     }
@@ -37,81 +38,82 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
     public ItemStack GetResult(){
         if(getStackInSlot(0) != null){
             if(getStackInSlot(0).getItem() instanceof ModItemSpellType){
-                if(getStackInSlot(1) != null && getStackInSlot(1).getItem() instanceof ModItemSpell && getStackInSlot(1).getTagCompound() == null){
-                    if(getStackInSlot(2) != null && getStackInSlot(2).getItem() instanceof ModItemSoulOrb && ((ModItemSoulOrb)getStackInSlot(2).getItem()).hasEffect(getStackInSlot(2), 0)){
+                if(getStackInSlot(1) != null && getStackInSlot(1).getItem() instanceof ModItemSpell && getStackInSlot(1).getTagCompound() == null) {
+                    if (getStackInSlot(2) != null && getStackInSlot(2).getItem() instanceof ModItemSoulOrb && ((ModItemSoulOrb) getStackInSlot(2).getItem()).hasEffect(getStackInSlot(2), 0)) {
 
                         SpellType type = MagicUtils.GetTypeFromSpellType(getStackInSlot(0));
 
-                        ArrayList<SpellComponent> Components = new ArrayList<SpellComponent>();
+                            ArrayList<SpellComponent> Components = new ArrayList<SpellComponent>();
 
-                        for(int i = 0; i < 9; i++){
-                            ItemStack tmp = this.getStackInSlot(i + 3);
+                            for (int i = 0; i < 9; i++) {
+                                ItemStack tmp = this.getStackInSlot(i + 3);
 
-                            if(tmp != null && tmp.getItem() instanceof ModItemSpellComponent){
-                                SpellComponent comp = MagicUtils.GetCompFromSpellComp(tmp);
+                                if (tmp != null && tmp.getItem() instanceof ModItemSpellComponent) {
+                                    SpellComponent comp = MagicUtils.GetCompFromSpellComp(tmp);
 
-                                if(comp != null){
-                                    if(Components.contains(comp))
-                                        return null;
+                                    if (comp != null) {
+                                        if (Components.contains(comp))
+                                            return null;
 
-                                    else
-                                        Components.add(comp);
+                                        else
+                                            Components.add(comp);
+
+                                    }
+
 
                                 }
 
-
                             }
 
-                        }
+
+                            if (Components.size() <= 0) {
+                                return null;
+                            }
 
 
-                        if(Components.size() <= 0){
-                            return null;
-                        }
+                            ArrayList<SpellModifier> Modifiers = new ArrayList<SpellModifier>();
+
+                            for (int i = 0; i < 21; i++) {
+                                ItemStack tmp = this.getStackInSlot(i);
+
+                                if (tmp != null && tmp.getItem() instanceof ModItemSpellModifier) {
+                                    SpellModifier comp = MagicUtils.GetModifierFromSpellModifier(tmp);
 
 
-
-                        ArrayList<SpellModifier> Modifiers = new ArrayList<SpellModifier>();
-
-                        for(int i = 0; i < 21; i++){
-                            ItemStack tmp = this.getStackInSlot(i);
-
-                            if(tmp != null && tmp.getItem() instanceof ModItemSpellModifier){
-                                SpellModifier comp = MagicUtils.GetModifierFromSpellModifier(tmp);
-
-
-                                if(comp != null){
+                                    if (comp != null) {
                                         Modifiers.add(comp);
 
-                                }
+                                    }
 
+
+                                }
 
                             }
 
+                            ItemStack stack = getStackInSlot(1).copy();
+
+                            SpellComponent[] Comps = new SpellComponent[Components.size()];
+
+                            for (int i = 0; i < Comps.length; i++)
+                                Comps[i] = Components.get(i);
+
+
+                            SpellModifier[] Mods = new SpellModifier[Modifiers.size()];
+
+                            for (int i = 0; i < Mods.length; i++)
+                                Mods[i] = Modifiers.get(i);
+
+
+                            MagicUtils.SetSpellComponents(stack, Comps);
+                            MagicUtils.SetSpellModifiers(stack, Mods);
+                            MagicUtils.SetSpellType(stack, type);
+
+                            return stack;
+
+
                         }
-
-                        ItemStack stack = getStackInSlot(1).copy();
-
-                        SpellComponent[] Comps = new SpellComponent[Components.size()];
-
-                        for(int i = 0; i < Comps.length; i++)
-                            Comps[i] = Components.get(i);
-
-
-                        SpellModifier[] Mods = new SpellModifier[Modifiers.size()];
-
-                        for(int i = 0; i < Mods.length; i++)
-                            Mods[i] = Modifiers.get(i);
-
-
-                        MagicUtils.SetSpellComponents(stack, Comps);
-                        MagicUtils.SetSpellModifiers(stack, Mods);
-                        MagicUtils.SetSpellType(stack, type);
-
-                        return stack;
-
                     }
-                }
+
             }
         }
 

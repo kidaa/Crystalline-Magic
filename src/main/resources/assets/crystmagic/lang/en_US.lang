@@ -5,7 +5,6 @@ item.crystalinfusedmetal.name=Crystal Infused Metal
 item.crystalinfusedgem.name=Crystal Infused Gem
 item.soulorb.name=Soul Orb
 item.parchment.name=Spell Parchment
-item.spell.name=Spell
 item.invishelmet.name=Cyrstal Infused Hood
 item.invischestplate.name=Cyrstal Infused Robes
 item.invisleggings.name=Cyrstal Infused Leggings
@@ -21,6 +20,8 @@ item.crystalpickaxe.name=Crystal Pickaxe
 item.spellcomponent.name=Spell Component
 item.spelltype.name=Spell Type
 item.spellmodifier.name=Spell Modifier
+item.spell.compound.name=Compound Spell
+item.spell.name=Spell
 
 tile.powercrystal.name=Power Crystal
 tile.energybattery.name=Energy Battery

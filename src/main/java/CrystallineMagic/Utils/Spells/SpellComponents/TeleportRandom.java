@@ -37,7 +37,7 @@ public class TeleportRandom implements SpellComponent {
             entityHit.setPosition(d0, d1, d2);
         }
 
-        world.playSoundEffect(d0, d1, d2, "mob.endermen.portal", 1.0F, 1.0F);
+        world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
 
         return true;
     }

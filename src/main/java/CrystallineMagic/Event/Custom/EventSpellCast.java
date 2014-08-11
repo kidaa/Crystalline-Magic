@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 @Cancelable
 public class EventSpellCast extends Event {
 
-    EntityPlayer player;
-    ItemStack stack;
+    public EntityPlayer player;
+    public ItemStack stack;
 
     public EventSpellCast(EntityPlayer player, ItemStack stack){
         this.stack = stack;
