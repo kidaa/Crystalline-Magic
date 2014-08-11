@@ -35,7 +35,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     int Level = 1;
     int Xp;
 
-    static int XpPerLevel = 38;
+    static int XpPerLevel = 19;
 
 
     public static EntityPlayer GetPlayerFromStack(ItemStack stack){
@@ -112,6 +112,10 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         properties.setInteger("Level", Level);
         properties.setInteger("Xp", Xp);
 
+        properties.setInteger("XTile", TargetX);
+        properties.setInteger("YTile", TargetY);
+        properties.setInteger("ZTile", TargetZ);
+
 
 
         compound.setTag(EXT_PROP_NAME, properties);
@@ -133,6 +137,10 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
         Level = properties.getInteger("Level");
         Xp = properties.getInteger("Xp");
+
+        TargetX = properties.getInteger("XTile");
+        TargetY = properties.getInteger("YTile");
+        TargetZ = properties.getInteger("ZTile");
 
 
     }

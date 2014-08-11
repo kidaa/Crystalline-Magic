@@ -16,4 +16,5 @@ public interface SpellComponent{
     public String GetId();
 
 
+
 }

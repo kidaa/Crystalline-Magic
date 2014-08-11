@@ -63,7 +63,10 @@ public class ModItemSoulOrb extends Item implements IEnergyStorageItem {
 
         }else{
             if (MagicInfoStorage.GetPlayerFromStack(stack) != null) {
-                MagicInfoStorage.get(MagicInfoStorage.GetPlayerFromStack(stack)).SetPlayerMaxEnergy(MagicInfoStorage.get(MagicInfoStorage.GetPlayerFromStack(stack)).GetPlayerMaxEnergy() + 100);
+                if(player.capabilities.isCreativeMode) {
+                    MagicInfoStorage.get(MagicInfoStorage.GetPlayerFromStack(stack)).IncreasePlayerLevel(1);
+                    MagicInfoStorage.get(MagicInfoStorage.GetPlayerFromStack(stack)).SetPlayerMaxEnergy(MagicInfoStorage.get(MagicInfoStorage.GetPlayerFromStack(stack)).GetPlayerMaxEnergy() + 50);
+                }
             }
         }
 

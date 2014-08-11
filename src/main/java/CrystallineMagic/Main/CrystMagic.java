@@ -20,13 +20,18 @@ import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
+import CrystallineMagic.Utils.Spells.SpellComponents.Damage;
 import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
 import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
 import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
+import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
 import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportRandom;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportTarget;
+import CrystallineMagic.Utils.Spells.SpellModifiers.CostDecreaser;
+import CrystallineMagic.Utils.Spells.SpellModifiers.RangeExtender;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
+import CrystallineMagic.Utils.Spells.SpellTypes.Area;
 import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
 import CrystallineMagic.Utils.Spells.SpellTypes.Self;
 import CrystallineMagic.Utils.Spells.SpellTypes.Target;
@@ -168,19 +173,28 @@ public class CrystMagic {
 
     public static void RegisterComponents(){
 
-        MagicUtils.RegisterComponents(new Fire());
-        MagicUtils.RegisterComponents(new Heal());
-        MagicUtils.RegisterComponents(new SetTarget());
-        MagicUtils.RegisterComponents(new TeleportTarget());
-        MagicUtils.RegisterComponents(new TeleportRandom());
-        MagicUtils.RegisterComponents(new Dig());
-
         MagicUtils.RegisterTypes(new Projectile());
         MagicUtils.RegisterTypes(new Self());
         MagicUtils.RegisterTypes(new Touch());
         MagicUtils.RegisterTypes(new Target());
+        MagicUtils.RegisterTypes(new Area());
+
+
+        MagicUtils.RegisterComponents(new Fire());
+        MagicUtils.RegisterComponents(new Heal());
+        MagicUtils.RegisterComponents(new Regen());
+        MagicUtils.RegisterComponents(new Dig());
+        MagicUtils.RegisterComponents(new Damage());
+
+        MagicUtils.RegisterComponents(new SetTarget());
+        MagicUtils.RegisterComponents(new TeleportTarget());
+        MagicUtils.RegisterComponents(new TeleportRandom());
+
+
 
         MagicUtils.RegisterModifiers(new StrengthUpgrade());
+        MagicUtils.RegisterModifiers(new CostDecreaser());
+        MagicUtils.RegisterModifiers(new RangeExtender());
 
     }
 

@@ -15,7 +15,12 @@ public class SpellCastEvent {
                 MagicInfoStorage data = MagicInfoStorage.get(event.player);
 
                 int g = (int)MagicUtils.GetSpellCost(event.stack);
-                int Xp = (g / 20) / (data.GetPlayerLevel() / 3);
+                int h = (data.GetPlayerLevel() / 3);
+
+                if(h <= 0)
+                    h = 1;
+
+                int Xp = (g / 20) / h;
 
                 if(Xp <= 0)
                     Xp = 1;
