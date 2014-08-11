@@ -24,8 +24,6 @@ public class ClientProxy extends ServerProxy {
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPowerCrystal.class, new TileEntityPowerCrystalRender());
 
-
-        //TODO Get proper rendering
         RenderingRegistry.registerEntityRenderingHandler(EntitySpellProjectile.class, new RenderSnowball(ModItems.SpellIconItem));
 
 

@@ -14,9 +14,9 @@ import net.minecraft.util.EnumChatFormatting;
 
 import java.util.List;
 
-public class ModItemSpellComponent extends Item implements ISpellPart{
+public class ModItemSpellType extends Item implements ISpellPart {
 
-    public ModItemSpellComponent(){
+    public ModItemSpellType(){
         setMaxStackSize(1);
         setHasSubtypes(true);
         setCreativeTab(CrystMagic.SpellPart);
@@ -26,7 +26,7 @@ public class ModItemSpellComponent extends Item implements ISpellPart{
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 
         if(stack.getTagCompound() != null){
-            list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + stack.getTagCompound().getString("Comp"));
+            list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + stack.getTagCompound().getString("Type"));
 
         }
 
@@ -36,18 +36,17 @@ public class ModItemSpellComponent extends Item implements ISpellPart{
     public void getSubItems(Item item, CreativeTabs tab, List list)
     {
 
-        if(MagicUtils.Components.size() > 0)
-      for(int i = 0; i < MagicUtils.Components.size(); i++){
-          ItemStack stack = new ItemStack(item);
+        for(int i = 0; i < MagicUtils.Types.size(); i++){
+            ItemStack stack = new ItemStack(item);
 
-          stack.setTagCompound(new NBTTagCompound());
-          stack.getTagCompound().setString("Comp", MagicUtils.Components.get(i).GetName());
-          stack.getTagCompound().setString("CompId", MagicUtils.Components.get(i).GetId());
+            stack.setTagCompound(new NBTTagCompound());
+            stack.getTagCompound().setString("Type", MagicUtils.Types.get(i).GetName());
+            stack.getTagCompound().setString("TypeId", MagicUtils.Types.get(i).GetId());
 
-          list.add(stack);
+            list.add(stack);
 
 
-      }
+        }
 
     }
 }

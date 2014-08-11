@@ -1,7 +1,7 @@
 package CrystallineMagic.Blocks;
 
 import CrystallineMagic.Main.CrystMagic;
-import CrystallineMagic.TileEntities.TileEntityMagicalEnergyRecharger;
+import CrystallineMagic.TileEntities.TileEntitySpellCreationTable;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Block.ModBlockContainer;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
@@ -12,32 +12,37 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class ModBlockMagicalEnergyRecharger extends ModBlockContainer{
-    public ModBlockMagicalEnergyRecharger() {
-        super(Material.iron);
-        this.setHardness(4);
+public class ModBlockSpellCreationTable extends ModBlockContainer {
+
+
+    public ModBlockSpellCreationTable() {
+        super(Material.rock);
     }
 
     @Override
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-        return new TileEntityMagicalEnergyRecharger();
+        return new TileEntitySpellCreationTable();
     }
 
-    IIcon Top;
-    IIcon Side;
-    IIcon Bottom;
+    IIcon IconTop;
+    IIcon IconSide;
+    IIcon IconBottom;
 
-    public void registerBlockIcons(IIconRegister icon)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        Top = icon.registerIcon(Ref.ModId + ":MagicalChargerTop");
-        Side = icon.registerIcon(Ref.ModId + ":MagicalChargerSide");
-        Bottom = icon.registerIcon(Ref.ModId + ":MagicalChargerBottom");
+
+        this.IconTop = par1IconRegister.registerIcon(Ref.ModId + ":" + "SpellCreationTableTop");
+        this.IconSide = par1IconRegister.registerIcon(Ref.ModId + ":" + "SpellCreationTableSide");
+        this.IconBottom = par1IconRegister.registerIcon(Ref.ModId + ":" + "SpellCreationTableBottom");
+
+        blockIcon = IconSide;
 
     }
+
 
     public IIcon getIcon(int par1, int par2)
     {
-        return par1 == 1 ? Top : (par1 == 0 ? Bottom : Side);
+        return par1 == 1 ? IconTop : (par1 == 0 ? IconBottom : IconSide );
     }
 
 
@@ -56,5 +61,4 @@ public class ModBlockMagicalEnergyRecharger extends ModBlockContainer{
             return true;
         }
     }
-
 }

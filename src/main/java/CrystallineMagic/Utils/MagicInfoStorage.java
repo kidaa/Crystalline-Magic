@@ -3,6 +3,7 @@ package CrystallineMagic.Utils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import MiscUtils.Network.PacketHandler;
+import MiscUtils.Utils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.client.Minecraft;
@@ -10,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
@@ -28,6 +30,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     public int RechargeTime;
     public int Recharge;
 
+    int TargetX, TargetY, TargetZ;
 
 
     public static EntityPlayer GetPlayerFromStack(ItemStack stack){
@@ -99,6 +102,8 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         properties.setInteger("Recharge", Recharge);
         properties.setInteger("RechargeTime", RechargeTime);
 
+
+
         compound.setTag(EXT_PROP_NAME, properties);
 
     }
@@ -115,6 +120,8 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
         Recharge = properties.getInteger("Recharge");
         RechargeTime = properties.getInteger("RechargeTime");
+
+
     }
 
 
@@ -176,6 +183,27 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     }
 
 
+    public int GetTargetX(){
+        return TargetX;
+    }
+
+    public int GetTargetY(){
+        return TargetY;
+    }
+
+    public int GetTargetZ(){
+        return TargetZ;
+    }
+
+    public void SetTarget(int x, int y, int z){
+        ChatMessageHandler.sendChatToPlayer(player, StatCollector.translateToLocal("chat.message.spell.targetSet").replace("$target", "X: " + x + " Y: " + y + " Z: " + z));
+
+        TargetX = x;
+        TargetY = y;
+        TargetZ = z;
+
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+    }
 
 
 

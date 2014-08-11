@@ -1,7 +1,9 @@
 package CrystallineMagic.Utils.Spells;
 
 import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
 import MiscUtils.Utils.Handlers.ParticleHelper;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -10,6 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
@@ -24,11 +27,15 @@ public class EntitySpellProjectile extends Entity implements IProjectile
     EntityPlayer Shooter;
     SpellComponent[] Components;
     ParticleHelper helper;
+    ItemStack stack;
 
     private int x = -1;
     private int y = -1;
     private int z = -1;
     private Block field_145790_g;
+
+    private int inData;
+    private boolean inGround;
 
     public Entity shootingEntity;
     private int ticksInAir;
@@ -76,11 +83,13 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         }
     }
 
-    public EntitySpellProjectile(World p_i1756_1_, EntityPlayer p_i1756_2_, float p_i1756_3_, SpellComponent[] Components)
+    public EntitySpellProjectile(World p_i1756_1_, EntityPlayer p_i1756_2_, float p_i1756_3_, SpellComponent[] Components, ItemStack stack)
     {
         super(p_i1756_1_);
         this.renderDistanceWeight = 10.0D;
         this.Shooter = p_i1756_2_;
+        this.stack = stack;
+
 
         this.Components = Components;
         this.helper = new ParticleHelper(worldObj, CrystMagic.config.CanSpawnParticles());
@@ -164,11 +173,6 @@ public class EntitySpellProjectile extends Entity implements IProjectile
 
 
 
-        if(ticksInAir >= 40)
-            this.setDead();
-
-
-
         Block block = this.worldObj.getBlock(this.x, this.y, this.z);
 
         if (block.getMaterial() != Material.air)
@@ -178,21 +182,22 @@ public class EntitySpellProjectile extends Entity implements IProjectile
 
             if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(this.posX, this.posY, this.posZ)))
             {
-
-                if(Components != null && Components.length > 0)
-                        for (int i = 0; i < Components.length; i++)
-                            Components[i].OnBlockHit(worldObj, x,y,z, this);
-
-                this.setDead();
-
-
+                this.inGround = true;
             }
         }
+
+
+
+        if(ticksInAir >= 40)
+            this.setDead();
+
 
             ++this.ticksInAir;
 
 
-        if(ticksInAir > 5) {
+        int Side = 0;
+
+        if(ticksInAir > 1) {
             Vec3 vec31 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
             Vec3 vec3 = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
             MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec31, vec3, false, true, false);
@@ -234,7 +239,6 @@ public class EntitySpellProjectile extends Entity implements IProjectile
                 movingobjectposition = new MovingObjectPosition(entity);
             }
 
-
             if (movingobjectposition != null && movingobjectposition.entityHit != null && movingobjectposition.entityHit instanceof EntityPlayer) {
                 EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 
@@ -244,37 +248,46 @@ public class EntitySpellProjectile extends Entity implements IProjectile
                 }
             }
 
+            float f2;
+            float f4;
+
 
             if (movingobjectposition != null) {
                 if (movingobjectposition.entityHit != null) {
 
+                    f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
                     if (Components != null && Components.length > 0)
                         for (int g = 0; g < Components.length; g++) {
-                            Components[g].OnHitEntity(worldObj, movingobjectposition.entityHit, this);
+                            Components[g].OnUseOnEntity(stack, worldObj, movingobjectposition.entityHit, Shooter);
                         }
 
                     this.setDead();
 
                 } else {
+
                     this.x = movingobjectposition.blockX;
                     this.y = movingobjectposition.blockY;
                     this.z = movingobjectposition.blockZ;
                     this.field_145790_g = this.worldObj.getBlock(this.x, this.y, this.z);
-
+                    this.inData = this.worldObj.getBlockMetadata(this.x, this.y, this.z);
+                    this.motionX = (double) ((float) (movingobjectposition.hitVec.xCoord - this.posX));
+                    this.motionY = (double) ((float) (movingobjectposition.hitVec.yCoord - this.posY));
+                    this.motionZ = (double) ((float) (movingobjectposition.hitVec.zCoord - this.posZ));
+                    f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+                    this.posX -= this.motionX / (double) f2 * 0.05000000074505806D;
+                    this.posY -= this.motionY / (double) f2 * 0.05000000074505806D;
+                    this.posZ -= this.motionZ / (double) f2 * 0.05000000074505806D;
+                    this.inGround = true;
+                    Side = movingobjectposition.sideHit;
 
                     if (this.field_145790_g.getMaterial() != Material.air) {
-
-                        if (Components != null && Components.length > 0)
-                            for (int g = 0; g < Components.length; g++)
-                                Components[g].OnBlockHit(worldObj, x, y, z, this);
-
-
-                        this.setDead();
-
+                        this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.x, this.y, this.z, this);
                     }
-                }
-            }
 
+
+                }
+
+            }
         }
 
             this.posX += this.motionX;
@@ -296,16 +309,48 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             this.setPosition(this.posX, this.posY, this.posZ);
             this.func_145775_I();
 
+        if(inGround){
+                                if(Components != null && Components.length > 0)
+                                for (int g = 0; g < Components.length; g++)
+                                    Components[g].OnUseOnBlock(stack, worldObj, x, y, z, field_145790_g, Shooter, Side);
+
+                            this.setDead();
+
+
+        }
+
     }
 
-    public void writeEntityToNBT(NBTTagCompound p_70014_1_)
+    public void writeEntityToNBT(NBTTagCompound nbt)
     {
+        nbt.setString("PL", Shooter.getCommandSenderName());
+
+        nbt.setShort("xTile", (short)this.x);
+        nbt.setShort("yTile", (short)this.y);
+        nbt.setShort("zTile", (short)this.z);
+        nbt.setByte("inTile", (byte)Block.getIdFromBlock(this.field_145790_g));
+        nbt.setByte("inData", (byte)this.inData);
+        nbt.setByte("inGround", (byte)(this.inGround ? 1 : 0));
+
+        stack.writeToNBT(nbt);
 
     }
 
 
-    public void readEntityFromNBT(NBTTagCompound p_70037_1_)
+    public void readEntityFromNBT(NBTTagCompound nbt)
     {
+
+        Shooter = FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().func_152612_a(nbt.getString("PL"));
+
+        this.x = nbt.getShort("xTile");
+        this.y = nbt.getShort("yTile");
+        this.z = nbt.getShort("zTile");
+        this.field_145790_g = Block.getBlockById(nbt.getByte("inTile") & 255);
+        this.inData = nbt.getByte("inData") & 255;
+        this.inGround = nbt.getByte("inGround") == 1;
+
+        stack = ItemStack.loadItemStackFromNBT(nbt);
+
 
     }
 

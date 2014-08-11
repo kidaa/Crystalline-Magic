@@ -1,10 +1,9 @@
 package CrystallineMagic.Utils.RecipeUtils;
 
-import CrystallineMagic.Items.ModItemSpell;
-import CrystallineMagic.Items.ModItemSpellComponent;
 import CrystallineMagic.Main.ModItems;
-import CrystallineMagic.Utils.MagicUtils;
-import CrystallineMagic.Utils.Spells.SpellComponent;
+import CrystallineMagic.Utils.Spells.ISpellPart;
+import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -12,21 +11,22 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 
-public class SpellCreationRecipe implements IRecipe
+public class SpellPartCopy implements IRecipe
 {
-    ItemStack SpellItem;
+    ItemStack CopyItem;
 
 
-    public SpellCreationRecipe(ItemStack sp)
+    public SpellPartCopy(ItemStack sp)
     {
-        SpellItem = sp.copy();
+        CopyItem = sp.copy();
     }
 
     @Override
     public boolean matches (InventoryCrafting inventorycrafting, World world) {
         int invLength = inventorycrafting.getSizeInventory();
-        boolean foundSpell = false;
+        boolean foundCopy = false;
         boolean foundComp = false;
+        boolean foundParch = false;
 
         ItemStack tmpStack;
         for (int i = 0; i < invLength; ++i) {
@@ -34,18 +34,28 @@ public class SpellCreationRecipe implements IRecipe
             if (tmpStack != null && tmpStack.getItem() != null) {
 
 
-                if (tmpStack.getItem() instanceof ModItemSpell) {
+                if (tmpStack.getItem() instanceof ISpellPart) {
 
-                    if (foundSpell)
+                    if (foundCopy)
                         return false;
 
-                    SpellItem = tmpStack;
+                    CopyItem = tmpStack;
 
-                    foundSpell = true;
+                    foundCopy = true;
 
-                } else if (tmpStack.getItem() instanceof ModItemSpellComponent && tmpStack.getTagCompound() != null) {
+                } else if (tmpStack.getItem() == ModItems.Parchment) {
+
+                    if(foundParch)
+                        return false;
+
+                    foundParch = true;
+
+                } else if (tmpStack.getItem() == Items.dye && tmpStack.getItemDamage() == 0) {
+
+                    if(foundComp)
+                        return false;
+
                     foundComp = true;
-
 
                 } else {
 
@@ -55,7 +65,7 @@ public class SpellCreationRecipe implements IRecipe
                 }
             }
 
-            if (foundComp && foundSpell) {
+            if (foundComp && foundCopy && foundParch) {
                 return true;
             }
 
@@ -80,35 +90,29 @@ public class SpellCreationRecipe implements IRecipe
             tmpStack = inventorycrafting.getStackInSlot(i);
             if (tmpStack instanceof ItemStack)
             {
-                if (tmpStack.getItem() == SpellItem.getItem() && tmpStack.getTagCompound() == null)
+                if (tmpStack.getItem() instanceof ISpellPart)
                 {
                     tg = tmpStack;
-                }
-
-                else if (tmpStack.getItem() == ModItems.SpellComponent && tmpStack.getTagCompound() != null)
-                {
-                    list.add(MagicUtils.GetCompFromSpellComp(tmpStack));
-
                 }
             }
         }
 
+
         newSpell = tg.copy();
 
-        SpellComponent[] Comps = new SpellComponent[list.size()];
+        if(newSpell != null) {
 
-        if(Comps != null && newSpell != null && newSpell.getItem() != null && Comps.length > 0) {
-            for (int i = 0; i < list.size(); i++)
-                Comps[i] = list.get(i);
+            CopyItem = newSpell.copy();
 
-            MagicUtils.SetSpellComponents(newSpell, Comps);
-            SpellItem = newSpell.copy();
+            newSpell.stackSize = 2;
             return newSpell;
-
 
         }
 
-        return SpellItem;
+
+
+
+        return CopyItem;
     }
 
     @Override
@@ -120,7 +124,7 @@ public class SpellCreationRecipe implements IRecipe
     @Override
     public ItemStack getRecipeOutput ()
     {
-        return SpellItem.copy();
+        return CopyItem.copy();
     }
 
 }

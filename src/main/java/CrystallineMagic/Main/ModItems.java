@@ -8,6 +8,8 @@ import CrystallineMagic.Items.ModItemInvisibilityCore;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
 import CrystallineMagic.Items.ModItemSpellComponent;
+import CrystallineMagic.Items.ModItemSpellModifier;
+import CrystallineMagic.Items.ModItemSpellType;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Utils.Register.ItemRegister;
 import net.minecraft.item.Item;
@@ -23,7 +25,7 @@ public class ModItems {
     public static Item SoulOrb;
     public static Item Parchment;
     public static Item Spell;
-    public static Item SpellComponent;
+    public static Item SpellComponent, SpellType, SpellModifier;
 
     public static Item SpellIconItem;
 
@@ -84,11 +86,18 @@ public class ModItems {
         Parchment = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":Parchment").setMaxStackSize(1);
         Utils.Register(Parchment, "Parchment");
 
-        Spell = new ModItemSpell().setTextureName(Ref.ModId + ":Spell").setMaxStackSize(1).setCreativeTab(CrystMagic.CreativeTab);
+        Spell = new ModItemSpell().setTextureName(Ref.ModId + ":Spell").setMaxStackSize(1).setCreativeTab(CrystMagic.SpellPart);
         Utils.Register(Spell, "Spell");
 
-        SpellComponent = new ModItemSpellComponent().setMaxStackSize(1).setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":SpellComponent");
+        SpellType = new ModItemSpellType().setTextureName(Ref.ModId + ":SpellType");
+        Utils.Register(SpellType, "SpellType");
+
+        SpellModifier = new ModItemSpellModifier().setTextureName(Ref.ModId + ":SpellModifier");
+        Utils.Register(SpellModifier, "SpellModifier");
+
+        SpellComponent = new ModItemSpellComponent().setTextureName(Ref.ModId + ":SpellComponent");
         Utils.Register(SpellComponent, "SpellComponent");
+
 
 
 

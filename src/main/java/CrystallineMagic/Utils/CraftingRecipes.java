@@ -6,16 +6,12 @@ import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Utils.RecipeUtils.CrystalToolUpgradeRecipe;
 import CrystallineMagic.Utils.RecipeUtils.ItemRechargeRecipe;
-import CrystallineMagic.Utils.RecipeUtils.SpellCreationRecipe;
+import CrystallineMagic.Utils.RecipeUtils.SpellPartCopy;
 import MiscUtils.Utils.CraftingUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.nbt.NBTTagCompound;
-
-import java.util.ArrayList;
 
 public class CraftingRecipes {
 
@@ -68,7 +64,7 @@ public class CraftingRecipes {
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.blaze_rod), Enchantment.silkTouch, 1));
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.ender_pearl), Enchantment.fortune, 2));
 
-        Utils.AddRecipe(new SpellCreationRecipe(new ItemStack(ModItems.Spell)));
+        Utils.AddRecipe(new SpellPartCopy(new ItemStack(ModItems.SpellComponent)));
 
         Utils.AddRecipe(new ItemRechargeRecipe(50, 0, new ItemStack(ModItems.InvisibilityCore), new ItemStack(ModItems.ChargedCrystal, 1, 0)));
         Utils.AddRecipe(new ItemRechargeRecipe(2, 0, new ItemStack(ModItems.ChargedCrystal), new ItemStack(Items.redstone, 1)));
@@ -79,28 +75,6 @@ public class CraftingRecipes {
         Utils.AddRecipe(new ItemStack(ModBlocks.PowerCrystal), new Object[]{"BPB", "GRG", "BPB", 'B', ModItems.BlueCrystal, 'P', ModItems.ChargedCrystal, 'G', ModItems.GreenCrystal, 'R', ModItems.RedCrystal});
 
 
-
-
-        //Cheaty way of adding copy recipe for all spell components
-        for(int i = 0; i < MagicUtils.Components.size(); i++){
-            ItemStack Input = new ItemStack(ModItems.SpellComponent);
-
-            Input.setTagCompound(new NBTTagCompound());
-            Input.getTagCompound().setString("Comp", MagicUtils.Components.get(i).GetName());
-
-            ItemStack Output = Input.copy();
-            Output.stackSize = 2;
-
-            ArrayList list = new ArrayList();
-
-            list.add(Input);
-            list.add(new ItemStack(Items.dye, 1, 0));
-            list.add(new ItemStack(ModItems.Parchment));
-
-            ShapelessRecipes res = new ShapelessRecipes(Output, list);
-
-            Utils.AddRecipe(res);
-        }
 
 
 

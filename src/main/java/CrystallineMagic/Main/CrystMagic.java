@@ -19,6 +19,13 @@ import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
 import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
+import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
+import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
+import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
+import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
+import CrystallineMagic.Utils.Spells.SpellTypes.Self;
+import CrystallineMagic.Utils.Spells.SpellTypes.Target;
+import CrystallineMagic.Utils.Spells.SpellTypes.Touch;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -62,6 +69,15 @@ public class CrystMagic {
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
             return config.GetCheckedItem(ModItems.SoulOrb);
+        }
+
+    };
+
+    public static CreativeTabs SpellPart = new CreativeTabs("tabModSpell") {
+        @Override
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem() {
+            return config.GetCheckedItem(ModItems.Spell);
         }
 
     };
@@ -145,6 +161,15 @@ public class CrystMagic {
     public static void RegisterComponents(){
 
         MagicUtils.RegisterComponents(new Fire());
+        MagicUtils.RegisterComponents(new Heal());
+        MagicUtils.RegisterComponents(new SetTarget());
+
+        MagicUtils.RegisterTypes(new Projectile());
+        MagicUtils.RegisterTypes(new Self());
+        MagicUtils.RegisterTypes(new Touch());
+        MagicUtils.RegisterTypes(new Target());
+
+        MagicUtils.RegisterModifiers(new StrengthUpgrade());
 
     }
 

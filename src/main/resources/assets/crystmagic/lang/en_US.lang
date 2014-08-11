@@ -1,4 +1,5 @@
 itemGroup.tabMod=Crystalline Magic
+itemGroup.tabModSpell=Spell parts
 
 item.crystalinfusedmetal.name=Crystal Infused Metal
 item.crystalinfusedgem.name=Crystal Infused Gem
@@ -18,6 +19,8 @@ item.crystalsilk.name=Crystal Infused Silk
 item.crystalblade.name=Crystal Blade
 item.crystalpickaxe.name=Crystal Pickaxe
 item.spellcomponent.name=Spell Component
+item.spelltype.name=Spell Type
+item.spellmodifier.name=Spell Modifier
 
 tile.powercrystal.name=Power Crystal
 tile.energybattery.name=Energy Battery
@@ -29,12 +32,19 @@ tile.magicaldeconstructor.name=Magical Material Deconstructor
 tile.bluecrystalore.name=Blue Crystal ore
 tile.greencrystalore.name=Green Crystal ore
 tile.redcrystalore.name=Red Crystal ore
+tile.spellcreationtable.name=Spell Creation Table
 
 items.desc.soulorb.bound=Orb bound to: $player
 items.desc.soulorb.unbound=Orb not bound
 items.desc.spell.cost=Energy Cost: $cost
 items.desc.spell.empty=Empty spell
+items.desc.spell.type=Type: $type
+
+gui.spellcreation.components=Components
+gui.spellcreation.modifiers=Modifiers
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 
 chat.message.spell.noEng=Was not able to cast spell. Not enough energy
+chat.message.spell.noTarget=No target has been set.
+chat.message.spell.targetSet=Target has been set to: $target
