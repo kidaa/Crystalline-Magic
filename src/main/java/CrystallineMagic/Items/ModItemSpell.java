@@ -128,7 +128,7 @@ public class ModItemSpell extends Item {
 
 
         if(MagicUtils.GetSpellType(stack) != null) {
-            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "" + EnumChatFormatting.BOLD  + "* " + StatCollector.translateToLocal("items.desc.spell.type").replace("$type", MagicUtils.GetSpellType(stack).GetName()));
+            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC  + "* " + StatCollector.translateToLocal("items.desc.spell.type").replace("$type", MagicUtils.GetSpellType(stack).GetName()));
             list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "- " + StatCollector.translateToLocal("gui.spellcreation.components"));
         }
 

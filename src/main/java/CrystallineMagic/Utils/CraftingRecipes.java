@@ -12,6 +12,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class CraftingRecipes {
 
@@ -71,6 +72,7 @@ public class CraftingRecipes {
         Utils.AddRecipe(new ItemRechargeRecipe(5, 0, new ItemStack(ModItems.ChargedCrystal), new ItemStack(Items.glowstone_dust, 1)));
         Utils.AddRecipe(new ItemStack(ModItems.Parchment), new Object[]{"S  ", " P ", "  S", 'S', Items.stick, 'P', Items.paper});
         Utils.AddRecipe(new ItemStack(ModItems.Spell), new Object[]{"PPP", "PBP", "PPP", 'P', Items.paper, 'B', ModItems.Parchment});
+        Utils.AddRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.SpellCreationTable), new Object[]{"WSW", "WPW", "WWW", Character.valueOf('W'), "plankWood", 'S', new ItemStack(ModItems.Spell), 'P', ModItems.Parchment}));
 
         Utils.AddRecipe(new ItemStack(ModBlocks.PowerCrystal), new Object[]{"BPB", "GRG", "BPB", 'B', ModItems.BlueCrystal, 'P', ModItems.ChargedCrystal, 'G', ModItems.GreenCrystal, 'R', ModItems.RedCrystal});
 

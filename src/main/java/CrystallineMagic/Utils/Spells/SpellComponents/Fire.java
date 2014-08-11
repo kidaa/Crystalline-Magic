@@ -24,6 +24,7 @@ public class Fire implements SpellComponent {
 
     @Override
     public void OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block,  EntityPlayer player, int Side) {
+
         if (Side == 0)
         {
             --y;
@@ -54,11 +55,13 @@ public class Fire implements SpellComponent {
             ++x;
         }
 
+        if(Side == -1)
+            y += 1;
+
             if (world.isAirBlock(x, y, z))
             {
                 world.setBlock(x, y, z, Blocks.fire);
-            }else if (world.isAirBlock(x, y+1, z)){
-                world.setBlock(x, y+1, z, Blocks.fire);
+
             }
 
     }

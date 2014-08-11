@@ -29,23 +29,20 @@ public class Target implements SpellType {
 
     @Override
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, World world, int x, int y, int z, int BlockSide) {
-
         MagicInfoStorage storage = MagicInfoStorage.get(player);
-        if(storage != null){
-
-
+        if(storage.GetTargetX() != 0 || storage.GetTargetY() != 0 || storage.GetTargetZ() != 0){
 
                 SpellComponent[] Components = MagicUtils.GetSpellComponents(SpellStack);
 
-                if(Components != null && Components.length > 0){
-                    for(int i = 0; i < Components.length; i++){
-                        if(Components[i] != null){
-                            Components[i].OnUseOnBlock(SpellStack, world, storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ(), world.getBlock(storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ()), player, BlockSide);
-
+                if(Components != null && Components.length > 0) {
+                    for (int i = 0; i < Components.length; i++) {
+                        if (Components[i] != null) {
+                            Components[i].OnUseOnBlock(SpellStack, world, storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ(), world.getBlock(storage.GetTargetX(), storage.GetTargetY(), storage.GetTargetZ()), player, -1);
 
                         }
-                    }
 
+
+                    }
                 }
 
             }else{
