@@ -190,7 +190,7 @@ public class TileEntityMagicalDecontructor extends TileEntityInvBase implements 
 
     @Override
     public double GetEnergyPacketSize() {
-        return 1;
+        return Energy >= 10 ? 10 : Energy >= 5 ? 5 : 1;
     }
 
     @Override

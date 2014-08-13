@@ -73,6 +73,7 @@ public class ModBlocks {
         InfusedMetalBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":InfusedMetalBlock").setHardness(2F);
         Utils.Register(InfusedMetalBlock, "InfusedMetalBlock");
 
+
         
         
         
