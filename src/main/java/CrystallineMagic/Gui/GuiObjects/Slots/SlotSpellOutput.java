@@ -42,9 +42,11 @@ public class SlotSpellOutput extends SlotSpellCreation {
         }
 
 
+        if(player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= MagicUtils.GetSpellCost(stack)){
+            return true;
+        }
+      //  tile.ErrorCode = 2;
 
-
-
-        return player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= MagicUtils.GetSpellCost(stack);
+        return false;
     }
 }

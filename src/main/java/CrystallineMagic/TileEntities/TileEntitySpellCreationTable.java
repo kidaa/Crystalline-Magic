@@ -5,11 +5,14 @@ import CrystallineMagic.Items.ModItemSpell;
 import CrystallineMagic.Items.ModItemSpellComponent;
 import CrystallineMagic.Items.ModItemSpellModifier;
 import CrystallineMagic.Items.ModItemSpellType;
+import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
 import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import MiscUtils.TileEntity.TileEntityInvBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -30,16 +33,20 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
      */
 
 
+    public int ErrorCode = 0;
+
 
     public TileEntitySpellCreationTable() {
         super(22, "SpellCreationTable", 1);
     }
+
 
     public ItemStack GetResult(){
         if(getStackInSlot(0) != null){
             if(getStackInSlot(0).getItem() instanceof ModItemSpellType){
                 if(getStackInSlot(1) != null && getStackInSlot(1).getItem() instanceof ModItemSpell && getStackInSlot(1).getTagCompound() == null) {
                     if (getStackInSlot(2) != null && getStackInSlot(2).getItem() instanceof ModItemSoulOrb && ((ModItemSoulOrb) getStackInSlot(2).getItem()).hasEffect(getStackInSlot(2), 0)) {
+
 
                         SpellType type = MagicUtils.GetTypeFromSpellType(getStackInSlot(0));
 
@@ -51,6 +58,8 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                                 if (tmp != null && tmp.getItem() instanceof ModItemSpellComponent) {
                                     SpellComponent comp = MagicUtils.GetCompFromSpellComp(tmp);
 
+                                    if(type.GetUsage() == SpellPartUsage.Both || comp.GetUsage() == type.GetUsage() || comp.GetUsage() == SpellPartUsage.Both){
+
                                     if (comp != null) {
                                         if (Components.contains(comp))
                                             return null;
@@ -58,6 +67,11 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                                         else
                                             Components.add(comp);
 
+                                    }
+
+                                    }else{
+                                        ErrorCode = 1;
+                                        return null;
                                     }
 
 
@@ -108,6 +122,7 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                             MagicUtils.SetSpellModifiers(stack, Mods);
                             MagicUtils.SetSpellType(stack, type);
 
+                             ErrorCode = 0;
                             return stack;
 
 
@@ -116,12 +131,28 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
 
             }
         }
-
         return null;
     }
 
     public void updateEntity(){
 
+        if(getStackInSlot(2) != null && getStackInSlot(2).getItem() instanceof ModItemSoulOrb && getStackInSlot(21) != null) {
+            ItemStack st = getStackInSlot(21);
+            ModItemSoulOrb orb = (ModItemSoulOrb) getStackInSlot(2).getItem();
+
+            EntityPlayer player = null;
+
+            if (orb.GetOwner(getStackInSlot(2)) != null) {
+                player = orb.GetOwner(getStackInSlot(2));
+            }
+
+
+            if(player != null)
+            if (player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= MagicUtils.GetSpellCost(st)) {
+            }else{
+                ErrorCode = 2;
+            }
+        }
     }
 
     public boolean IsValid(){
@@ -130,11 +161,14 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
 
 
     public void OnSlotChanged(){
+        ErrorCode = 0;
+
         if(IsValid()){
             setInventorySlotContents(21, GetResult());
         }else{
             setInventorySlotContents(21, null);
         }
+
 
     }
 

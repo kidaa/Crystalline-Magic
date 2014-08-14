@@ -40,9 +40,14 @@ items.desc.soulorb.unbound=Orb not bound
 items.desc.spell.cost=Energy Cost: $cost
 items.desc.spell.empty=Empty spell
 items.desc.spell.type=Type: $type
+items.desc.spell.usage.entity=Usage: Entities
+items.desc.spell.usage.block=Usage: Blocks
+items.desc.spell.usage.both=Usage: Blocks and Entities
 
 gui.spellcreation.components=Components
 gui.spellcreation.modifiers=Modifiers
+gui.spellcreation.error.1=Incompatible spell usages!
+gui.spellcreation.error.2=Spell is too powerful for current soul orb level!
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 

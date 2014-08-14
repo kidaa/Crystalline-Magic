@@ -289,6 +289,10 @@ public class MagicUtils {
             }
         }
 
+        SpellType type = GetSpellType(stack);
+
+        x *= type.GetEnergyMultiplier(stack);
+
         return x;
     }
 

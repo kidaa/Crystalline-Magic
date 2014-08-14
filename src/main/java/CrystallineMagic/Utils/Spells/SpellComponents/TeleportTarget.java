@@ -2,6 +2,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -59,5 +60,9 @@ public class TeleportTarget implements SpellComponent {
     @Override
     public String GetId() {
         return "TT";
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Entity;
     }
 }

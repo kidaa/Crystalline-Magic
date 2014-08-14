@@ -2,6 +2,7 @@ package CrystallineMagic.Utils.Spells.SpellTypes;
 
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
 import net.minecraft.entity.Entity;
@@ -34,5 +35,14 @@ public class Projectile implements SpellType {
 
 
         return true;
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Both;
+    }
+
+    @Override
+    public double GetEnergyMultiplier(ItemStack stack) {
+        return 1;
     }
 }

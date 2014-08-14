@@ -3,6 +3,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -47,5 +48,9 @@ public class Heal implements SpellComponent {
     @Override
     public String GetId() {
         return "HL";
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Entity;
     }
 }

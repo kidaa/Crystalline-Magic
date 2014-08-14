@@ -3,6 +3,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import MiscUtils.Utils.Block.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -24,7 +25,7 @@ public class Dig implements SpellComponent{
             float h = block.getBlockHardness(world, x, y, z);
             if (h <= 2 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 6)){
                 world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(world.getBlock(x, y, z)) + (world.getBlockMetadata(x, y, z) << 12));
-            BlockUtil.breakBlock(world, x, y, z);
+                BlockUtil.breakBlockToPlayer(world, x, y, z, player);
                 return true;
         }
 
@@ -47,5 +48,9 @@ public class Dig implements SpellComponent{
     @Override
     public String GetId() {
         return "DG";
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Block;
     }
 }

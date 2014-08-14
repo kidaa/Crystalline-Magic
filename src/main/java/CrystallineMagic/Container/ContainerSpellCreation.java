@@ -7,15 +7,20 @@ import CrystallineMagic.Gui.GuiObjects.Slots.SlotSpellOnly;
 import CrystallineMagic.Gui.GuiObjects.Slots.SlotSpellOutput;
 import CrystallineMagic.Gui.GuiObjects.Slots.SlotSpellType;
 import CrystallineMagic.TileEntities.TileEntitySpellCreationTable;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class ContainerSpellCreation extends Container {
 
     private TileEntitySpellCreationTable tile;
+
+    int LastError;
 
     public ContainerSpellCreation(InventoryPlayer InvPlayer, TileEntitySpellCreationTable tile)
     {
@@ -107,5 +112,43 @@ public class ContainerSpellCreation extends Container {
     {
         super.onContainerClosed(par1EntityPlayer);
         this.tile.closeInventory();
+    }
+
+    public void addCraftingToCrafters(ICrafting par1ICrafting)
+    {
+        super.addCraftingToCrafters(par1ICrafting);
+        par1ICrafting.sendProgressBarUpdate(this, 0, (int)this.tile.ErrorCode);
+
+    }
+
+    public void detectAndSendChanges()
+    {
+        super.detectAndSendChanges();
+
+        for (int i = 0; i < this.crafters.size(); ++i)
+        {
+            ICrafting icrafting = (ICrafting)this.crafters.get(i);
+
+            if (this.LastError != this.tile.ErrorCode)
+            {
+                icrafting.sendProgressBarUpdate(this, 0, (int)this.tile.ErrorCode);
+            }
+
+
+        }
+
+        this.LastError = (int)this.tile.ErrorCode;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int par1, int par2)
+    {
+        if (par1 == 2)
+        {
+            tile.ErrorCode = par2;
+        }
+
+
+
     }
 }

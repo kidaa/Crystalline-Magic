@@ -15,6 +15,8 @@ public interface SpellComponent{
     public double EnergyCost();
     public String GetId();
 
+    public SpellPartUsage GetUsage();
+
 
 
 }

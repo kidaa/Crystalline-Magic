@@ -28,6 +28,7 @@ import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
 import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportRandom;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportTarget;
+import CrystallineMagic.Utils.Spells.SpellModifiers.AreaIncludePlayer;
 import CrystallineMagic.Utils.Spells.SpellModifiers.CostDecreaser;
 import CrystallineMagic.Utils.Spells.SpellModifiers.RangeExtender;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
@@ -195,6 +196,7 @@ public class CrystMagic {
         MagicUtils.RegisterModifiers(new StrengthUpgrade());
         MagicUtils.RegisterModifiers(new CostDecreaser());
         MagicUtils.RegisterModifiers(new RangeExtender());
+        MagicUtils.RegisterModifiers(new AreaIncludePlayer());
 
     }
 

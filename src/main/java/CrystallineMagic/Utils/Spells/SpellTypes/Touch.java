@@ -2,6 +2,7 @@ package CrystallineMagic.Utils.Spells.SpellTypes;
 
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
 import net.minecraft.block.Block;
@@ -47,5 +48,14 @@ public class Touch implements SpellType {
             }
         }
         return t;
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Both;
+    }
+
+    @Override
+    public double GetEnergyMultiplier(ItemStack stack) {
+        return 1;
     }
 }

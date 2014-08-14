@@ -3,6 +3,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -83,5 +84,9 @@ public class Fire implements SpellComponent {
     @Override
     public String GetId() {
         return "FL";
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Both;
     }
 }

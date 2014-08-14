@@ -3,6 +3,8 @@ package CrystallineMagic.Items;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.ISpellPart;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 
 import java.util.List;
 
@@ -28,6 +31,18 @@ public class ModItemSpellType extends Item implements ISpellPart {
         if(stack.getTagCompound() != null){
             list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + stack.getTagCompound().getString("Type"));
 
+
+            SpellType type = MagicUtils.GetTypeFromSpellType(stack);
+
+            if(type.GetUsage() == SpellPartUsage.Block){
+                list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.usage.block"));
+
+            }else if(type.GetUsage() == SpellPartUsage.Entity){
+                list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.usage.entity"));
+
+            }else if(type.GetUsage() == SpellPartUsage.Both){
+                list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.usage.both"));
+            }
         }
 
     }

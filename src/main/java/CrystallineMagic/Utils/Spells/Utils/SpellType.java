@@ -15,6 +15,8 @@ public interface SpellType {
 
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide);
 
+    public SpellPartUsage GetUsage();
 
+    public double GetEnergyMultiplier(ItemStack stack);
 
 }

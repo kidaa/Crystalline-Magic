@@ -3,6 +3,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,9 +21,13 @@ public class Regen implements SpellComponent{
         if(entityHit instanceof EntityLivingBase){
             EntityLivingBase ent = (EntityLivingBase)entityHit;
 
-            int t = 0 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
+            int t = 1 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
+            int g = t;
 
-            ent.addPotionEffect(new PotionEffect(PotionHealth.regeneration.getId(), t * 300, t));
+            if(t >= 3)
+                g = 3;
+
+            ent.addPotionEffect(new PotionEffect(PotionHealth.regeneration.getId(), t * 300, g));
 
             return true;
         }
@@ -48,5 +53,9 @@ public class Regen implements SpellComponent{
     @Override
     public String GetId() {
         return "RG";
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Entity;
     }
 }

@@ -3,6 +3,7 @@ package CrystallineMagic.Utils.Spells.SpellTypes;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
@@ -59,5 +60,14 @@ public class Target implements SpellType {
 
 
         return t;
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Block;
+    }
+
+    @Override
+    public double GetEnergyMultiplier(ItemStack stack) {
+        return 1;
     }
 }

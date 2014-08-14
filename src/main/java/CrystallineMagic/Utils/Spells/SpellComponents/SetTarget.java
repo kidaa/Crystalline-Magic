@@ -2,6 +2,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,5 +39,9 @@ public class SetTarget implements SpellComponent {
     @Override
     public String GetId() {
         return "PT";
+    }
+
+    public SpellPartUsage GetUsage(){
+        return SpellPartUsage.Block;
     }
 }

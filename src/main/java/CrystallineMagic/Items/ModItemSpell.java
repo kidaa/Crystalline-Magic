@@ -76,7 +76,7 @@ public class ModItemSpell extends Item {
                                 if(event.isCanceled())
                                     return false;
 
-                                if (type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, 0)) {
+                                if (type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, -1)) {
                                     if (!player.capabilities.isCreativeMode)
                                         MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
                                 }
@@ -123,6 +123,7 @@ public class ModItemSpell extends Item {
 
                                 if(event.isCanceled())
                                     return false;
+
 
                                 if(type.OnUse(stack, player, null, world, x, y, z, sd))
                                 if (!player.capabilities.isCreativeMode)
@@ -180,7 +181,7 @@ public class ModItemSpell extends Item {
                           if(event.isCanceled())
                               return stack;
 
-                          if(type.OnUse(stack, player, null, world, (int)player.posX, (int)player.posY, (int)player.posZ, 0))
+                          if(type.OnUse(stack, player, null, world, (int)player.posX, (int)player.posY, (int)player.posZ, -1))
                           if (!player.capabilities.isCreativeMode)
                               MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
 
