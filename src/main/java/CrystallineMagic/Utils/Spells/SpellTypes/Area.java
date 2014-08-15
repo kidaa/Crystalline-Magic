@@ -103,6 +103,6 @@ public class Area implements SpellType{
 
     @Override
     public double GetEnergyMultiplier(ItemStack stack) {
-        return 3 + (MagicUtils.GetAmountOfAModifer(stack, new RangeExtender()) * 4);
+        return 1 + ((MagicUtils.GetAmountOfAModifer(stack, new RangeExtender())+1) * 4);
     }
 }

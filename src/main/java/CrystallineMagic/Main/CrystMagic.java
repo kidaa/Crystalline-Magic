@@ -22,6 +22,7 @@ import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
 import CrystallineMagic.Utils.Spells.SpellComponents.Damage;
 import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
+import CrystallineMagic.Utils.Spells.SpellComponents.ExplodeBlock;
 import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
 import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
 import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
@@ -186,6 +187,7 @@ public class CrystMagic {
         MagicUtils.RegisterComponents(new Regen());
         MagicUtils.RegisterComponents(new Dig());
         MagicUtils.RegisterComponents(new Damage());
+        MagicUtils.RegisterComponents(new ExplodeBlock());
 
         MagicUtils.RegisterComponents(new SetTarget());
         MagicUtils.RegisterComponents(new TeleportTarget());

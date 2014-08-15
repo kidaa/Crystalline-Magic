@@ -65,9 +65,9 @@ public class ServerProxy {
 
     public static void RegisterChestLoot(){
 
-        int i1 = 1;
+        int i1 = 0;
         int i2 = 1;
-        int i3 = 8;
+        int i3 = 4;
 
         for(int i = 0; i < MagicUtils.Components.size(); i++){
             ItemStack stack = new ItemStack(ModItems.SpellComponent);

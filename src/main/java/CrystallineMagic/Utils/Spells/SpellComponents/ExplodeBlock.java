@@ -1,7 +1,5 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
-import CrystallineMagic.Utils.MagicUtils;
-import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
 import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import MiscUtils.Block.BlockUtil;
@@ -12,45 +10,41 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class Dig implements SpellComponent{
+public class ExplodeBlock implements SpellComponent {
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
-
         return false;
     }
 
     @Override
     public boolean OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block, EntityPlayer player, int Side) {
-        if(block != Blocks.bedrock && block.getBlockHardness(world, x, y, z) > -1) {
-            float h = block.getBlockHardness(world, x, y, z);
-            if (h <= 2 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 6)){
-                world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(world.getBlock(x, y, z)) + (world.getBlockMetadata(x, y, z) << 12));
-                BlockUtil.breakBlockToPlayer(world, x, y, z, player);
-                return true;
-        }
+
+
+        if(world.getBlock(x,y,z) != null && world.getBlock(x,y,z) != Blocks.air){
+            BlockUtil.explodeBlock(world, x, y, z);
 
         }
 
         return false;
-
     }
 
     @Override
     public String GetName() {
-        return "Dig";
+        return "Explode Block";
     }
 
     @Override
     public double EnergyCost() {
-        return 48;
+        return 125;
     }
 
     @Override
     public String GetId() {
-        return "DG";
+        return "EB";
     }
 
-    public SpellPartUsage GetUsage(){
+    @Override
+    public SpellPartUsage GetUsage() {
         return SpellPartUsage.Block;
     }
 }
