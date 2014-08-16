@@ -37,19 +37,33 @@ public class Area implements SpellType{
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide) {
         boolean t = false;
 
-        int Expand = 1 + (MagicUtils.GetAmountOfAModifer(SpellStack, new RangeExtender()));
+        int Range = MagicUtils.GetAmountOfAModifer(SpellStack, new RangeExtender());
 
-        if(Expand > 1)
-            Expand /= 2;
+        int Expand = 1 + Range;
 
-        AxisAlignedBB ab = AxisAlignedBB.getBoundingBox(x - Expand, y - Expand, z - Expand, x + Expand, y + Expand, z + Expand);
+
+        int XNeg = x - Expand;
+        int XPos = x + Expand;
+
+        int YNeg = y - Expand;
+        int YPos = y + Expand;
+
+        int ZNeg = z - Expand;
+        int ZPos = z + Expand;
+
+
+
+        AxisAlignedBB ab = AxisAlignedBB.getBoundingBox(XNeg, YNeg, ZNeg, XPos, YPos, ZPos);
         List list;
+
 
         if(MagicUtils.GetAmountOfAModifer(SpellStack, new AreaIncludePlayer()) <= 0)
         list = world.getEntitiesWithinAABBExcludingEntity(player, ab);
         else{
             list = world.getEntitiesWithinAABB(Entity.class, ab);
         }
+
+
 
 
         ArrayList<Entity> Ents = new ArrayList<Entity>();
@@ -59,6 +73,9 @@ public class Area implements SpellType{
                 Ents.add((Entity)list.get(i));
             }
         }
+
+
+
 
         SpellComponent[] Comps = MagicUtils.GetSpellComponents(SpellStack);
 
@@ -73,10 +90,29 @@ public class Area implements SpellType{
                 }
         }
 
+
+
+
+        int g = 0;
+
+        int xg = 0, yg = 0, zg = 0;
+
         if(Ents.size() < 0 || BlockSide != -1){
-            for (int yT = y - Expand; yT < y + Expand * 2; yT++) {
-                for (int xT = x - Expand; xT < x + Expand * 2; xT++) {
-                      for (int zT = z - Expand; zT < z + Expand * 2; zT++) {
+
+            for (int yT = YNeg; yT <= YPos; yT++) {
+
+                yg += 1;
+
+                for (int xT = XNeg; xT <= XPos; xT++) {
+
+                    xg += 1;
+
+                      for (int zT = ZNeg; zT <= ZPos; zT++) {
+
+                          zg += 1;
+
+                          g += 1;
+
                             for (int i = 0; i < Comps.length; i++) {
                             if (Comps[i].OnUseOnBlock(SpellStack, world, xT, yT, zT, world.getBlock(xT, yT, zT), player, BlockSide))
                                 t = true;
@@ -93,7 +129,6 @@ public class Area implements SpellType{
 
 
 
-
         return t;
     }
 
@@ -103,6 +138,17 @@ public class Area implements SpellType{
 
     @Override
     public double GetEnergyMultiplier(ItemStack stack) {
-        return 1 + ((MagicUtils.GetAmountOfAModifer(stack, new RangeExtender())+1) * 4);
+
+        int g = MagicUtils.GetAmountOfAModifer(stack, new RangeExtender());
+
+        double x = g * ((55 * 1.267) + (43*g));
+
+
+        if(g <= 0)
+            return 27;
+
+
+
+        return x;
     }
 }

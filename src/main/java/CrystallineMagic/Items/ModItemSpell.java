@@ -68,7 +68,6 @@ public class ModItemSpell extends Item {
 
                             SpellType type = MagicUtils.GetSpellType(stack);
 
-                            if (!world.isRemote) {
 
                                 EventSpellCast event = new EventSpellCast(player, stack);
                                 MinecraftForge.EVENT_BUS.post(event);
@@ -95,7 +94,7 @@ public class ModItemSpell extends Item {
 
             }
 
-        }
+
 
         return false;
     }
@@ -115,8 +114,6 @@ public class ModItemSpell extends Item {
                         if(MagicUtils.GetSpellType(stack) != null) {
 
                             SpellType type = MagicUtils.GetSpellType(stack);
-
-                            if (!world.isRemote) {
 
                                 EventSpellCast event = new EventSpellCast(player, stack);
                                 MinecraftForge.EVENT_BUS.post(event);
@@ -144,7 +141,6 @@ public class ModItemSpell extends Item {
 
             }
 
-        }
 
 
         return false;
@@ -173,7 +169,6 @@ public class ModItemSpell extends Item {
 
                       SpellType type = MagicUtils.GetSpellType(stack);
 
-                      if (!world.isRemote) {
 
                           EventSpellCast event = new EventSpellCast(player, stack);
                           MinecraftForge.EVENT_BUS.post(event);
@@ -194,7 +189,7 @@ public class ModItemSpell extends Item {
                     ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
             }
 
-        }
+
 
         return stack;
     }

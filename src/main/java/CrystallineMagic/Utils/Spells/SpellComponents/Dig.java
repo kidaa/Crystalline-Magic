@@ -24,7 +24,10 @@ public class Dig implements SpellComponent{
         if(block != Blocks.bedrock && block.getBlockHardness(world, x, y, z) > -1) {
             float h = block.getBlockHardness(world, x, y, z);
             if (h <= 2 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 6)){
+
+                if(!world.isRemote)
                 world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(world.getBlock(x, y, z)) + (world.getBlockMetadata(x, y, z) << 12));
+
                 BlockUtil.breakBlockToPlayer(world, x, y, z, player);
                 return true;
         }

@@ -25,6 +25,7 @@ import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
 import CrystallineMagic.Utils.Spells.SpellComponents.ExplodeBlock;
 import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
 import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
+import CrystallineMagic.Utils.Spells.SpellComponents.LightningBolt;
 import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
 import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportRandom;
@@ -38,6 +39,9 @@ import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
 import CrystallineMagic.Utils.Spells.SpellTypes.Self;
 import CrystallineMagic.Utils.Spells.SpellTypes.Target;
 import CrystallineMagic.Utils.Spells.SpellTypes.Touch;
+import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
+import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -56,6 +60,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.EnumMap;
 
 
@@ -110,7 +116,7 @@ public class CrystMagic {
         MagicalMaterialUtils.RegisterManualValues();
         MagicalMaterialUtils.RegisterAutomaticValues();
 
-        RegisterComponents();
+        RegisterSpellParts();
 
         ModItems.RegisterItems();
         ModBlocks.RegisterBlocks();
@@ -143,6 +149,40 @@ public class CrystMagic {
 
         }
 
+
+
+
+        Collections.sort(MagicUtils.Types, new Comparator<SpellType>() {
+            @Override
+            public int compare(SpellType comp1, SpellType comp2) {
+
+                return comp1.GetName().compareTo(comp2.GetName());
+            }
+        });
+
+
+
+        Collections.sort(MagicUtils.Components, new Comparator<SpellComponent>() {
+            @Override
+            public int compare(SpellComponent  comp1, SpellComponent  comp2)
+            {
+
+                return  comp1.GetName().compareTo(comp2.GetName());
+            }
+        });
+
+
+
+        Collections.sort(MagicUtils.Modifiers, new Comparator<SpellModifier>() {
+            @Override
+            public int compare(SpellModifier  comp1, SpellModifier  comp2)
+            {
+
+                return  comp1.GetName().compareTo(comp2.GetName());
+            }
+        });
+
+
     }
 
     @Mod.EventHandler
@@ -173,7 +213,7 @@ public class CrystMagic {
 
     }
 
-    public static void RegisterComponents(){
+    public static void RegisterSpellParts(){
 
         MagicUtils.RegisterTypes(new Projectile());
         MagicUtils.RegisterTypes(new Self());
@@ -188,17 +228,18 @@ public class CrystMagic {
         MagicUtils.RegisterComponents(new Dig());
         MagicUtils.RegisterComponents(new Damage());
         MagicUtils.RegisterComponents(new ExplodeBlock());
+        MagicUtils.RegisterComponents(new LightningBolt());
 
         MagicUtils.RegisterComponents(new SetTarget());
         MagicUtils.RegisterComponents(new TeleportTarget());
         MagicUtils.RegisterComponents(new TeleportRandom());
 
 
-
         MagicUtils.RegisterModifiers(new StrengthUpgrade());
         MagicUtils.RegisterModifiers(new CostDecreaser());
         MagicUtils.RegisterModifiers(new RangeExtender());
         MagicUtils.RegisterModifiers(new AreaIncludePlayer());
+
 
     }
 
