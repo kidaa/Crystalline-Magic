@@ -15,15 +15,19 @@ import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
+import CrystallineMagic.Utils.Effects.AntiGravityEffect;
+import CrystallineMagic.Utils.Effects.EffectUpdate;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
+import CrystallineMagic.Utils.Spells.SpellComponents.AntiGravity;
 import CrystallineMagic.Utils.Spells.SpellComponents.Damage;
 import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
 import CrystallineMagic.Utils.Spells.SpellComponents.ExplodeBlock;
 import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
+import CrystallineMagic.Utils.Spells.SpellComponents.Gravity;
 import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
 import CrystallineMagic.Utils.Spells.SpellComponents.LightningBolt;
 import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
@@ -58,8 +62,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumMap;
@@ -68,7 +75,6 @@ import java.util.EnumMap;
 
 @Mod(modid = Ref.ModId, name = Ref.ModName, version = Ref.ModVersion, dependencies = "required-after:MiscUtils;after:NEI")
 public class CrystMagic {
-
 
 
     @Mod.Instance(Ref.ModId)
@@ -103,6 +109,29 @@ public class CrystMagic {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        Potion[] potionTypes = null;
+
+        for (Field f : Potion.class.getDeclaredFields()) {
+            f.setAccessible(true);
+            try {
+                if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a")) {
+                    Field modfield = Field.class.getDeclaredField("modifiers");
+                    modfield.setAccessible(true);
+                    modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
+
+                    potionTypes = (Potion[])f.get(null);
+                    final Potion[] newPotionTypes = new Potion[256];
+                    System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
+                    f.set(null, newPotionTypes);
+                }
+            }
+            catch (Exception e) {
+                System.err.println("Severe error, please report this to the mod author:");
+                System.err.println(e);
+            }
+        }
+
+
 
         Utils = new ChannelUtils(Ref.ModChannel, Ref.ModId);
         RegisterPackets();
@@ -133,6 +162,8 @@ public class CrystMagic {
 
         MinecraftForge.EVENT_BUS.register(new InvisibilityEvents());
         MinecraftForge.EVENT_BUS.register(new SpellCastEvent());
+
+        MinecraftForge.EVENT_BUS.register(new EffectUpdate());
 
 
         FMLCommonHandler.instance().bus().register(new InvisibilityEvents());
@@ -185,8 +216,13 @@ public class CrystMagic {
 
     }
 
+    public static Potion AntiGravityEffect, GravityEffect;
+
     @Mod.EventHandler
     public void Init(FMLInitializationEvent event){
+
+       this.AntiGravityEffect = (new AntiGravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.antiGravity");
+       this.GravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
 
         GameRegistry.registerWorldGenerator(new ModWorlGen(), 3);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
@@ -229,6 +265,8 @@ public class CrystMagic {
         MagicUtils.RegisterComponents(new Damage());
         MagicUtils.RegisterComponents(new ExplodeBlock());
         MagicUtils.RegisterComponents(new LightningBolt());
+        MagicUtils.RegisterComponents(new AntiGravity());
+        MagicUtils.RegisterComponents(new Gravity());
 
         MagicUtils.RegisterComponents(new SetTarget());
         MagicUtils.RegisterComponents(new TeleportTarget());

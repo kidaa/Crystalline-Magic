@@ -47,10 +47,13 @@ items.desc.spell.usage.both=Usage: Blocks and Entities
 gui.spellcreation.components=Components
 gui.spellcreation.modifiers=Modifiers
 gui.spellcreation.error.1=Incompatible spell usages!
-gui.spellcreation.error.2=Spell is too powerful for current soul orb level!
+gui.spellcreation.error.2=Spell is too powerful!
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 
 chat.message.spell.noEng=Was not able to cast spell. Not enough energy
 chat.message.spell.noTarget=No target has been set.
 chat.message.spell.targetSet=Target has been set to: $target
+
+potion.antiGravity=Anti Gravity
+potion.gravity=High Gravity

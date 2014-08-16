@@ -83,12 +83,12 @@ public class ModItemSpell extends Item {
 
                                 return true;
                             }
-                        }
-
-                    } else {
+                        }else {
 
                         if (player.worldObj.isRemote)
                             ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
+                    }
+
                     }
                 }
 
@@ -130,12 +130,12 @@ public class ModItemSpell extends Item {
 
                                 return true;
                             }
-                        }
-
-                    }else {
+                        }else {
 
                         if (player.worldObj.isRemote)
                             ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
+                    }
+
                     }
                     }
 
@@ -181,12 +181,12 @@ public class ModItemSpell extends Item {
                               MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
 
                       }
-                  }
-
-            } else {
+                  }else {
 
                 if (player.worldObj.isRemote)
                     ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
+            }
+
             }
 
 

@@ -20,8 +20,10 @@ public class SetTarget implements SpellComponent {
 
     @Override
     public boolean OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block, EntityPlayer player, int Side) {
-        MagicInfoStorage mag = MagicInfoStorage.get(player);
-        mag.SetTarget(x,y,z);
+        if(!world.isRemote) {
+            MagicInfoStorage mag = MagicInfoStorage.get(player);
+            mag.SetTarget(x, y, z);
+        }
 
         return true;
     }
