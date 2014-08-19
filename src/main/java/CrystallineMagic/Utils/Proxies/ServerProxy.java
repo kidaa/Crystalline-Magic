@@ -1,10 +1,10 @@
 package CrystallineMagic.Utils.Proxies;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.MagicInfoStorage;
-import CrystallineMagic.Utils.MagicUtils;
 import MiscUtils.Network.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -69,12 +69,12 @@ public class ServerProxy {
         int i2 = 1;
         int i3 = 4;
 
-        for(int i = 0; i < MagicUtils.Components.size(); i++){
+        for(int i = 0; i < SpellUtils.Components.size(); i++){
             ItemStack stack = new ItemStack(ModItems.SpellComponent);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Comp", MagicUtils.Components.get(i).GetName());
-            stack.getTagCompound().setString("CompId", MagicUtils.Components.get(i).GetId());
+            stack.getTagCompound().setString("Comp", SpellUtils.Components.get(i).GetName());
+            stack.getTagCompound().setString("CompId", SpellUtils.Components.get(i).GetId());
 
 
             ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
@@ -104,12 +104,12 @@ public class ServerProxy {
 
 
 
-        for(int i = 0; i < MagicUtils.Modifiers.size(); i++){
+        for(int i = 0; i < SpellUtils.Modifiers.size(); i++){
             ItemStack stack = new ItemStack(ModItems.SpellModifier);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Mod", MagicUtils.Modifiers.get(i).GetName());
-            stack.getTagCompound().setString("ModId", MagicUtils.Modifiers.get(i).GetId());
+            stack.getTagCompound().setString("Mod", SpellUtils.Modifiers.get(i).GetName());
+            stack.getTagCompound().setString("ModId", SpellUtils.Modifiers.get(i).GetId());
 
 
             ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
@@ -138,12 +138,12 @@ public class ServerProxy {
         }
 
 
-        for(int i = 0; i < MagicUtils.Types.size(); i++){
+        for(int i = 0; i < SpellUtils.Types.size(); i++){
             ItemStack stack = new ItemStack(ModItems.SpellType);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Type", MagicUtils.Types.get(i).GetName());
-            stack.getTagCompound().setString("TypeId", MagicUtils.Types.get(i).GetId());
+            stack.getTagCompound().setString("Type", SpellUtils.Types.get(i).GetName());
+            stack.getTagCompound().setString("TypeId", SpellUtils.Types.get(i).GetId());
 
 
             ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);

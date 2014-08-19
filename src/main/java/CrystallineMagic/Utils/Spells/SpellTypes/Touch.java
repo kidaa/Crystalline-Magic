@@ -1,10 +1,10 @@
 package CrystallineMagic.Utils.Spells.SpellTypes;
 
-import CrystallineMagic.Utils.MagicUtils;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
-import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import CrystallineApi.Spells.SpellUtils;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
+import CrystallineApi.Spells.SpellUseType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +30,7 @@ public class Touch implements SpellType {
 
     @Override
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide) {
-        SpellComponent[] Comps = MagicUtils.GetSpellComponents(SpellStack);
+        SpellComponent[] Comps = SpellUtils.GetSpellComponents(SpellStack);
         Block bl = world.getBlock(x,y,z);
 
         boolean t = false;

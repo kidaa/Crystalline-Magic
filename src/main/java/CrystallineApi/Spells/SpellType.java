@@ -1,4 +1,4 @@
-package CrystallineMagic.Utils.Spells.Utils;
+package CrystallineApi.Spells;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

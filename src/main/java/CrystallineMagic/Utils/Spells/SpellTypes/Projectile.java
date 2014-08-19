@@ -1,10 +1,10 @@
 package CrystallineMagic.Utils.Spells.SpellTypes;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
-import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
+import CrystallineApi.Spells.SpellUseType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -27,7 +27,7 @@ public class Projectile implements SpellType {
     }
 
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide){
-        EntitySpellProjectile EntSpell = new EntitySpellProjectile(world, player, 2.0F, MagicUtils.GetSpellComponents(SpellStack), SpellStack);
+        EntitySpellProjectile EntSpell = new EntitySpellProjectile(world, player, 2.0F, SpellUtils.GetSpellComponents(SpellStack), SpellStack);
 
         if (!world.isRemote) {
             world.spawnEntityInWorld(EntSpell);

@@ -1,12 +1,12 @@
 package CrystallineMagic.Utils.Spells.SpellTypes;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.AreaIncludePlayer;
 import CrystallineMagic.Utils.Spells.SpellModifiers.RangeExtender;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
-import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
+import CrystallineApi.Spells.SpellUseType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -37,7 +37,7 @@ public class Area implements SpellType{
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide) {
         boolean t = false;
 
-        int Range = MagicUtils.GetAmountOfAModifer(SpellStack, new RangeExtender());
+        int Range = SpellUtils.GetAmountOfAModifer(SpellStack, new RangeExtender());
 
         int Expand = 1 + Range;
 
@@ -57,7 +57,7 @@ public class Area implements SpellType{
         List list;
 
 
-        if(MagicUtils.GetAmountOfAModifer(SpellStack, new AreaIncludePlayer()) <= 0)
+        if(SpellUtils.GetAmountOfAModifer(SpellStack, new AreaIncludePlayer()) <= 0)
         list = world.getEntitiesWithinAABBExcludingEntity(player, ab);
         else{
             list = world.getEntitiesWithinAABB(Entity.class, ab);
@@ -77,7 +77,7 @@ public class Area implements SpellType{
 
 
 
-        SpellComponent[] Comps = MagicUtils.GetSpellComponents(SpellStack);
+        SpellComponent[] Comps = SpellUtils.GetSpellComponents(SpellStack);
 
         if(Ents.size() > 0) {
             for (int g = 0; g < Ents.size(); g++)
@@ -139,10 +139,10 @@ public class Area implements SpellType{
     @Override
     public double GetEnergyMultiplier(ItemStack stack) {
 
-        int g = MagicUtils.GetAmountOfAModifer(stack, new RangeExtender());
+        int g = SpellUtils.GetAmountOfAModifer(stack, new RangeExtender());
         int L = 3 + (g * 2);
         int h = L * L;
 
-        return (h*L) / L;
+        return h;
     }
 }

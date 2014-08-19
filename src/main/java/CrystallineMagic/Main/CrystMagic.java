@@ -1,5 +1,6 @@
 package CrystallineMagic.Main;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Event.EntityConstructingEvent;
 import CrystallineMagic.Event.InvisibilityEvents;
 import CrystallineMagic.Event.JoinWorld;
@@ -16,7 +17,6 @@ import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
 import CrystallineMagic.Utils.Effects.EffectUpdate;
-import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
@@ -43,9 +43,9 @@ import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
 import CrystallineMagic.Utils.Spells.SpellTypes.Self;
 import CrystallineMagic.Utils.Spells.SpellTypes.Target;
 import CrystallineMagic.Utils.Spells.SpellTypes.Touch;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
+import CrystallineApi.Spells.SpellType;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -183,7 +183,7 @@ public class CrystMagic {
 
 
 
-        Collections.sort(MagicUtils.Types, new Comparator<SpellType>() {
+        Collections.sort(SpellUtils.Types, new Comparator<SpellType>() {
             @Override
             public int compare(SpellType comp1, SpellType comp2) {
 
@@ -193,7 +193,7 @@ public class CrystMagic {
 
 
 
-        Collections.sort(MagicUtils.Components, new Comparator<SpellComponent>() {
+        Collections.sort(SpellUtils.Components, new Comparator<SpellComponent>() {
             @Override
             public int compare(SpellComponent  comp1, SpellComponent  comp2)
             {
@@ -204,7 +204,7 @@ public class CrystMagic {
 
 
 
-        Collections.sort(MagicUtils.Modifiers, new Comparator<SpellModifier>() {
+        Collections.sort(SpellUtils.Modifiers, new Comparator<SpellModifier>() {
             @Override
             public int compare(SpellModifier  comp1, SpellModifier  comp2)
             {
@@ -252,33 +252,33 @@ public class CrystMagic {
 
     public static void RegisterSpellParts(){
 
-        MagicUtils.RegisterTypes(new Projectile());
-        MagicUtils.RegisterTypes(new Self());
-        MagicUtils.RegisterTypes(new Touch());
-        MagicUtils.RegisterTypes(new Target());
-        MagicUtils.RegisterTypes(new Area());
+        SpellUtils.RegisterTypes(new Projectile());
+        SpellUtils.RegisterTypes(new Self());
+        SpellUtils.RegisterTypes(new Touch());
+        SpellUtils.RegisterTypes(new Target());
+        SpellUtils.RegisterTypes(new Area());
 
 
-        MagicUtils.RegisterComponents(new Fire());
-        MagicUtils.RegisterComponents(new Heal());
-        MagicUtils.RegisterComponents(new Regen());
-        MagicUtils.RegisterComponents(new Dig());
-        MagicUtils.RegisterComponents(new Damage());
-        MagicUtils.RegisterComponents(new ExplodeBlock());
-        MagicUtils.RegisterComponents(new LightningBolt());
-        MagicUtils.RegisterComponents(new AntiGravity());
-        MagicUtils.RegisterComponents(new Gravity());
-        MagicUtils.RegisterComponents(new LowGravity());
+        SpellUtils.RegisterComponents(new Fire());
+        SpellUtils.RegisterComponents(new Heal());
+        SpellUtils.RegisterComponents(new Regen());
+        SpellUtils.RegisterComponents(new Dig());
+        SpellUtils.RegisterComponents(new Damage());
+        SpellUtils.RegisterComponents(new ExplodeBlock());
+        SpellUtils.RegisterComponents(new LightningBolt());
+        SpellUtils.RegisterComponents(new AntiGravity());
+        SpellUtils.RegisterComponents(new Gravity());
+        SpellUtils.RegisterComponents(new LowGravity());
 
-        MagicUtils.RegisterComponents(new SetTarget());
-        MagicUtils.RegisterComponents(new TeleportTarget());
-        MagicUtils.RegisterComponents(new TeleportRandom());
+        SpellUtils.RegisterComponents(new SetTarget());
+        SpellUtils.RegisterComponents(new TeleportTarget());
+        SpellUtils.RegisterComponents(new TeleportRandom());
 
 
-        MagicUtils.RegisterModifiers(new StrengthUpgrade());
-        MagicUtils.RegisterModifiers(new CostDecreaser());
-        MagicUtils.RegisterModifiers(new RangeExtender());
-        MagicUtils.RegisterModifiers(new AreaIncludePlayer());
+        SpellUtils.RegisterModifiers(new StrengthUpgrade());
+        SpellUtils.RegisterModifiers(new CostDecreaser());
+        SpellUtils.RegisterModifiers(new RangeExtender());
+        SpellUtils.RegisterModifiers(new AreaIncludePlayer());
 
 
     }

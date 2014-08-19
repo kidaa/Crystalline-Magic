@@ -1,4 +1,4 @@
-package CrystallineMagic.Utils.Spells.Utils;
+package CrystallineApi.Spells;
 
 public enum SpellPartUsage {
     Entity,

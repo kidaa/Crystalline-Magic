@@ -1,10 +1,10 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
-import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,7 +20,7 @@ public class LowGravity implements SpellComponent {
         if(entityHit instanceof EntityLivingBase){
             EntityLivingBase ent = (EntityLivingBase)entityHit;
 
-            ent.addPotionEffect(new PotionEffect(CrystMagic.LowGravityEffect.getId(), 200 + (100 * MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())), 0));
+            ent.addPotionEffect(new PotionEffect(CrystMagic.LowGravityEffect.getId(), 200 + (100 * SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())), 0));
 
             if(ent.isPotionActive(CrystMagic.GravityEffect))
                 ent.removePotionEffect(CrystMagic.GravityEffect.getId());

@@ -1,9 +1,9 @@
 package CrystallineMagic.Gui.GuiObjects.Slots;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.TileEntities.TileEntitySpellCreationTable;
 import CrystallineMagic.Utils.MagicInfoStorage;
-import CrystallineMagic.Utils.MagicUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
@@ -42,7 +42,7 @@ public class SlotSpellOutput extends SlotSpellCreation {
         }
 
 
-        if(player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= MagicUtils.GetSpellCost(stack)){
+        if(player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= SpellUtils.GetSpellCost(stack)){
             return true;
         }
       //  tile.ErrorCode = 2;

@@ -1,9 +1,9 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
 import MiscUtils.Block.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -23,7 +23,7 @@ public class Dig implements SpellComponent{
     public boolean OnUseOnBlock(ItemStack Spell, World world, int x, int y, int z, Block block, EntityPlayer player, int Side) {
         if(block != Blocks.bedrock && block.getBlockHardness(world, x, y, z) > -1) {
             float h = block.getBlockHardness(world, x, y, z);
-            if (h <= 2 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 6)){
+            if (h <= 2 + (SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 6)){
 
                 if(!world.isRemote)
                 world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(world.getBlock(x, y, z)) + (world.getBlockMetadata(x, y, z) << 12));

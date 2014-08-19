@@ -1,7 +1,7 @@
 package CrystallineMagic.Utils.Spells;
 
 import CrystallineMagic.Main.CrystMagic;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
+import CrystallineApi.Spells.SpellComponent;
 import MiscUtils.Utils.Handlers.ParticleHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;

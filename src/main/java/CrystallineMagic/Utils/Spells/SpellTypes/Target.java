@@ -1,11 +1,11 @@
 package CrystallineMagic.Utils.Spells.SpellTypes;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.MagicInfoStorage;
-import CrystallineMagic.Utils.MagicUtils;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
-import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
+import CrystallineApi.Spells.SpellUseType;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +37,7 @@ public class Target implements SpellType {
 
         if(storage.GetTargetX() != 0 || storage.GetTargetY() != 0 || storage.GetTargetZ() != 0){
 
-                SpellComponent[] Components = MagicUtils.GetSpellComponents(SpellStack);
+                SpellComponent[] Components = SpellUtils.GetSpellComponents(SpellStack);
 
                 if(Components != null && Components.length > 0) {
                     for (int i = 0; i < Components.length; i++) {

@@ -1,9 +1,9 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,7 +19,7 @@ public class Damage implements SpellComponent {
         if(entityHit instanceof EntityLivingBase){
             EntityLivingBase ent = (EntityLivingBase)entityHit;
 
-            float Damage = 2 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 2);
+            float Damage = 2 + (SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 2);
 
             ent.attackEntityFrom(DamageSource.generic, Damage);
 

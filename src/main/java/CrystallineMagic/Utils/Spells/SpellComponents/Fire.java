@@ -1,9 +1,9 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +17,8 @@ public class Fire implements SpellComponent {
 
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
-        entityHit.setFire(5 + (5 * MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())));
-        entityHit.attackEntityFrom(DamageSource.onFire, MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
+        entityHit.setFire(5 + (5 * SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())));
+        entityHit.attackEntityFrom(DamageSource.onFire, SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
 
         return true;
     }

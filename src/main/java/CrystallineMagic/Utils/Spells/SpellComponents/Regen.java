@@ -1,9 +1,9 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,7 +21,7 @@ public class Regen implements SpellComponent{
         if(entityHit instanceof EntityLivingBase){
             EntityLivingBase ent = (EntityLivingBase)entityHit;
 
-            int t = 1 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
+            int t = 1 + (SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()));
             int g = t;
 
             if(t >= 3)

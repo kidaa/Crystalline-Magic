@@ -1,13 +1,13 @@
 package CrystallineMagic.Items;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Event.Custom.EventSpellCast;
 import CrystallineMagic.Utils.MagicInfoStorage;
-import CrystallineMagic.Utils.MagicUtils;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
-import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
+import CrystallineApi.Spells.SpellUseType;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,8 +40,8 @@ public class ModItemSpell extends Item {
 
     public String getItemStackDisplayName(ItemStack stack)
     {
-        if(MagicUtils.GetSpellType(stack) != null){
-            if(MagicUtils.GetSpellComponents(stack).length > 1){
+        if(SpellUtils.GetSpellType(stack) != null){
+            if(SpellUtils.GetSpellComponents(stack).length > 1){
                 return StatCollector.translateToLocal("item.spell.compound.name");
             }
         }
@@ -55,22 +55,22 @@ public class ModItemSpell extends Item {
 
               World world = target.worldObj;
 
-        SpellUseType useType = MagicUtils.GetSpellType(stack).GetUseType();
-        SpellPartUsage use = MagicUtils.GetSpellType(stack).GetUsage();
+        SpellUseType useType = SpellUtils.GetSpellType(stack).GetUseType();
+        SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
 
         if(useType != null && use != null)
             if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Entity){
-            if (stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
+            if (stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
 
 
-                double Eng = MagicUtils.GetSpellCost(stack);
+                double Eng = SpellUtils.GetSpellCost(stack);
                 if (MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
                     if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
 
 
-                        if (MagicUtils.GetSpellType(stack) != null) {
+                        if (SpellUtils.GetSpellType(stack) != null) {
 
-                            SpellType type = MagicUtils.GetSpellType(stack);
+                            SpellType type = SpellUtils.GetSpellType(stack);
 
 
                                 EventSpellCast event = new EventSpellCast(player, stack);
@@ -106,20 +106,20 @@ public class ModItemSpell extends Item {
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int sd, float p_77648_8_, float p_77648_9_, float p_77648_10_)
     {
 
-        SpellUseType useType = MagicUtils.GetSpellType(stack).GetUseType();
-        SpellPartUsage use = MagicUtils.GetSpellType(stack).GetUsage();
+        SpellUseType useType = SpellUtils.GetSpellType(stack).GetUseType();
+        SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
         if(useType != null && use != null)
             if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Block){
-            if(stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode){
+            if(stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode){
 
-                double Eng = MagicUtils.GetSpellCost(stack);
+                double Eng = SpellUtils.GetSpellCost(stack);
                 if(MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
                     if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
 
 
-                        if(MagicUtils.GetSpellType(stack) != null) {
+                        if(SpellUtils.GetSpellType(stack) != null) {
 
-                            SpellType type = MagicUtils.GetSpellType(stack);
+                            SpellType type = SpellUtils.GetSpellType(stack);
 
                                 EventSpellCast event = new EventSpellCast(player, stack);
                                 MinecraftForge.EVENT_BUS.post(event);
@@ -153,14 +153,14 @@ public class ModItemSpell extends Item {
     }
 
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-        if (stack.getTagCompound() != null && MagicUtils.GetSpellType(stack) != null) {
-            SpellUseType type = MagicUtils.GetSpellType(stack).GetUseType();
-            SpellPartUsage use = MagicUtils.GetSpellType(stack).GetUsage();
+        if (stack.getTagCompound() != null && SpellUtils.GetSpellType(stack) != null) {
+            SpellUseType type = SpellUtils.GetSpellType(stack).GetUseType();
+            SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
 
 
             if(type != null && use != null)
             if (type == SpellUseType.Ranged || type == SpellUseType.Self && use == SpellPartUsage.Both || type == SpellUseType.Self && use == SpellPartUsage.Entity)
-                if (stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode)
+                if (stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode)
                     player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 
 
@@ -171,13 +171,13 @@ public class ModItemSpell extends Item {
     @Override
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
     {
-        double Eng = MagicUtils.GetSpellCost(stack);
+        double Eng = SpellUtils.GetSpellCost(stack);
         if(MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
             if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
 
-                  if(MagicUtils.GetSpellType(stack) != null) {
+                  if(SpellUtils.GetSpellType(stack) != null) {
 
-                      SpellType type = MagicUtils.GetSpellType(stack);
+                      SpellType type = SpellUtils.GetSpellType(stack);
 
 
                           EventSpellCast event = new EventSpellCast(player, stack);
@@ -210,13 +210,13 @@ public class ModItemSpell extends Item {
 
 
 
-        if(MagicUtils.GetSpellType(stack) != null) {
-            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC  + "* " + StatCollector.translateToLocal("items.desc.spell.type").replace("$type", MagicUtils.GetSpellType(stack).GetName()));
+        if(SpellUtils.GetSpellType(stack) != null) {
+            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC  + "* " + StatCollector.translateToLocal("items.desc.spell.type").replace("$type", SpellUtils.GetSpellType(stack).GetName()));
             list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "- " + StatCollector.translateToLocal("gui.spellcreation.components"));
         }
 
 
-        SpellComponent[] Comps = MagicUtils.GetSpellComponents(stack);
+        SpellComponent[] Comps = SpellUtils.GetSpellComponents(stack);
         for(int i = 0; i < Comps.length; i++){
             if(Comps[i] != null){
                 list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("spellpart.component." + Comps[i].GetName().toLowerCase().replace(" ", "_") + ".name"));
@@ -224,7 +224,7 @@ public class ModItemSpell extends Item {
 
         }
 
-        SpellModifier[] Mods = MagicUtils.GetSpellModifiers(stack);
+        SpellModifier[] Mods = SpellUtils.GetSpellModifiers(stack);
 
         if(Mods.length > 0 && Comps.length > 0)
             list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "- " + StatCollector.translateToLocal("gui.spellcreation.modifiers"));
@@ -232,14 +232,14 @@ public class ModItemSpell extends Item {
 
         for(int i = 0; i < Mods.length; i++){
             if(Mods[i] != null){
-                list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("spellpart.modifier." + Mods[i].GetName().toLowerCase().replace(" ", "_") + ".name") + " x" + MagicUtils.GetAmountOfAModifer(stack, Mods[i]));
+                list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("spellpart.modifier." + Mods[i].GetName().toLowerCase().replace(" ", "_") + ".name") + " x" + SpellUtils.GetAmountOfAModifer(stack, Mods[i]));
             }
 
         }
 
 
         if(Comps.length > 0){
-            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.cost").replace("$cost", (int)MagicUtils.GetSpellCost(stack) + ""));
+            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.cost").replace("$cost", (int)SpellUtils.GetSpellCost(stack) + ""));
         }else{
             list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.empty"));
         }

@@ -1,6 +1,6 @@
 package CrystallineMagic.Utils.Spells.SpellModifiers;
 
-import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
+import CrystallineApi.Spells.SpellModifier;
 
 public class AreaIncludePlayer implements SpellModifier {
     @Override

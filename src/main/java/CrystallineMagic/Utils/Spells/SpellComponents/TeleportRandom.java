@@ -1,9 +1,9 @@
 package CrystallineMagic.Utils.Spells.SpellComponents;
 
-import CrystallineMagic.Utils.MagicUtils;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +18,7 @@ public class TeleportRandom implements SpellComponent {
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
         Random rand = new Random();
 
-        double MaxDistance = 5 + (MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 12);
+        double MaxDistance = 5 + (SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade()) * 12);
 
             double d0 = entityHit.posX + (rand.nextDouble() - 0.5D) * MaxDistance;
             double d1 = entityHit.posY + (double)(rand.nextInt(32) - 16);

@@ -1,7 +1,7 @@
 package CrystallineMagic.Items;
 
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
-import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.ISpellPart;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,13 +37,13 @@ public class ModItemSpellModifier extends Item implements ISpellPart {
     public void getSubItems(Item item, CreativeTabs tab, List list)
     {
 
-        if(MagicUtils.Modifiers.size() > 0)
-        for(int i = 0; i < MagicUtils.Modifiers.size(); i++){
+        if(SpellUtils.Modifiers.size() > 0)
+        for(int i = 0; i < SpellUtils.Modifiers.size(); i++){
             ItemStack stack = new ItemStack(item);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Mod", StatCollector.translateToLocal("spellpart.modifier." + MagicUtils.Modifiers.get(i).GetName().toLowerCase().replace(" ", "_") + ".name"));
-            stack.getTagCompound().setString("ModId", MagicUtils.Modifiers.get(i).GetId());
+            stack.getTagCompound().setString("Mod", StatCollector.translateToLocal("spellpart.modifier." + SpellUtils.Modifiers.get(i).GetName().toLowerCase().replace(" ", "_") + ".name"));
+            stack.getTagCompound().setString("ModId", SpellUtils.Modifiers.get(i).GetId());
 
             list.add(stack);
 

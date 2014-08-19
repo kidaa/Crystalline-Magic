@@ -1,16 +1,16 @@
 package CrystallineMagic.TileEntities;
 
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
 import CrystallineMagic.Items.ModItemSpellComponent;
 import CrystallineMagic.Items.ModItemSpellModifier;
 import CrystallineMagic.Items.ModItemSpellType;
 import CrystallineMagic.Utils.MagicInfoStorage;
-import CrystallineMagic.Utils.MagicUtils;
-import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
-import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
-import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
-import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import MiscUtils.TileEntity.TileEntityInvBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -48,7 +48,7 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                     if (getStackInSlot(2) != null && getStackInSlot(2).getItem() instanceof ModItemSoulOrb && ((ModItemSoulOrb) getStackInSlot(2).getItem()).hasEffect(getStackInSlot(2), 0)) {
 
 
-                        SpellType type = MagicUtils.GetTypeFromSpellType(getStackInSlot(0));
+                        SpellType type = SpellUtils.GetTypeFromSpellType(getStackInSlot(0));
 
                             ArrayList<SpellComponent> Components = new ArrayList<SpellComponent>();
 
@@ -56,7 +56,7 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                                 ItemStack tmp = this.getStackInSlot(i + 3);
 
                                 if (tmp != null && tmp.getItem() instanceof ModItemSpellComponent) {
-                                    SpellComponent comp = MagicUtils.GetCompFromSpellComp(tmp);
+                                    SpellComponent comp = SpellUtils.GetCompFromSpellComp(tmp);
 
                                     if(type.GetUsage() == SpellPartUsage.Both || comp.GetUsage() == type.GetUsage() || comp.GetUsage() == SpellPartUsage.Both){
 
@@ -91,7 +91,7 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                                 ItemStack tmp = this.getStackInSlot(i);
 
                                 if (tmp != null && tmp.getItem() instanceof ModItemSpellModifier) {
-                                    SpellModifier comp = MagicUtils.GetModifierFromSpellModifier(tmp);
+                                    SpellModifier comp = SpellUtils.GetModifierFromSpellModifier(tmp);
 
 
                                     if (comp != null) {
@@ -118,9 +118,9 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
                                 Mods[i] = Modifiers.get(i);
 
 
-                            MagicUtils.SetSpellComponents(stack, Comps);
-                            MagicUtils.SetSpellModifiers(stack, Mods);
-                            MagicUtils.SetSpellType(stack, type);
+                        SpellUtils.SetSpellComponents(stack, Comps);
+                        SpellUtils.SetSpellModifiers(stack, Mods);
+                        SpellUtils.SetSpellType(stack, type);
 
                              ErrorCode = 0;
                             return stack;
@@ -148,7 +148,7 @@ public class TileEntitySpellCreationTable extends TileEntityInvBase{
 
 
             if(player != null)
-            if (player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= MagicUtils.GetSpellCost(st)) {
+            if (player.capabilities.isCreativeMode || MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic() && MagicInfoStorage.get(player).GetPlayerMaxEnergy() >= SpellUtils.GetSpellCost(st)) {
             }else{
                 ErrorCode = 2;
             }
