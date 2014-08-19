@@ -55,7 +55,7 @@ public class ModItemSpellType extends Item implements ISpellPart {
             ItemStack stack = new ItemStack(item);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Type", MagicUtils.Types.get(i).GetName());
+            stack.getTagCompound().setString("Type", StatCollector.translateToLocal("spellpart.type." + MagicUtils.Types.get(i).GetName().toLowerCase().replace(" ", "_") + ".name"));
             stack.getTagCompound().setString("TypeId", MagicUtils.Types.get(i).GetId());
 
             list.add(stack);

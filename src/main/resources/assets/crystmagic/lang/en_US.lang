@@ -57,3 +57,30 @@ chat.message.spell.targetSet=Target has been set to: $target
 
 potion.antiGravity=Anti Gravity
 potion.gravity=High Gravity
+potion.lowGravity=Low Gravity
+
+//Spell parts
+spellpart.type.area.name=Area
+spellpart.type.projectile.name=Projectile
+spellpart.type.self.name=Self
+spellpart.type.target.name=Target
+spellpart.type.touch.name=Touch
+
+spellpart.component.anti_gravity.name=Anti Gravity
+spellpart.component.damage.name=Damage
+spellpart.component.dig.name=Dig
+spellpart.component.explode_block.name=Explode Block
+spellpart.component.flame.name=Flame
+spellpart.component.gravity.name=High Gravity
+spellpart.component.low_gravity.name=Low Gravity
+spellpart.component.heal.name=Heal
+spellpart.component.lightning_bolt.name=Lightning bolt
+spellpart.component.place_target.name=Place Target
+spellpart.component.regeneration.name=Regeneration
+spellpart.component.teleport_random.name=Teleport Random
+spellpart.component.teleport_target.name=Teleport Target
+
+spellpart.modifier.area_include_player.name=Area Include Player
+spellpart.modifier.cost_decreaser.name=Cost Decreaser
+spellpart.modifier.range_extender.name=Range Extender
+spellpart.modifier.strength_upgrade.name=Strength Upgrade

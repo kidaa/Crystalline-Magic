@@ -13,24 +13,22 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class AntiGravity implements SpellComponent {
+public class LowGravity implements SpellComponent {
+
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
         if(entityHit instanceof EntityLivingBase){
             EntityLivingBase ent = (EntityLivingBase)entityHit;
 
-            ent.addPotionEffect(new PotionEffect(CrystMagic.AntiGravityEffect.getId(), 200 + (100 * MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())), 0));
+            ent.addPotionEffect(new PotionEffect(CrystMagic.LowGravityEffect.getId(), 200 + (100 * MagicUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())), 0));
 
             if(ent.isPotionActive(CrystMagic.GravityEffect))
                 ent.removePotionEffect(CrystMagic.GravityEffect.getId());
 
+            if(ent.isPotionActive(CrystMagic.AntiGravityEffect))
+                ent.removePotionEffect(CrystMagic.AntiGravityEffect.getId());
 
-            if(ent.isPotionActive(CrystMagic.LowGravityEffect))
-                ent.removePotionEffect(CrystMagic.LowGravityEffect.getId());
-
-            return true;
         }
-
 
         return false;
     }
@@ -42,17 +40,17 @@ public class AntiGravity implements SpellComponent {
 
     @Override
     public String GetName() {
-        return "Anti Gravity";
+        return "Low Gravity";
     }
 
     @Override
     public double EnergyCost() {
-        return 358;
+        return 240;
     }
 
     @Override
     public String GetId() {
-        return "AG";
+        return "LWG";
     }
 
     @Override

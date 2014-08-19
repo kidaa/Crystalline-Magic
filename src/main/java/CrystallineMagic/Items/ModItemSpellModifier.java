@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ModItemSpellModifier extends Item implements ISpellPart {
             ItemStack stack = new ItemStack(item);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Mod", MagicUtils.Modifiers.get(i).GetName());
+            stack.getTagCompound().setString("Mod", StatCollector.translateToLocal("spellpart.modifier." + MagicUtils.Modifiers.get(i).GetName().toLowerCase().replace(" ", "_") + ".name"));
             stack.getTagCompound().setString("ModId", MagicUtils.Modifiers.get(i).GetId());
 
             list.add(stack);

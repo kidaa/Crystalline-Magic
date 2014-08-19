@@ -15,7 +15,6 @@ import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
-import CrystallineMagic.Utils.Effects.AntiGravityEffect;
 import CrystallineMagic.Utils.Effects.EffectUpdate;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
@@ -30,6 +29,7 @@ import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
 import CrystallineMagic.Utils.Spells.SpellComponents.Gravity;
 import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
 import CrystallineMagic.Utils.Spells.SpellComponents.LightningBolt;
+import CrystallineMagic.Utils.Spells.SpellComponents.LowGravity;
 import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
 import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
 import CrystallineMagic.Utils.Spells.SpellComponents.TeleportRandom;
@@ -216,13 +216,14 @@ public class CrystMagic {
 
     }
 
-    public static Potion AntiGravityEffect, GravityEffect;
+    public static Potion AntiGravityEffect, GravityEffect, LowGravityEffect;
 
     @Mod.EventHandler
     public void Init(FMLInitializationEvent event){
 
-       this.AntiGravityEffect = (new AntiGravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.antiGravity");
+       this.AntiGravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.antiGravity");
        this.GravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
+        this.LowGravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(34, false, 0)).setIconIndex(0, 0).setPotionName("potion.lowGravity");
 
         GameRegistry.registerWorldGenerator(new ModWorlGen(), 3);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
@@ -267,6 +268,7 @@ public class CrystMagic {
         MagicUtils.RegisterComponents(new LightningBolt());
         MagicUtils.RegisterComponents(new AntiGravity());
         MagicUtils.RegisterComponents(new Gravity());
+        MagicUtils.RegisterComponents(new LowGravity());
 
         MagicUtils.RegisterComponents(new SetTarget());
         MagicUtils.RegisterComponents(new TeleportTarget());

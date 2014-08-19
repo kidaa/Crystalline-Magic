@@ -12,16 +12,24 @@ public class EffectUpdate {
 
         if (event.entityLiving.isPotionActive(CrystMagic.GravityEffect)) {
             if(event.entityLiving.isAirBorne){
-                event.entityLiving.motionY = -0.08;
+                event.entityLiving.addVelocity(0, -0.3, 0);
             }
 
         }
 
-        if (event.entityLiving.isPotionActive(CrystMagic.AntiGravityEffect)) {
-            event.entityLiving.motionY = 0.02;
 
+
+        if (event.entityLiving.isPotionActive(CrystMagic.AntiGravityEffect)) {
+            double m = 0.083;
+            event.entityLiving.setVelocity(event.entityLiving.motionX, m, event.entityLiving.motionZ);
         }
 
+
+
+        if (event.entityLiving.isPotionActive(CrystMagic.LowGravityEffect)) {
+            event.entityLiving.addVelocity(0, 0.05, 0);
+            event.entityLiving.fallDistance = 0;
+        }
 
 
 
@@ -35,6 +43,12 @@ public class EffectUpdate {
         if (event.entityLiving.isPotionActive(CrystMagic.GravityEffect))
             if (event.entityLiving.getActivePotionEffect(CrystMagic.GravityEffect).getDuration()==0) {
                 event.entityLiving.removePotionEffect(CrystMagic.GravityEffect.getId());
+                return;
+            }
+
+        if (event.entityLiving.isPotionActive(CrystMagic.LowGravityEffect))
+            if (event.entityLiving.getActivePotionEffect(CrystMagic.LowGravityEffect).getDuration()==0) {
+                event.entityLiving.removePotionEffect(CrystMagic.LowGravityEffect.getId());
                 return;
             }
    }

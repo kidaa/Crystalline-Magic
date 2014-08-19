@@ -57,7 +57,7 @@ public class ModItemSpellComponent extends Item implements ISpellPart{
           ItemStack stack = new ItemStack(item);
 
           stack.setTagCompound(new NBTTagCompound());
-          stack.getTagCompound().setString("Comp", MagicUtils.Components.get(i).GetName());
+          stack.getTagCompound().setString("Comp", StatCollector.translateToLocal("spellpart.component." + MagicUtils.Components.get(i).GetName().toLowerCase().replace(" ", "_") + ".name"));
           stack.getTagCompound().setString("CompId", MagicUtils.Components.get(i).GetId());
 
           list.add(stack);

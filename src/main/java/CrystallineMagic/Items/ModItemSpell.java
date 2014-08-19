@@ -5,6 +5,7 @@ import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.MagicUtils;
 import CrystallineMagic.Utils.Spells.Utils.SpellComponent;
 import CrystallineMagic.Utils.Spells.Utils.SpellModifier;
+import CrystallineMagic.Utils.Spells.Utils.SpellPartUsage;
 import CrystallineMagic.Utils.Spells.Utils.SpellType;
 import CrystallineMagic.Utils.Spells.Utils.SpellUseType;
 import MiscUtils.Utils.Handlers.ChatMessageHandler;
@@ -52,10 +53,13 @@ public class ModItemSpell extends Item {
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target)
     {
 
-     World world = target.worldObj;
+              World world = target.worldObj;
 
+        SpellUseType useType = MagicUtils.GetSpellType(stack).GetUseType();
+        SpellPartUsage use = MagicUtils.GetSpellType(stack).GetUsage();
 
-        if(MagicUtils.GetSpellType(stack) != null && MagicUtils.GetSpellType(stack).GetUseType() == SpellUseType.Touch) {
+        if(useType != null && use != null)
+            if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Entity){
             if (stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
 
 
@@ -102,8 +106,10 @@ public class ModItemSpell extends Item {
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int sd, float p_77648_8_, float p_77648_9_, float p_77648_10_)
     {
 
-
-        if(MagicUtils.GetSpellType(stack) != null && MagicUtils.GetSpellType(stack).GetUseType() == SpellUseType.Touch){
+        SpellUseType useType = MagicUtils.GetSpellType(stack).GetUseType();
+        SpellPartUsage use = MagicUtils.GetSpellType(stack).GetUsage();
+        if(useType != null && use != null)
+            if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Block){
             if(stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode){
 
                 double Eng = MagicUtils.GetSpellCost(stack);
@@ -146,15 +152,19 @@ public class ModItemSpell extends Item {
         return false;
     }
 
-    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-    {
-         if(stack.getTagCompound() != null)
-        if(MagicUtils.GetSpellType(stack) != null && MagicUtils.GetSpellType(stack).GetUseType() == SpellUseType.Ranged || MagicUtils.GetSpellType(stack) != null && MagicUtils.GetSpellType(stack).GetUseType() == SpellUseType.Self)
-               if(stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode)
-                player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+        if (stack.getTagCompound() != null && MagicUtils.GetSpellType(stack) != null) {
+            SpellUseType type = MagicUtils.GetSpellType(stack).GetUseType();
+            SpellPartUsage use = MagicUtils.GetSpellType(stack).GetUsage();
 
 
+            if(type != null && use != null)
+            if (type == SpellUseType.Ranged || type == SpellUseType.Self && use == SpellPartUsage.Both || type == SpellUseType.Self && use == SpellPartUsage.Entity)
+                if (stack.getTagCompound() != null && MagicUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode)
+                    player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 
+
+        }
         return stack;
     }
 
@@ -209,7 +219,7 @@ public class ModItemSpell extends Item {
         SpellComponent[] Comps = MagicUtils.GetSpellComponents(stack);
         for(int i = 0; i < Comps.length; i++){
             if(Comps[i] != null){
-                list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + Comps[i].GetName());
+                list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("spellpart.component." + Comps[i].GetName().toLowerCase().replace(" ", "_") + ".name"));
             }
 
         }
@@ -222,7 +232,7 @@ public class ModItemSpell extends Item {
 
         for(int i = 0; i < Mods.length; i++){
             if(Mods[i] != null){
-                list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + Mods[i].GetName() + " x" + MagicUtils.GetAmountOfAModifer(stack, Mods[i]));
+                list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("spellpart.modifier." + Mods[i].GetName().toLowerCase().replace(" ", "_") + ".name") + " x" + MagicUtils.GetAmountOfAModifer(stack, Mods[i]));
             }
 
         }

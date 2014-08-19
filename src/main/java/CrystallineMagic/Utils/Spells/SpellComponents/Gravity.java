@@ -24,6 +24,9 @@ public class Gravity implements SpellComponent {
             if(ent.isPotionActive(CrystMagic.AntiGravityEffect))
                 ent.removePotionEffect(CrystMagic.AntiGravityEffect.getId());
 
+            if(ent.isPotionActive(CrystMagic.LowGravityEffect))
+                ent.removePotionEffect(CrystMagic.LowGravityEffect.getId());
+
             return true;
         }
 
