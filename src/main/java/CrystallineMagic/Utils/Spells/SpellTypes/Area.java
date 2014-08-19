@@ -140,15 +140,9 @@ public class Area implements SpellType{
     public double GetEnergyMultiplier(ItemStack stack) {
 
         int g = MagicUtils.GetAmountOfAModifer(stack, new RangeExtender());
+        int L = 3 + (g * 2);
+        int h = L * L;
 
-        double x = g * ((55 * 1.267) + (43*g));
-
-
-        if(g <= 0)
-            return 27;
-
-
-
-        return x;
+        return (h*L) / L;
     }
 }
