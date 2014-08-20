@@ -1,5 +1,8 @@
 package CrystallineMagic.Main;
 
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
+import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Event.EntityConstructingEvent;
 import CrystallineMagic.Event.InvisibilityEvents;
@@ -17,6 +20,7 @@ import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
 import CrystallineMagic.Utils.Effects.EffectUpdate;
+import CrystallineMagic.Utils.Keybinds.Keybinds;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
@@ -43,11 +47,9 @@ import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
 import CrystallineMagic.Utils.Spells.SpellTypes.Self;
 import CrystallineMagic.Utils.Spells.SpellTypes.Target;
 import CrystallineMagic.Utils.Spells.SpellTypes.Touch;
-import CrystallineApi.Spells.SpellComponent;
-import CrystallineApi.Spells.SpellModifier;
-import CrystallineApi.Spells.SpellType;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
+import MiscUtils.Register.KeyBind.KeybindRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -107,6 +109,7 @@ public class CrystMagic {
     };
 
 
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Potion[] potionTypes = null;
@@ -153,7 +156,9 @@ public class CrystMagic {
         CraftingRecipes.RegisterRecipes();
 
         proxy.registerRenderThings();
-        proxy.registerKeyBindings();
+
+
+        KeybindRegistry.RegisterKeybind(Keybinds.KeyBindMagicInfo);
 
 
         MinecraftForge.EVENT_BUS.register(new EntityConstructingEvent());

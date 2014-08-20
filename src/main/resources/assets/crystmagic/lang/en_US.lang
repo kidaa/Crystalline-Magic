@@ -2,7 +2,7 @@ itemGroup.tabMod=Crystalline Magic
 itemGroup.tabModSpell=Spell parts
 
 keyCategory.crystmagic.name=Crystalline Magic
-key.crystmagic.magicinfo.name=Magic Info
+key.crystmagic.magicinfo.name=Soul Information
 
 item.crystalinfusedmetal.name=Crystal Infused Metal
 item.crystalinfusedgem.name=Crystal Infused Gem
@@ -51,6 +51,12 @@ gui.spellcreation.components=Components
 gui.spellcreation.modifiers=Modifiers
 gui.spellcreation.error.1=Incompatible spell usages!
 gui.spellcreation.error.2=Spell is too powerful!
+gui.magicinfo.titel=Player Soul Information
+gui.magicinfo.soulenergy=Soul Energy: $energy
+gui.magicinfo.maxsoulenergy=Max Soul Energy: $energy
+gui.magicinfo.soullevel=Soul Level: $level
+gui.magicinfo.currentexp=Current EXP: $exp
+gui.magicinfo.requiredexp=Required EXP: $exp
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 

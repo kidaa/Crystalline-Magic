@@ -21,9 +21,6 @@ public class ServerProxy {
     private static final Map<String, NBTTagCompound> extendedEntityData = new HashMap<String, NBTTagCompound>();
 
 
-    public void registerKeyBindings(){
-
-    }
 
     public void registerRenderThings(){
 

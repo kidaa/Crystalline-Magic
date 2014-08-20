@@ -74,6 +74,9 @@ public class GuiHandler implements IGuiHandler {
             return new GuiSpellCreationTable(player.inventory, (TileEntitySpellCreationTable) tile_entity);
 
 
+        if(ID == EnumGuis.Magic_Info.Id){
+            return new GuiMagicInfo();
+        }
 
         return null;
 
