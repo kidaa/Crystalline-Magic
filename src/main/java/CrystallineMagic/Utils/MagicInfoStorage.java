@@ -35,7 +35,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     int Level = 1;
     int Xp;
 
-    static int XpPerLevel = 19;
+    public static int XpPerLevel = 19;
 
 
     public static EntityPlayer GetPlayerFromStack(ItemStack stack){
@@ -161,17 +161,25 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     public void SetPlayerLevel(int i){
         Level = i;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
     }
 
     public void SetPlayerXp(int i){
         Xp = i;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
     }
 
     public void IncreasePlayerLevel(int i){
+    SetPlayerLevel(GetPlayerLevel() + i);
+
+
+}
+
+    public void IncreasePlayerLevelWithEngUpdate(int i){
         SetPlayerLevel(GetPlayerLevel() + i);
+
+       SetPlayerMaxEnergy(GetPlayerMaxEnergy() + 50);
     }
 
     public void DecreasePlayerLevel(int i){
@@ -184,6 +192,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     }
 
     public void DecreasePlayerXp(int i){
+
         SetPlayerXp(GetPlayerXp() - i);
     }
 
@@ -197,7 +206,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         if(MagicEnergy > MaxMagicEnergy)
             MagicEnergy = MaxMagicEnergy;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
 
     }
 
@@ -207,7 +216,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         if(MagicEnergy > MaxMagicEnergy)
             MagicEnergy = MaxMagicEnergy;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
 
     }
 
@@ -218,7 +227,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
             MagicEnergy = 0;
 
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
   }
 
 
@@ -229,14 +238,14 @@ public class MagicInfoStorage implements IExtendedEntityProperties
     public void SetPlayerMaxEnergy(double i){
         MaxMagicEnergy = i;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
 
     }
 
     public void SetHasMagic(boolean t){
         HasMagic = t;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
 
     }
 
@@ -264,7 +273,7 @@ public class MagicInfoStorage implements IExtendedEntityProperties
         TargetY = y;
         TargetZ = z;
 
-        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.channels);
+        PacketHandler.sendToPlayer(new SyncPlayerPropsPacket(player), player, CrystMagic.Utils.channels);
     }
 
 

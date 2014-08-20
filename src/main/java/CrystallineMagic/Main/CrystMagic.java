@@ -56,7 +56,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -71,7 +70,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.EnumMap;
 
 
 
@@ -87,7 +85,6 @@ public class CrystMagic {
 
     public static Config config;
 
-    public static EnumMap<Side, FMLEmbeddedChannel> channels;
     public static ChannelUtils Utils;
 
     public static CreativeTabs CreativeTab = new CreativeTabs("tabMod") {
@@ -138,7 +135,6 @@ public class CrystMagic {
 
         Utils = new ChannelUtils(Ref.ModChannel, Ref.ModId);
         RegisterPackets();
-        channels = Utils.getNewChannelHandler();
 
 
 

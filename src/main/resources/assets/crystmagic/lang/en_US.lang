@@ -57,6 +57,10 @@ gui.magicinfo.maxsoulenergy=Max Soul Energy: $energy
 gui.magicinfo.soullevel=Soul Level: $level
 gui.magicinfo.currentexp=Current EXP: $exp
 gui.magicinfo.requiredexp=Required EXP: $exp
+gui.magicinfo.nomagic=Player has not unlocked magical abilities yet
+gui.magicinfo.creativemode=Creative mode only:
+gui.magicinfo.creativemode.increaselevel=Increase level
+gui.magicinfo.creativemode.increaseenergy=Increase energy
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 

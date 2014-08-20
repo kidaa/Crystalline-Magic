@@ -53,102 +53,102 @@ public class ModItemSpell extends Item {
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target)
     {
 
-              World world = target.worldObj;
+        if(stack.getTagCompound() != null) {
+            World world = target.worldObj;
+            SpellUseType useType = SpellUtils.GetSpellType(stack).GetUseType();
+            SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
 
-        SpellUseType useType = SpellUtils.GetSpellType(stack).GetUseType();
-        SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
-
-        if(useType != null && use != null)
-            if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Entity){
-            if (stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
-
-
-                double Eng = SpellUtils.GetSpellCost(stack);
-                if (MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
-                    if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
+            if (useType != null && use != null)
+                if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Entity) {
+                    if (stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
 
 
-                        if (SpellUtils.GetSpellType(stack) != null) {
+                        double Eng = SpellUtils.GetSpellCost(stack);
+                        if (MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
+                            if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
 
-                            SpellType type = SpellUtils.GetSpellType(stack);
+
+                                if (SpellUtils.GetSpellType(stack) != null) {
+
+                                    SpellType type = SpellUtils.GetSpellType(stack);
 
 
-                                EventSpellCast event = new EventSpellCast(player, stack);
-                                MinecraftForge.EVENT_BUS.post(event);
+                                    EventSpellCast event = new EventSpellCast(player, stack);
+                                    MinecraftForge.EVENT_BUS.post(event);
 
-                                if(event.isCanceled())
-                                    return false;
+                                    if (event.isCanceled())
+                                        return false;
 
-                                if (type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, -1)) {
-                                    if (!player.capabilities.isCreativeMode)
-                                        MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+                                    if (type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, -1)) {
+                                        if (!player.capabilities.isCreativeMode)
+                                            MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+                                    }
+
+
+                                    return true;
                                 }
+                            } else {
 
-
-                                return true;
+                                if (player.worldObj.isRemote)
+                                    ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
                             }
-                        }else {
 
-                        if (player.worldObj.isRemote)
-                            ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
+                        }
                     }
 
-                    }
                 }
 
-            }
 
-
+        }
 
         return false;
     }
 
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int sd, float p_77648_8_, float p_77648_9_, float p_77648_10_)
     {
+        if(stack.getTagCompound() != null) {
+            SpellUseType useType = SpellUtils.GetSpellType(stack).GetUseType();
+            SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
+            if (useType != null && use != null)
+                if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Block) {
+                    if (stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode) {
 
-        SpellUseType useType = SpellUtils.GetSpellType(stack).GetUseType();
-        SpellPartUsage use = SpellUtils.GetSpellType(stack).GetUsage();
-        if(useType != null && use != null)
-            if (useType == SpellUseType.Touch && use == SpellPartUsage.Both || useType == SpellUseType.Touch && use == SpellPartUsage.Block){
-            if(stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode){
-
-                double Eng = SpellUtils.GetSpellCost(stack);
-                if(MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
-                    if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
-
-
-                        if(SpellUtils.GetSpellType(stack) != null) {
-
-                            SpellType type = SpellUtils.GetSpellType(stack);
-
-                                EventSpellCast event = new EventSpellCast(player, stack);
-                                MinecraftForge.EVENT_BUS.post(event);
-
-                                if(event.isCanceled())
-                                    return false;
+                        double Eng = SpellUtils.GetSpellCost(stack);
+                        if (MagicInfoStorage.get(player) != null && MagicInfoStorage.get(player).HasMagic()) {
+                            if (MagicInfoStorage.get(player).GetPlayerEnergy() >= Eng || player.capabilities.isCreativeMode) {
 
 
-                                if(type.OnUse(stack, player, null, world, x, y, z, sd))
-                                if (!player.capabilities.isCreativeMode)
-                                    MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+                                if (SpellUtils.GetSpellType(stack) != null) {
+
+                                    SpellType type = SpellUtils.GetSpellType(stack);
+
+                                    EventSpellCast event = new EventSpellCast(player, stack);
+                                    MinecraftForge.EVENT_BUS.post(event);
+
+                                    if (event.isCanceled())
+                                        return false;
 
 
+                                    if (type.OnUse(stack, player, null, world, x, y, z, sd))
+                                        if (!player.capabilities.isCreativeMode)
+                                            MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
 
-                                return true;
+
+                                    return true;
+                                }
+                            } else {
+
+                                if (player.worldObj.isRemote)
+                                    ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
                             }
-                        }else {
 
-                        if (player.worldObj.isRemote)
-                            ChatMessageHandler.sendChatToPlayer(player, EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("chat.message.spell.noEng"));
+                        }
                     }
 
-                    }
-                    }
-
-            }
+                }
 
 
-
+        }
         return false;
     }
 

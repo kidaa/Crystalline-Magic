@@ -20,7 +20,7 @@ public class InvisibilityUtils {
         InvisPlayers.add(player);
 
         if(Sync)
-        PacketHandler.sendToServer(new ServerSyncInvisPlayers(1, player), CrystMagic.channels);
+        PacketHandler.sendToServer(new ServerSyncInvisPlayers(1, player), CrystMagic.Utils.channels);
 
 
     }
@@ -30,7 +30,7 @@ public class InvisibilityUtils {
             InvisPlayers.remove(player);
 
         if(Sync)
-        PacketHandler.sendToServer(new ServerSyncInvisPlayers(2,player), CrystMagic.channels);
+        PacketHandler.sendToServer(new ServerSyncInvisPlayers(2,player), CrystMagic.Utils.channels);
 
 
     }

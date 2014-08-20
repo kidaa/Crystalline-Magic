@@ -51,7 +51,7 @@ public class ServerSyncInvisPlayers extends AbstractPacket {
 
         }
 
-        PacketHandler.sendToAll(new ClientSyncInvisPlayers(Mode, player), CrystMagic.channels);
+        PacketHandler.sendToAll(new ClientSyncInvisPlayers(Mode, player), CrystMagic.Utils.channels);
 
     }
 }

@@ -11,15 +11,17 @@ public class LevelUpHandeling {
         if (MagicInfoStorage.get(event.player) != null) {
             MagicInfoStorage data = MagicInfoStorage.get(event.player);
 
-
             if (data.HasMagic() && !event.player.worldObj.isRemote) {
+
                 if (data.GetPlayerXp() >= data.GetRequiredXp()) {
-                    if (data.GetPlayerXp() > data.GetRequiredXp())
+
+                    if (data.GetPlayerXp() > data.GetRequiredXp()) {
                         data.DecreasePlayerXp(data.GetRequiredXp());
-                    else
+                    } else {
                         data.SetPlayerXp(0);
-                    data.IncreasePlayerLevel(1);
-                    data.SetPlayerMaxEnergy(data.GetPlayerMaxEnergy() + 50);
+                    }
+
+                    data.IncreasePlayerLevelWithEngUpdate(1);
 
                 }
 
@@ -28,3 +30,4 @@ public class LevelUpHandeling {
         }
     }
 }
+

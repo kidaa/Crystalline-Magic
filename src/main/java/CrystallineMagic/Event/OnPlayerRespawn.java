@@ -42,7 +42,7 @@ public void onEntityJoinWorld(EntityJoinWorldEvent event)
         if (playerData != null) {
         ((MagicInfoStorage)(event.entity.getExtendedProperties(MagicInfoStorage.EXT_PROP_NAME))).loadNBTData(playerData);
         }
-            PacketHandler.sendToPlayer(new SyncPlayerPropsPacket((EntityPlayer) event.entity), (EntityPlayer) event.entity, CrystMagic.channels);
+            PacketHandler.sendToPlayer(new SyncPlayerPropsPacket((EntityPlayer) event.entity), (EntityPlayer) event.entity, CrystMagic.Utils.channels);
         }
 
 

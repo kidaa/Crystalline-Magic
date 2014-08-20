@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 public class MagicUtils {
 
     public static void ReceiveEnergy(TileEntity tile){
-        PacketHandler.sendToDimension(new MagicReciveParticleEffects(tile.xCoord, tile.yCoord, tile.zCoord), tile.getWorldObj().provider.dimensionId, CrystMagic.channels);
+        PacketHandler.sendToDimension(new MagicReciveParticleEffects(tile.xCoord, tile.yCoord, tile.zCoord), tile.getWorldObj().provider.dimensionId, CrystMagic.Utils.channels);
     }
 
 }
