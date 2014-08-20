@@ -153,8 +153,8 @@ public class CrystMagic {
         CraftingRecipes.RegisterRecipes();
 
         proxy.registerRenderThings();
+        proxy.registerKeyBindings();
 
-        proxy.RegisterChestLoot();
 
         MinecraftForge.EVENT_BUS.register(new EntityConstructingEvent());
         MinecraftForge.EVENT_BUS.register(new JoinWorld());
@@ -177,7 +177,6 @@ public class CrystMagic {
 
         if(event.getSide() == Side.CLIENT){
             MinecraftForge.EVENT_BUS.register(new GuiOverlayMagicEnergy());
-
         }
 
 
@@ -227,6 +226,8 @@ public class CrystMagic {
 
         GameRegistry.registerWorldGenerator(new ModWorlGen(), 3);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+
+        proxy.RegisterChestLoot();
 
     }
 

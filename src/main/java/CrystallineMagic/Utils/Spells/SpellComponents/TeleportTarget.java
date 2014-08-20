@@ -3,7 +3,7 @@ package CrystallineMagic.Utils.Spells.SpellComponents;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellPartUsage;
-import MiscUtils.Utils.Handlers.ChatMessageHandler;
+import MiscUtils.Handlers.ChatMessageHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

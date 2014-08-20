@@ -1,6 +1,9 @@
 itemGroup.tabMod=Crystalline Magic
 itemGroup.tabModSpell=Spell parts
 
+keyCategory.crystmagic.name=Crystalline Magic
+key.crystmagic.magicinfo.name=Magic Info
+
 item.crystalinfusedmetal.name=Crystal Infused Metal
 item.crystalinfusedgem.name=Crystal Infused Gem
 item.soulorb.name=Soul Orb

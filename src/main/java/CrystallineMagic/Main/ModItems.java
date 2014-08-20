@@ -11,7 +11,7 @@ import CrystallineMagic.Items.ModItemSpellComponent;
 import CrystallineMagic.Items.ModItemSpellModifier;
 import CrystallineMagic.Items.ModItemSpellType;
 import CrystallineMagic.Utils.Ref;
-import MiscUtils.Utils.Register.ItemRegister;
+import MiscUtils.Register.ItemRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;

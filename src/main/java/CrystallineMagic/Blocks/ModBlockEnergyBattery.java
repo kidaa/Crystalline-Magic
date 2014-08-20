@@ -4,7 +4,7 @@ import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.TileEntities.TileEntityEnergyBattery;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Block.ModBlockContainer;
-import MiscUtils.Utils.Handlers.ChatMessageHandler;
+import MiscUtils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

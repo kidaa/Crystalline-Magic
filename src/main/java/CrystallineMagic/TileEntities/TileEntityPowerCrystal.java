@@ -6,7 +6,7 @@ import CrystallineApi.Magic.IMagicSender;
 import CrystallineApi.Magic.MagicEnergyUtils;
 import CrystallineMagic.Main.CrystMagic;
 import MiscUtils.TileEntity.ModTileEntity;
-import MiscUtils.Utils.Handlers.ParticleHelper;
+import MiscUtils.Handlers.ParticleHelper;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

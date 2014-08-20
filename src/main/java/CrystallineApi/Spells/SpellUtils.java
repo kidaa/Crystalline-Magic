@@ -19,6 +19,8 @@ public class SpellUtils {
     public static HashMap<String, SpellModifier> Mods = new HashMap<String, SpellModifier>();
 
 
+
+
     public static void RegisterComponents(SpellComponent comp){
         Components.add(comp);
         Comps.put(comp.GetId(), comp);
@@ -30,11 +32,17 @@ public class SpellUtils {
         Type.put(comp.GetId(), comp);
     }
 
-
     public static void RegisterModifiers(SpellModifier comp){
         Modifiers.add(comp);
         Mods.put(comp.GetId(), comp);
     }
+
+
+
+
+
+
+
 
     public static SpellComponent GetCompFromSpellComp(ItemStack stack){
         SpellComponent comp = null;
@@ -47,6 +55,8 @@ public class SpellUtils {
 
         return comp;
     }
+
+    
 
 
     public static SpellType GetTypeFromSpellType(ItemStack stack){
@@ -62,6 +72,7 @@ public class SpellUtils {
     }
 
 
+
     public static SpellModifier GetModifierFromSpellModifier(ItemStack stack){
         SpellModifier comp = null;
 
@@ -75,6 +86,9 @@ public class SpellUtils {
     }
 
 
+
+
+
     public static SpellType GetSpellType(ItemStack stack){
         SpellType Comps = null;
 
@@ -86,6 +100,8 @@ public class SpellUtils {
 
         return Comps;
     }
+
+
 
     public static int GetAmountOfAModifer(ItemStack stack, SpellModifier mod){
         if(mod != null) {
@@ -105,6 +121,9 @@ public class SpellUtils {
 
         return 0;
     }
+
+
+
 
     public static SpellModifier[] GetSpellModifiers(ItemStack stack){
 
@@ -139,6 +158,8 @@ public class SpellUtils {
     }
 
 
+
+
     private static SpellModifier[] GetSpellModifiersRaw(ItemStack stack){
 
         ArrayList<SpellModifier> list = new ArrayList<SpellModifier>();
@@ -170,6 +191,8 @@ public class SpellUtils {
 
         return Comps;
     }
+
+
 
 
     public static SpellComponent[] GetSpellComponents(ItemStack stack){

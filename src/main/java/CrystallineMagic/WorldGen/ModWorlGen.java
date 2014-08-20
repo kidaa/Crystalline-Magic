@@ -2,7 +2,7 @@ package CrystallineMagic.WorldGen;
 
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModBlocks;
-import MiscUtils.Utils.WorldGen.WorldGenUtils;
+import MiscUtils.WorldGen.WorldGenUtils;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;

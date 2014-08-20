@@ -23,7 +23,7 @@ public class Projectile implements SpellType {
 
     @Override
     public SpellUseType GetUseType() {
-        return SpellUseType.Ranged;
+        return SpellUseType.Self;
     }
 
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide){

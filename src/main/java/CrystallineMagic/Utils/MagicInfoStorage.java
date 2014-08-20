@@ -3,7 +3,7 @@ package CrystallineMagic.Utils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import MiscUtils.Network.PacketHandler;
-import MiscUtils.Utils.Handlers.ChatMessageHandler;
+import MiscUtils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.client.Minecraft;

@@ -19,19 +19,11 @@ public class ClientProxy extends ServerProxy {
     public static boolean HasValidInvisibilityArmor = false;
 
     public void registerRenderThings() {
-
-
-
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPowerCrystal.class, new TileEntityPowerCrystalRender());
 
         RenderingRegistry.registerEntityRenderingHandler(EntitySpellProjectile.class, new RenderSnowball(ModItems.SpellIconItem));
 
-
         MinecraftForgeClient.registerItemRenderer(new ItemStack(ModBlocks.PowerCrystal).getItem(), new PowerCrystalItemRender());
-
-
-
-
 
     }
 
@@ -41,6 +33,12 @@ public class ClientProxy extends ServerProxy {
     @Override
     public int addArmor(String armor){
         return RenderingRegistry.addNewArmourRendererPrefix(armor);
+    }
+
+
+    public void registerKeyBindings(){
+
+
     }
 
 }

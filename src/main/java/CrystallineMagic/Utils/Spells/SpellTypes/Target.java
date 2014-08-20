@@ -6,7 +6,7 @@ import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
-import MiscUtils.Utils.Handlers.ChatMessageHandler;
+import MiscUtils.Handlers.ChatMessageHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

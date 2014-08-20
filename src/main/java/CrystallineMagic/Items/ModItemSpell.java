@@ -8,7 +8,7 @@ import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
-import MiscUtils.Utils.Handlers.ChatMessageHandler;
+import MiscUtils.Handlers.ChatMessageHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
@@ -159,7 +159,7 @@ public class ModItemSpell extends Item {
 
 
             if(type != null && use != null)
-            if (type == SpellUseType.Ranged || type == SpellUseType.Self && use == SpellPartUsage.Both || type == SpellUseType.Self && use == SpellPartUsage.Entity)
+            if (type == SpellUseType.Self && use == SpellPartUsage.Both || type == SpellUseType.Self && use == SpellPartUsage.Entity)
                 if (stack.getTagCompound() != null && SpellUtils.GetSpellComponents(stack).length > 0 || stack.getTagCompound() != null && player.capabilities.isCreativeMode)
                     player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 

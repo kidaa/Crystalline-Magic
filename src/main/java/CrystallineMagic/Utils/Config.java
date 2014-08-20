@@ -1,6 +1,6 @@
 package CrystallineMagic.Utils;
 
-import MiscUtils.Utils.Config.ConfigBase;
+import MiscUtils.Config.ConfigBase;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;

@@ -2,6 +2,7 @@ package CrystallineMagic.Utils.Effects;
 
 import CrystallineMagic.Main.CrystMagic;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class EffectUpdate {
@@ -9,6 +10,14 @@ public class EffectUpdate {
 
     @SubscribeEvent
     public void onEntityUpdate(LivingEvent.LivingUpdateEvent event) {
+
+        if(event.entityLiving instanceof EntityPlayer){
+            EntityPlayer pl = (EntityPlayer)event.entityLiving;
+
+            if(pl.capabilities.isCreativeMode)
+                return;
+        }
+
 
         if (event.entityLiving.isPotionActive(CrystMagic.GravityEffect)) {
             if(event.entityLiving.isAirBorne){

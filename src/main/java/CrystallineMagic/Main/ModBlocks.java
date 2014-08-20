@@ -18,7 +18,7 @@ import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
 import CrystallineMagic.TileEntities.TileEntitySpellCreationTable;
 import CrystallineMagic.Utils.Ref;
-import MiscUtils.Utils.Register.BlockRegister;
+import MiscUtils.Register.BlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;

@@ -4,7 +4,7 @@ package CrystallineMagic.Packets;
 import CrystallineApi.Magic.IMagicReceiver;
 import CrystallineMagic.Main.CrystMagic;
 import MiscUtils.Network.AbstractPacket;
-import MiscUtils.Utils.Handlers.ParticleHelper;
+import MiscUtils.Handlers.ParticleHelper;
 import cpw.mods.fml.relauncher.Side;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
