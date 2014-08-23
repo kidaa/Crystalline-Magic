@@ -1,7 +1,7 @@
-package CrystallineMagic.Utils.Spells;
+package CrystallineMagic.Entity;
 
-import CrystallineMagic.Main.CrystMagic;
 import CrystallineApi.Spells.SpellComponent;
+import CrystallineMagic.Main.CrystMagic;
 import MiscUtils.Handlers.ParticleHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -157,6 +157,7 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
         }
     }
+
 
     public void onUpdate()
     {

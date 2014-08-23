@@ -4,17 +4,18 @@ import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUtils;
+import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineMagic.Event.EntityConstructingEvent;
 import CrystallineMagic.Event.InvisibilityEvents;
 import CrystallineMagic.Event.JoinWorld;
 import CrystallineMagic.Event.LevelUpHandeling;
 import CrystallineMagic.Event.MagicRecharge;
 import CrystallineMagic.Event.OnPlayerRespawn;
+import CrystallineMagic.Event.RenderWorldLastEvent;
 import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
-import CrystallineMagic.Packets.MagicReciveParticleEffects;
 import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
@@ -24,7 +25,6 @@ import CrystallineMagic.Utils.Keybinds.Keybinds;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
-import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
 import CrystallineMagic.Utils.Spells.SpellComponents.AntiGravity;
 import CrystallineMagic.Utils.Spells.SpellComponents.Damage;
 import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
@@ -178,6 +178,7 @@ public class CrystMagic {
 
         if(event.getSide() == Side.CLIENT){
             MinecraftForge.EVENT_BUS.register(new GuiOverlayMagicEnergy());
+            MinecraftForge.EVENT_BUS.register(new RenderWorldLastEvent());
         }
 
 
@@ -244,8 +245,6 @@ public class CrystMagic {
 
     public static void RegisterPackets(){
 
-
-        Utils.handler.RegisterPacket(MagicReciveParticleEffects.class);
         Utils.handler.RegisterPacket(SyncPlayerPropsPacket.class);
         Utils.handler.RegisterPacket(ClientSyncInvisPlayers.class);
         Utils.handler.RegisterPacket(ServerSyncInvisPlayers.class);

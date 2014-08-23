@@ -3,7 +3,6 @@ package CrystallineMagic.TileEntities;
 import CrystallineApi.Magic.IMagicReceiver;
 import CrystallineApi.Recipes.InfusionRecipe;
 import CrystallineApi.Recipes.RecipeHandler;
-import CrystallineMagic.Utils.MagicUtils;
 import MiscUtils.TileEntity.TileEntityInvBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -195,7 +194,6 @@ public class TileEntityMagicalInfuser extends TileEntityInvBase implements IMagi
     @Override
     public void ReceiveEnergy(double i) {
         Power += i;
-        MagicUtils.ReceiveEnergy(this);
     }
 
 }

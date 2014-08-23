@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
 
 import java.util.HashMap;
@@ -41,6 +42,15 @@ public class ServerProxy {
     {
         return extendedEntityData.remove(name);
     }
+
+
+
+    public void MagicEffect(World world, double x, double y, double z, float r, float g, float b, float size, float motionx, float motiony, float motionz, float maxAgeMul)
+    {
+
+    }
+
+
 
 
 

@@ -103,7 +103,7 @@ public class ModItems {
 
 
 
-        SpellIconItem = new Item().setTextureName(Ref.ModId + ":SpellPar");
+        SpellIconItem = new Item().setTextureName(Ref.ModId + ":MagicEffect");
         Utils.SilentRegister(SpellIconItem);
 
 

@@ -5,13 +5,16 @@ import CrystallineApi.Magic.IMagicReceiver;
 import CrystallineApi.Magic.IMagicSender;
 import CrystallineApi.Magic.MagicEnergyUtils;
 import CrystallineMagic.Main.CrystMagic;
-import MiscUtils.TileEntity.ModTileEntity;
+import CrystallineMagic.Utils.MagicEffects;
 import MiscUtils.Handlers.ParticleHelper;
+import MiscUtils.TileEntity.ModTileEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+
+import java.awt.*;
 
 public class TileEntityPowerCrystal extends ModTileEntity implements IMagicSender {
 
@@ -110,7 +113,7 @@ public class TileEntityPowerCrystal extends ModTileEntity implements IMagicSende
             if (Power > 0) {
                 if (i >= (100 / Power)) {
                     i = 0;
-                    helper.SpawnParticleRandomDr("happyVillager", xCoord, yCoord, zCoord, 3, 3, 1);
+                    MagicEffects.SpawnMagicEffect(worldObj, xCoord, yCoord + 1, zCoord, 1, 1, 3F, new Color(13, 217, 0));
 
                 } else
                     i += 0.1;

@@ -4,7 +4,6 @@ package CrystallineMagic.TileEntities;
 import CrystallineApi.Magic.IMagicReceiver;
 import CrystallineApi.Magic.IMagicSender;
 import CrystallineApi.Magic.MagicEnergyUtils;
-import CrystallineMagic.Utils.MagicUtils;
 import MiscUtils.TileEntity.ModTileEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -129,7 +128,6 @@ public class TileEntityEnergyBattery extends ModTileEntity implements IMagicRece
     public void ReceiveEnergy(double i) {
         Power += i;
 
-        MagicUtils.ReceiveEnergy(this);
     }
 
 }

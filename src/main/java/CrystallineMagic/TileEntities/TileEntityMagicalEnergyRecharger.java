@@ -3,7 +3,6 @@ package CrystallineMagic.TileEntities;
 
 import CrystallineApi.Magic.IEnergyStorageItem;
 import CrystallineApi.Magic.IMagicReceiver;
-import CrystallineMagic.Utils.MagicUtils;
 import MiscUtils.TileEntity.TileEntityInvBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -106,6 +105,5 @@ public class TileEntityMagicalEnergyRecharger extends TileEntityInvBase implemen
     @Override
     public void ReceiveEnergy(double i) {
         Power += i;
-        MagicUtils.ReceiveEnergy(this);
     }
 }

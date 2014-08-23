@@ -1,7 +1,7 @@
 package CrystallineMagic.Utils.Spells.SpellTypes;
 
 import CrystallineApi.Spells.SpellUtils;
-import CrystallineMagic.Utils.Spells.EntitySpellProjectile;
+import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;

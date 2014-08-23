@@ -5,12 +5,15 @@ import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
+import CrystallineMagic.Utils.MagicEffects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.awt.*;
 
 public class Touch implements SpellType {
     @Override
@@ -37,8 +40,9 @@ public class Touch implements SpellType {
 
         if(Comps != null && Comps.length > 0 && bl != null && bl != Blocks.air){
             for(int i = 0; i < Comps.length; i++){
-                if(Comps[i].OnUseOnBlock(SpellStack, world, x, y, z, bl, player, BlockSide))
+                if(Comps[i].OnUseOnBlock(SpellStack, world, x, y, z, bl, player, BlockSide)) {
                     t = true;
+                }
             }
 
         }else if(Comps != null && Comps.length > 0){
@@ -47,6 +51,11 @@ public class Touch implements SpellType {
                     t = true;
             }
         }
+
+        if(t){
+            MagicEffects.SpawnMagicEffect(world, (double)x, (double)y, (double)z, 1, 1, new Color(127, 250, 255));
+        }
+
         return t;
     }
 
