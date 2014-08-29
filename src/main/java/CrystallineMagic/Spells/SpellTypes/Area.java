@@ -1,12 +1,13 @@
 package CrystallineMagic.Spells.SpellTypes;
 
-import CrystallineApi.Spells.SpellUtils;
-import CrystallineMagic.Spells.SpellModifiers.AreaIncludePlayer;
-import CrystallineMagic.Spells.SpellModifiers.RangeExtender;
 import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
+import CrystallineApi.Spells.SpellUtils;
+import CrystallineMagic.Spells.SpellModifiers.AreaIncludePlayer;
+import CrystallineMagic.Spells.SpellModifiers.RangeExtender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -144,5 +145,10 @@ public class Area implements SpellType{
         int h = L * L;
 
         return h * L;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return new SpellModifier[]{new RangeExtender(), new AreaIncludePlayer()};
     }
 }

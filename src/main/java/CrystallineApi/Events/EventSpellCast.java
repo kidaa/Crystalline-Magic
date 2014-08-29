@@ -1,11 +1,9 @@
 package CrystallineApi.Events;
 
-import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-@Cancelable
 public class EventSpellCast extends Event {
 
     public EntityPlayer player;

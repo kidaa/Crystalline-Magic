@@ -1,10 +1,11 @@
 package CrystallineMagic.Spells.SpellTypes;
 
-import CrystallineApi.Spells.SpellUtils;
 import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
+import CrystallineApi.Spells.SpellUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -34,13 +35,13 @@ public class Self implements SpellType {
 
         if(Comps != null && Comps.length > 0){
             for(int i = 0; i < Comps.length; i++){
+
               if(Comps[i].OnUseOnEntity(SpellStack, world, player, player))
                   t = true;
 
-
-
             }
         }
+
 
         return t;
     }
@@ -52,5 +53,10 @@ public class Self implements SpellType {
     @Override
     public double GetEnergyMultiplier(ItemStack stack) {
         return 1;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return null;
     }
 }

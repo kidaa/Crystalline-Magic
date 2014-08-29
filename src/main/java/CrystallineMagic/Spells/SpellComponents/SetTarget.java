@@ -1,5 +1,6 @@
 package CrystallineMagic.Spells.SpellComponents;
 
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellPartUsage;
@@ -45,5 +46,10 @@ public class SetTarget implements SpellComponent {
 
     public SpellPartUsage GetUsage(){
         return SpellPartUsage.Block;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return null;
     }
 }

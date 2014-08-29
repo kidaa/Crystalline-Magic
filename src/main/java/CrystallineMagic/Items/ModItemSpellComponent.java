@@ -1,10 +1,11 @@
 package CrystallineMagic.Items;
 
+import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
+import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Spells.ISpellPart;
-import CrystallineApi.Spells.SpellComponent;
-import CrystallineApi.Spells.SpellPartUsage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -32,6 +33,7 @@ public class ModItemSpellComponent extends Item implements ISpellPart{
             list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + stack.getTagCompound().getString("Comp"));
 
             SpellComponent comp = SpellUtils.GetCompFromSpellComp(stack);
+
             if(comp.GetUsage() == SpellPartUsage.Block){
                 list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.usage.block"));
 
@@ -42,6 +44,17 @@ public class ModItemSpellComponent extends Item implements ISpellPart{
                 list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.usage.both"));
             }
 
+            SpellModifier[] CompMods = comp.CompatibleModifiers();
+
+            if(CompMods != null && CompMods.length > 0){
+                    list.add(EnumChatFormatting.GOLD + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.compatibleMods"));
+
+                    for (int i = 0; i < CompMods.length; i++) {
+
+                        list.add(EnumChatFormatting.YELLOW + "" + EnumChatFormatting.ITALIC + "- " + StatCollector.translateToLocal("spellpart.modifier." + CompMods[i].GetName().toLowerCase().replace(" ", "_") + ".name"));
+                    }
+
+            }
 
 
         }

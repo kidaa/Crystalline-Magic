@@ -1,6 +1,7 @@
 package CrystallineMagic.Spells.SpellComponents;
 
 import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -47,5 +48,10 @@ public class LightningBolt implements SpellComponent {
     @Override
     public SpellPartUsage GetUsage() {
         return SpellPartUsage.Both;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return null;
     }
 }

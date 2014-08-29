@@ -1,5 +1,6 @@
 package CrystallineMagic.Spells.SpellComponents;
 
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Spells.SpellModifiers.StrengthUpgrade;
@@ -25,9 +26,10 @@ public class LowGravity implements SpellComponent {
             if(ent.isPotionActive(CrystMagic.GravityEffect))
                 ent.removePotionEffect(CrystMagic.GravityEffect.getId());
 
-            if(ent.isPotionActive(CrystMagic.AntiGravityEffect))
-                ent.removePotionEffect(CrystMagic.AntiGravityEffect.getId());
+            if(ent.isPotionActive(CrystMagic.levitation))
+                ent.removePotionEffect(CrystMagic.levitation.getId());
 
+            return true;
         }
 
         return false;
@@ -56,5 +58,10 @@ public class LowGravity implements SpellComponent {
     @Override
     public SpellPartUsage GetUsage() {
         return SpellPartUsage.Entity;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return new SpellModifier[]{new StrengthUpgrade()};
     }
 }

@@ -1,5 +1,6 @@
 package CrystallineMagic.Spells.SpellComponents;
 
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Spells.SpellModifiers.StrengthUpgrade;
 import CrystallineApi.Spells.SpellComponent;
@@ -55,5 +56,10 @@ public class Dig implements SpellComponent{
 
     public SpellPartUsage GetUsage(){
         return SpellPartUsage.Block;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return new SpellModifier[]{new StrengthUpgrade()};
     }
 }

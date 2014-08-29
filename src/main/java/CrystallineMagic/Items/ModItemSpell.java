@@ -26,6 +26,7 @@ import java.util.List;
 public class ModItemSpell extends Item {
 
 
+    //TODO Make spell projectile have custom color given by the first component in the list (All components should have a color which can then be used for spell effects)
 
     public int getMaxItemUseDuration(ItemStack itemStack)
     {
@@ -74,14 +75,17 @@ public class ModItemSpell extends Item {
 
 
                                     EventSpellCast event = new EventSpellCast(player, stack);
-                                    MinecraftForge.EVENT_BUS.post(event);
 
-                                    if (event.isCanceled())
-                                        return false;
+                                    boolean t = type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, -1);
 
-                                    if (type.OnUse(stack, player, target, world, (int) target.posX, (int) target.posY, (int) target.posZ, -1)) {
+                                    if (t) {
+                                        MinecraftForge.EVENT_BUS.post(event);
+
                                         if (!player.capabilities.isCreativeMode)
                                             MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+
+                                    }else{
+                                        return false;
                                     }
 
 
@@ -123,15 +127,19 @@ public class ModItemSpell extends Item {
                                     SpellType type = SpellUtils.GetSpellType(stack);
 
                                     EventSpellCast event = new EventSpellCast(player, stack);
-                                    MinecraftForge.EVENT_BUS.post(event);
 
-                                    if (event.isCanceled())
-                                        return false;
+                                    boolean t = type.OnUse(stack, player, null, world, x, y, z, sd);
 
+                                    if (t) {
+                                        MinecraftForge.EVENT_BUS.post(event);
 
-                                    if (type.OnUse(stack, player, null, world, x, y, z, sd))
                                         if (!player.capabilities.isCreativeMode)
                                             MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+
+                                    }else{
+                                        return false;
+                                    }
+
 
 
                                     return true;
@@ -181,15 +189,15 @@ public class ModItemSpell extends Item {
 
 
                           EventSpellCast event = new EventSpellCast(player, stack);
-                          MinecraftForge.EVENT_BUS.post(event);
 
-                          if(event.isCanceled())
-                              return stack;
+                          if(type.OnUse(stack, player, null, world, (int)player.posX, (int)player.posY, (int)player.posZ, -1)) {
+                              MinecraftForge.EVENT_BUS.post(event);
 
-                          if(type.OnUse(stack, player, null, world, (int)player.posX, (int)player.posY, (int)player.posZ, -1))
-                          if (!player.capabilities.isCreativeMode)
-                              MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
 
+                              if (!player.capabilities.isCreativeMode)
+                                  MagicInfoStorage.get(player).DecreasePlayerEnergy(Eng);
+
+                          }
                       }
                   }else {
 

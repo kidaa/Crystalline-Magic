@@ -17,4 +17,9 @@ public class AreaIncludePlayer implements SpellModifier {
     public double EnergyMultiplier() {
         return 1;
     }
+
+    @Override
+    public boolean IgnoreCompatibility() {
+        return false;
+    }
 }

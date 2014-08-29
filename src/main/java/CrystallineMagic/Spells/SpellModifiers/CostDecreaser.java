@@ -17,4 +17,9 @@ public class CostDecreaser implements SpellModifier {
     public double EnergyMultiplier() {
         return 0.9;
     }
+
+    @Override
+    public boolean IgnoreCompatibility() {
+        return true;
+    }
 }

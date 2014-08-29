@@ -1,10 +1,11 @@
 package CrystallineMagic.Items;
 
+import CrystallineApi.Spells.SpellModifier;
+import CrystallineApi.Spells.SpellPartUsage;
+import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Spells.ISpellPart;
-import CrystallineApi.Spells.SpellPartUsage;
-import CrystallineApi.Spells.SpellType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -42,6 +43,21 @@ public class ModItemSpellType extends Item implements ISpellPart {
 
             }else if(type.GetUsage() == SpellPartUsage.Both){
                 list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.usage.both"));
+            }
+
+
+            SpellModifier[] CompMods = type.CompatibleModifiers();
+
+
+            if(CompMods != null && CompMods.length > 0){
+
+                    list.add(EnumChatFormatting.GOLD + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.compatibleMods"));
+
+                    for (int i = 0; i < CompMods.length; i++) {
+
+                        list.add(EnumChatFormatting.YELLOW + "" + EnumChatFormatting.ITALIC + "- " + StatCollector.translateToLocal("spellpart.modifier." + CompMods[i].GetName().toLowerCase().replace(" ", "_") + ".name"));
+                    }
+
             }
         }
 

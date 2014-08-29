@@ -27,7 +27,6 @@ import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
-import CrystallineMagic.Spells.SpellComponents.AntiGravity;
 import CrystallineMagic.Spells.SpellComponents.Damage;
 import CrystallineMagic.Spells.SpellComponents.Dig;
 import CrystallineMagic.Spells.SpellComponents.ExplodeBlock;
@@ -219,12 +218,12 @@ public class CrystMagic {
 
     }
 
-    public static Potion AntiGravityEffect, GravityEffect, LowGravityEffect;
+    public static Potion levitation, GravityEffect, LowGravityEffect;
 
     @Mod.EventHandler
     public void Init(FMLInitializationEvent event){
 
-       this.AntiGravityEffect = (new CrystallineMagic.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.antiGravity");
+       this.levitation = (new CrystallineMagic.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.levitation");
        this.GravityEffect = (new CrystallineMagic.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
         this.LowGravityEffect = (new CrystallineMagic.Effects.GravityEffect(34, false, 0)).setIconIndex(0, 0).setPotionName("potion.lowGravity");
 
@@ -270,7 +269,7 @@ public class CrystMagic {
         SpellUtils.RegisterComponents(new Damage());
         SpellUtils.RegisterComponents(new ExplodeBlock());
         SpellUtils.RegisterComponents(new LightningBolt());
-        SpellUtils.RegisterComponents(new AntiGravity());
+        SpellUtils.RegisterComponents(new CrystallineMagic.Spells.SpellComponents.levitation());
         SpellUtils.RegisterComponents(new Gravity());
         SpellUtils.RegisterComponents(new LowGravity());
 

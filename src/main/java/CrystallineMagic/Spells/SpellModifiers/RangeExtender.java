@@ -17,4 +17,9 @@ public class RangeExtender implements SpellModifier {
     public double EnergyMultiplier() {
         return 1.1;
     }
+
+    @Override
+    public boolean IgnoreCompatibility() {
+        return false;
+    }
 }

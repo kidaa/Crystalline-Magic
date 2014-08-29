@@ -1,5 +1,6 @@
 package CrystallineMagic.Spells.SpellComponents;
 
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Spells.SpellModifiers.StrengthUpgrade;
@@ -13,13 +14,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class AntiGravity implements SpellComponent {
+public class levitation implements SpellComponent {
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
+
+
         if(entityHit instanceof EntityLivingBase){
             EntityLivingBase ent = (EntityLivingBase)entityHit;
 
-            ent.addPotionEffect(new PotionEffect(CrystMagic.AntiGravityEffect.getId(), 200 + (100 * SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())), 0));
+            ent.addPotionEffect(new PotionEffect(CrystMagic.levitation.getId(), 200 + (100 * SpellUtils.GetAmountOfAModifer(Spell, new StrengthUpgrade())), 0));
 
             if(ent.isPotionActive(CrystMagic.GravityEffect))
                 ent.removePotionEffect(CrystMagic.GravityEffect.getId());
@@ -27,6 +30,7 @@ public class AntiGravity implements SpellComponent {
 
             if(ent.isPotionActive(CrystMagic.LowGravityEffect))
                 ent.removePotionEffect(CrystMagic.LowGravityEffect.getId());
+
 
             return true;
         }
@@ -42,7 +46,7 @@ public class AntiGravity implements SpellComponent {
 
     @Override
     public String GetName() {
-        return "Anti Gravity";
+        return "levitation";
     }
 
     @Override
@@ -58,5 +62,10 @@ public class AntiGravity implements SpellComponent {
     @Override
     public SpellPartUsage GetUsage() {
         return SpellPartUsage.Entity;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return new SpellModifier[]{new StrengthUpgrade()};
     }
 }

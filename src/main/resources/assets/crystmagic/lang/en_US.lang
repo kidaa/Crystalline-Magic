@@ -46,11 +46,14 @@ items.desc.spell.type=Type: $type
 items.desc.spell.usage.entity=Usage: Entities
 items.desc.spell.usage.block=Usage: Blocks
 items.desc.spell.usage.both=Usage: Blocks and Entities
+items.desc.spell.compatibleMods=Compatible modifiers:
+items.modifer.compatibleWithAll=Compatible with all spells
 
 gui.spellcreation.components=Components
 gui.spellcreation.modifiers=Modifiers
 gui.spellcreation.error.1=Incompatible spell usages!
 gui.spellcreation.error.2=Spell is too powerful!
+gui.spellcreation.error.3=Incompatible modifiers!
 gui.magicinfo.titel=Player Soul Information
 gui.magicinfo.soulenergy=Soul Energy: $energy
 gui.magicinfo.maxsoulenergy=Max Soul Energy: $energy
@@ -68,8 +71,8 @@ chat.message.spell.noEng=Was not able to cast spell. Not enough energy
 chat.message.spell.noTarget=No target has been set.
 chat.message.spell.targetSet=Target has been set to: $target
 
-potion.antiGravity=Anti Gravity
-potion.gravity=High Gravity
+potion.levitation=Levitation
+potion.gravity=Increased Gravity
 potion.lowGravity=Low Gravity
 
 //Spell parts
@@ -79,12 +82,12 @@ spellpart.type.self.name=Self
 spellpart.type.target.name=Target
 spellpart.type.touch.name=Touch
 
-spellpart.component.anti_gravity.name=Anti Gravity
+spellpart.component.levitation.name=Levitation
 spellpart.component.damage.name=Damage
 spellpart.component.dig.name=Dig
 spellpart.component.explode_block.name=Explode Block
 spellpart.component.flame.name=Flame
-spellpart.component.gravity.name=High Gravity
+spellpart.component.gravity.name=Increased Gravity
 spellpart.component.low_gravity.name=Low Gravity
 spellpart.component.heal.name=Heal
 spellpart.component.lightning_bolt.name=Lightning bolt

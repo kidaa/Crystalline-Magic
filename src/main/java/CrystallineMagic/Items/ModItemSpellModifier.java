@@ -1,5 +1,6 @@
 package CrystallineMagic.Items;
 
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Spells.ISpellPart;
@@ -28,6 +29,12 @@ public class ModItemSpellModifier extends Item implements ISpellPart {
 
         if(stack.getTagCompound() != null){
             list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + stack.getTagCompound().getString("Mod"));
+
+            SpellModifier mod = SpellUtils.GetModifierFromSpellModifier(stack);
+
+            if(mod.IgnoreCompatibility()){
+                list.add(EnumChatFormatting.GOLD + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.modifer.compatibleWithAll"));
+            }
 
         }
 

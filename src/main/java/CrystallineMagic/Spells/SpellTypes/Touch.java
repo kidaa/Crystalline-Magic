@@ -1,10 +1,11 @@
 package CrystallineMagic.Spells.SpellTypes;
 
-import CrystallineApi.Spells.SpellUtils;
 import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
+import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Utils.MagicEffects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -52,6 +53,7 @@ public class Touch implements SpellType {
             }
         }
 
+
         if(t){
             MagicEffects.SpawnMagicEffect(world, (double)x, (double)y, (double)z, 1, 1, new Color(127, 250, 255));
         }
@@ -66,5 +68,10 @@ public class Touch implements SpellType {
     @Override
     public double GetEnergyMultiplier(ItemStack stack) {
         return 1;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return null;
     }
 }

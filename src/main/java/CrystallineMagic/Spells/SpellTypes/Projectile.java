@@ -1,10 +1,11 @@
 package CrystallineMagic.Spells.SpellTypes;
 
-import CrystallineApi.Spells.SpellUtils;
-import CrystallineMagic.Entity.EntitySpellProjectile;
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
+import CrystallineApi.Spells.SpellUtils;
+import CrystallineMagic.Entity.EntitySpellProjectile;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -44,5 +45,10 @@ public class Projectile implements SpellType {
     @Override
     public double GetEnergyMultiplier(ItemStack stack) {
         return 1;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return null;
     }
 }

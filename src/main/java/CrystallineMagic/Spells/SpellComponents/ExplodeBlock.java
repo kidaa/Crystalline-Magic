@@ -1,6 +1,7 @@
 package CrystallineMagic.Spells.SpellComponents;
 
 import CrystallineApi.Spells.SpellComponent;
+import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellPartUsage;
 import MiscUtils.Block.BlockUtil;
 import net.minecraft.block.Block;
@@ -46,5 +47,10 @@ public class ExplodeBlock implements SpellComponent {
     @Override
     public SpellPartUsage GetUsage() {
         return SpellPartUsage.Block;
+    }
+
+    @Override
+    public SpellModifier[] CompatibleModifiers() {
+        return null;
     }
 }
