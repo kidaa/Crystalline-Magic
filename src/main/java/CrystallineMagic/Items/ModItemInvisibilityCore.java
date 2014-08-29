@@ -2,7 +2,7 @@ package CrystallineMagic.Items;
 
 import CrystallineApi.Magic.IEnergyStorageItem;
 import CrystallineMagic.Utils.InvisibilityUtils;
-import CrystallineMagic.Utils.Proxies.ClientProxy;
+import CrystallineMagic.Proxies.ClientProxy;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Item.ModItemWithDamage;
 import cpw.mods.fml.relauncher.Side;

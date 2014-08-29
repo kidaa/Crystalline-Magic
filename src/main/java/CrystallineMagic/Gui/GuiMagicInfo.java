@@ -2,7 +2,7 @@ package CrystallineMagic.Gui;
 
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
-import CrystallineMagic.Utils.Keybinds.Keybinds;
+import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Network.PacketHandler;

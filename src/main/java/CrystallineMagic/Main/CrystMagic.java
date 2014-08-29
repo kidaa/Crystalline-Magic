@@ -22,33 +22,33 @@ import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
-import CrystallineMagic.Utils.Effects.EffectUpdate;
-import CrystallineMagic.Utils.Keybinds.Keybinds;
+import CrystallineMagic.Effects.EffectUpdate;
+import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
-import CrystallineMagic.Utils.Proxies.ServerProxy;
+import CrystallineMagic.Proxies.ServerProxy;
 import CrystallineMagic.Utils.Ref;
-import CrystallineMagic.Utils.Spells.SpellComponents.AntiGravity;
-import CrystallineMagic.Utils.Spells.SpellComponents.Damage;
-import CrystallineMagic.Utils.Spells.SpellComponents.Dig;
-import CrystallineMagic.Utils.Spells.SpellComponents.ExplodeBlock;
-import CrystallineMagic.Utils.Spells.SpellComponents.Fire;
-import CrystallineMagic.Utils.Spells.SpellComponents.Gravity;
-import CrystallineMagic.Utils.Spells.SpellComponents.Heal;
-import CrystallineMagic.Utils.Spells.SpellComponents.LightningBolt;
-import CrystallineMagic.Utils.Spells.SpellComponents.LowGravity;
-import CrystallineMagic.Utils.Spells.SpellComponents.Regen;
-import CrystallineMagic.Utils.Spells.SpellComponents.SetTarget;
-import CrystallineMagic.Utils.Spells.SpellComponents.TeleportRandom;
-import CrystallineMagic.Utils.Spells.SpellComponents.TeleportTarget;
-import CrystallineMagic.Utils.Spells.SpellModifiers.AreaIncludePlayer;
-import CrystallineMagic.Utils.Spells.SpellModifiers.CostDecreaser;
-import CrystallineMagic.Utils.Spells.SpellModifiers.RangeExtender;
-import CrystallineMagic.Utils.Spells.SpellModifiers.StrengthUpgrade;
-import CrystallineMagic.Utils.Spells.SpellTypes.Area;
-import CrystallineMagic.Utils.Spells.SpellTypes.Projectile;
-import CrystallineMagic.Utils.Spells.SpellTypes.Self;
-import CrystallineMagic.Utils.Spells.SpellTypes.Target;
-import CrystallineMagic.Utils.Spells.SpellTypes.Touch;
+import CrystallineMagic.Spells.SpellComponents.AntiGravity;
+import CrystallineMagic.Spells.SpellComponents.Damage;
+import CrystallineMagic.Spells.SpellComponents.Dig;
+import CrystallineMagic.Spells.SpellComponents.ExplodeBlock;
+import CrystallineMagic.Spells.SpellComponents.Fire;
+import CrystallineMagic.Spells.SpellComponents.Gravity;
+import CrystallineMagic.Spells.SpellComponents.Heal;
+import CrystallineMagic.Spells.SpellComponents.LightningBolt;
+import CrystallineMagic.Spells.SpellComponents.LowGravity;
+import CrystallineMagic.Spells.SpellComponents.Regen;
+import CrystallineMagic.Spells.SpellComponents.SetTarget;
+import CrystallineMagic.Spells.SpellComponents.TeleportRandom;
+import CrystallineMagic.Spells.SpellComponents.TeleportTarget;
+import CrystallineMagic.Spells.SpellModifiers.AreaIncludePlayer;
+import CrystallineMagic.Spells.SpellModifiers.CostDecreaser;
+import CrystallineMagic.Spells.SpellModifiers.RangeExtender;
+import CrystallineMagic.Spells.SpellModifiers.StrengthUpgrade;
+import CrystallineMagic.Spells.SpellTypes.Area;
+import CrystallineMagic.Spells.SpellTypes.Projectile;
+import CrystallineMagic.Spells.SpellTypes.Self;
+import CrystallineMagic.Spells.SpellTypes.Target;
+import CrystallineMagic.Spells.SpellTypes.Touch;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
 import MiscUtils.Register.KeyBind.KeybindRegistry;
@@ -82,7 +82,7 @@ public class CrystMagic {
     @Mod.Instance(Ref.ModId)
     public static CrystMagic instance = new CrystMagic();
 
-    @SidedProxy(clientSide = "CrystallineMagic.Utils.Proxies.ClientProxy", serverSide = "CrystallineMagic.Utils.Proxies.ServerProxy")
+    @SidedProxy(clientSide = "CrystallineMagic.Proxies.ClientProxy", serverSide = "CrystallineMagic.Proxies.ServerProxy")
     public static ServerProxy proxy;
 
     public static Config config;
@@ -224,9 +224,9 @@ public class CrystMagic {
     @Mod.EventHandler
     public void Init(FMLInitializationEvent event){
 
-       this.AntiGravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.antiGravity");
-       this.GravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
-        this.LowGravityEffect = (new CrystallineMagic.Utils.Effects.GravityEffect(34, false, 0)).setIconIndex(0, 0).setPotionName("potion.lowGravity");
+       this.AntiGravityEffect = (new CrystallineMagic.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.antiGravity");
+       this.GravityEffect = (new CrystallineMagic.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
+        this.LowGravityEffect = (new CrystallineMagic.Effects.GravityEffect(34, false, 0)).setIconIndex(0, 0).setPotionName("potion.lowGravity");
 
         GameRegistry.registerWorldGenerator(new ModWorlGen(), 3);
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());

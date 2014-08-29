@@ -1,7 +1,7 @@
 package CrystallineMagic.Utils.RecipeUtils;
 
 import CrystallineMagic.Main.ModItems;
-import CrystallineMagic.Utils.Spells.ISpellPart;
+import CrystallineMagic.Spells.ISpellPart;
 import CrystallineApi.Spells.SpellComponent;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;

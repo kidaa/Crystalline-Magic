@@ -3,7 +3,7 @@ package CrystallineMagic.Event;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.MagicInfoStorage;
-import CrystallineMagic.Utils.Proxies.ServerProxy;
+import CrystallineMagic.Proxies.ServerProxy;
 import MiscUtils.Network.PacketHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;

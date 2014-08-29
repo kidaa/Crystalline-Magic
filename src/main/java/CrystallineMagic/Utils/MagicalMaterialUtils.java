@@ -33,11 +33,6 @@ public class MagicalMaterialUtils {
         RegisterManualValue(Blocks.sand, 4);
         RegisterManualValue(Blocks.glass, 4);
         RegisterManualValue(Blocks.log, 5);
-        RegisterManualValue(new ItemStack(Blocks.log, 1, 1), 5);
-        RegisterManualValue(new ItemStack(Blocks.log, 1, 2), 5);
-        RegisterManualValue(new ItemStack(Blocks.log, 1, 3), 5);
-        RegisterManualValue(new ItemStack(Blocks.log2, 1, 0), 5);
-        RegisterManualValue(new ItemStack(Blocks.log, 1, 0), 5);
         RegisterManualValue(Blocks.melon_block, 72);
         RegisterManualValue(Blocks.pumpkin, 72);
         RegisterManualValue(Blocks.netherrack, 32);
@@ -145,14 +140,17 @@ public class MagicalMaterialUtils {
         if(bl.getItem() != null) {
                 Item b = bl.getItem();
 
-                if (b != null && b.getHasSubtypes())
-                    for (int i = 1; i < 16; i++)
-                        RegisterAutomaticValue(new ItemStack(bl.getItem(), 1, i));
+                if (b != null && b.getHasSubtypes()) {
+                    for (int i = 0; i < 16; i++)
+                        RegisterValue(new ItemStack(bl.getItem(), 1, i), value);
+                }else{
+
+                    RegisterValue(bl, value);
+                }
 
 
             }
 
-        RegisterValue(bl, value);
 
 
     }

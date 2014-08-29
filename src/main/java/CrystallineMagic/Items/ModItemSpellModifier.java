@@ -2,7 +2,7 @@ package CrystallineMagic.Items;
 
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Main.CrystMagic;
-import CrystallineMagic.Utils.Spells.ISpellPart;
+import CrystallineMagic.Spells.ISpellPart;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;

@@ -4,7 +4,7 @@ package CrystallineMagic.Event;
 import CrystallineMagic.Items.ModItemInvisArmor;
 import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Utils.InvisibilityUtils;
-import CrystallineMagic.Utils.Proxies.ClientProxy;
+import CrystallineMagic.Proxies.ClientProxy;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
