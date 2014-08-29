@@ -1,4 +1,4 @@
-package CrystallineMagic.Rendering;
+package CrystallineMagic.Rendering.Items;
 
 import CrystallineMagic.Utils.Ref;
 import cpw.mods.fml.relauncher.Side;

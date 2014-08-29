@@ -1,11 +1,14 @@
 package CrystallineMagic.Utils.Proxies;
 
 import CrystallineApi.Spells.SpellUtils;
+import CrystallineMagic.Entity.EntityEnergyTransfer;
+import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import MiscUtils.Network.PacketHandler;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -26,6 +29,8 @@ public class ServerProxy {
     public void registerRenderThings(){
 
     }
+
+
 
 
     public int addArmor(String armor){

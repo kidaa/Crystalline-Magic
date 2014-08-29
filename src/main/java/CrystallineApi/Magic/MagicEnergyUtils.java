@@ -1,7 +1,9 @@
 package CrystallineApi.Magic;
 
+import CrystallineApi.Events.MagicSendEvent;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class MagicEnergyUtils {
 
             List list = world.func_147486_a(tile.xCoord - Radius, tile.yCoord - Radius, tile.zCoord - Radius, tile.xCoord + Radius, tile.yCoord + Radius, tile.zCoord + Radius);
 
+
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i) instanceof TileEntity) {
                     TileEntity tilee = (TileEntity) list.get(i);
@@ -38,7 +41,8 @@ public class MagicEnergyUtils {
 
                                  if(tilee.xCoord != tile.xCoord || tilee.yCoord != tile.yCoord || tilee.zCoord != tile.zCoord) {
 
-                                    if (Rad == 0) {
+
+                                    if (Rad <= 0) {
                                         Rad = tile.getDistanceFrom(tilee.xCoord, tilee.yCoord, tilee.zCoord);
                                         recc = rec;
 
@@ -47,7 +51,6 @@ public class MagicEnergyUtils {
                                         recc = rec;
 
                                     }
-
 
 
 
@@ -71,7 +74,12 @@ public class MagicEnergyUtils {
 
             if(recc != null){
                 if(sender.CanSendEnergyAmount(sender.GetEnergyPacketSize())) {
-                    sender.SendEnergy(recc, sender.GetEnergyPacketSize());
+                    MagicSendEvent event = new MagicSendEvent((TileEntity)recc, sender, sender.GetEnergyPacketSize());
+                    MinecraftForge.EVENT_BUS.post(event);
+
+                    if(!event.isCanceled()) {
+                        sender.SendEnergy(recc, sender.GetEnergyPacketSize());
+                    }
 
 
                 }

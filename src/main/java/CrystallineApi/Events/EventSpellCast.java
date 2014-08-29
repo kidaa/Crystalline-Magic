@@ -1,4 +1,4 @@
-package CrystallineMagic.Event.Custom;
+package CrystallineApi.Events;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;

@@ -10,12 +10,14 @@ import CrystallineMagic.Event.InvisibilityEvents;
 import CrystallineMagic.Event.JoinWorld;
 import CrystallineMagic.Event.LevelUpHandeling;
 import CrystallineMagic.Event.MagicRecharge;
+import CrystallineMagic.Event.MagicSendParticleEvent;
 import CrystallineMagic.Event.OnPlayerRespawn;
 import CrystallineMagic.Event.RenderWorldLastEvent;
 import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
+import CrystallineMagic.Packets.MagicSendParticleSync;
 import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
 import CrystallineMagic.Utils.Config;
@@ -165,6 +167,7 @@ public class CrystMagic {
         MinecraftForge.EVENT_BUS.register(new SpellCastEvent());
 
         MinecraftForge.EVENT_BUS.register(new EffectUpdate());
+        MinecraftForge.EVENT_BUS.register(new MagicSendParticleEvent());
 
 
         FMLCommonHandler.instance().bus().register(new InvisibilityEvents());
@@ -172,8 +175,7 @@ public class CrystMagic {
         FMLCommonHandler.instance().bus().register(new LevelUpHandeling());
 
 
-        EntityRegistry.registerGlobalEntityID(EntitySpellProjectile.class, "SpellProjectile", EntityRegistry.findGlobalUniqueEntityId());
-        EntityRegistry.registerModEntity(EntitySpellProjectile.class, "SpellProjectile", 2, this, 128, 1, true);
+       RegisterEntities();
 
 
         if(event.getSide() == Side.CLIENT){
@@ -248,6 +250,7 @@ public class CrystMagic {
         Utils.handler.RegisterPacket(SyncPlayerPropsPacket.class);
         Utils.handler.RegisterPacket(ClientSyncInvisPlayers.class);
         Utils.handler.RegisterPacket(ServerSyncInvisPlayers.class);
+        Utils.handler.RegisterPacket(MagicSendParticleSync.class);
 
     }
 
@@ -284,5 +287,14 @@ public class CrystMagic {
 
     }
 
+
+    public void RegisterEntities(){
+
+
+        EntityRegistry.registerGlobalEntityID(EntitySpellProjectile.class, "SpellProjectile", EntityRegistry.findGlobalUniqueEntityId());
+        EntityRegistry.registerModEntity(EntitySpellProjectile.class, "SpellProjectile", 0, this, 128, 1, true);
+
+
+    }
 
 }

@@ -1,4 +1,4 @@
-package CrystallineMagic.Entity;
+package CrystallineMagic.Entity.Render;
 
 import CrystallineMagic.Main.ModItems;
 import net.minecraft.client.renderer.Tessellator;

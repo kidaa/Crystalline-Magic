@@ -1,7 +1,7 @@
 package CrystallineMagic.Event;
 
 import CrystallineApi.Spells.SpellUtils;
-import CrystallineMagic.Event.Custom.EventSpellCast;
+import CrystallineApi.Events.EventSpellCast;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

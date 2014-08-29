@@ -143,6 +143,6 @@ public class Area implements SpellType{
         int L = 3 + (g * 2);
         int h = L * L;
 
-        return h;
+        return h * L;
     }
 }

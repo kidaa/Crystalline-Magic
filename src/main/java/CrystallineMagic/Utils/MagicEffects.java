@@ -29,9 +29,9 @@ public class MagicEffects {
         for (int i = 0; i < amount; ++i) {
             Random rand = new Random();
 
-            double X = x + (double) (rand.nextFloat() * width * 2.0F) - (double) width;
-            double Y = y + (double) (rand.nextFloat() * width);
-            double Z = z + (double) (rand.nextFloat() * width * 2.0F) - (double) width;
+            double X = (x + 0.2) + (double) (rand.nextFloat() * width);
+            double Y =  y +        (double) (rand.nextFloat() * width);
+            double Z = (z + 0.2) + (double) (rand.nextFloat() * width);
 
             CrystMagic.proxy.MagicEffect(world,X,Y,Z, (float)((double)c.getRed() / 255), (float)((double)c.getGreen() / 255), (float)((double)c.getBlue() / 255), rand.nextFloat() - 0.5F, 0, gravity, 0, life);
 

@@ -1,7 +1,7 @@
 package CrystallineMagic.Items;
 
 import CrystallineApi.Spells.SpellUtils;
-import CrystallineMagic.Event.Custom.EventSpellCast;
+import CrystallineApi.Events.EventSpellCast;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellModifier;

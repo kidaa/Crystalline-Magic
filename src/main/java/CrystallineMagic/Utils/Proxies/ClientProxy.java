@@ -1,11 +1,11 @@
 package CrystallineMagic.Utils.Proxies;
 
 import CrystallineMagic.Entity.EntitySpellProjectile;
-import CrystallineMagic.Entity.EntitySpellProjectileRender;
 import CrystallineMagic.Entity.FX.EntityMagicEffectFX;
+import CrystallineMagic.Entity.Render.EntitySpellProjectileRender;
 import CrystallineMagic.Main.ModBlocks;
-import CrystallineMagic.Rendering.PowerCrystalItemRender;
-import CrystallineMagic.Rendering.TileEntityPowerCrystalRender;
+import CrystallineMagic.Rendering.Items.PowerCrystalItemRender;
+import CrystallineMagic.Rendering.TileEntitys.TileEntityPowerCrystalRender;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -23,11 +23,12 @@ public class ClientProxy extends ServerProxy {
     public void registerRenderThings() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPowerCrystal.class, new TileEntityPowerCrystalRender());
 
-        RenderingRegistry.registerEntityRenderingHandler(EntitySpellProjectile.class, new EntitySpellProjectileRender());
-
         MinecraftForgeClient.registerItemRenderer(new ItemStack(ModBlocks.PowerCrystal).getItem(), new PowerCrystalItemRender());
 
+        RenderingRegistry.registerEntityRenderingHandler(EntitySpellProjectile.class, new EntitySpellProjectileRender());
+
     }
+
 
 
 

@@ -1,4 +1,4 @@
-package CrystallineMagic.Rendering;
+package CrystallineMagic.Rendering.TileEntitys;
 
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
 import CrystallineMagic.Utils.Ref;
