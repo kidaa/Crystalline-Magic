@@ -18,34 +18,51 @@ public class EntitySpellProjectileRender extends Render {
     public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float p_76986_9_) {
         IIcon iicon = ModItems.SpellIconItem.getIconFromDamage(0);
 
-        if (entity instanceof EntitySpellProjectile) {
-             EntitySpellProjectile ent = (EntitySpellProjectile)entity;
+        if (entity.worldObj.isRemote) {
+            if (entity instanceof EntitySpellProjectile) {
+                EntitySpellProjectile ent = (EntitySpellProjectile) entity;
 
-            if (iicon != null) {
-                GL11.glPushMatrix();
-                GL11.glTranslatef((float) x, (float) y, (float) z);
-                GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-                GL11.glEnable(GL11.GL_BLEND);
-                GL11.glScalef(0.5F, 0.5F, 0.5F);
-                this.bindEntityTexture(entity);
-                Tessellator tessellator = Tessellator.instance;
+                if (iicon != null) {
+                    GL11.glPushMatrix();
+                    GL11.glTranslatef((float) x, (float) y, (float) z);
+                    GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+                    GL11.glEnable(GL11.GL_BLEND);
+                    GL11.glScalef(0.5F, 0.5F, 0.5F);
+                    this.bindEntityTexture(entity);
+                    Tessellator tessellator = Tessellator.instance;
 
-                Color c = new Color(255, 255, 255);
-                float d1 = (float) ((double) c.getRed() / 255), d2 = (float) ((double) c.getGreen() / 255), d3 = (float) ((double) c.getBlue() / 255);
-                GL11.glColor3f(d1, d2, d3);
+                    Color c = new Color(255, 255, 255);
 
-                GL11.glPushMatrix();
-
-                this.drawItem(tessellator, iicon);
+                    if (ent.Components != null && ent.Components.length > 0) {
+                        if (ent.Components[0].GetComponentColor() != null) {
+                            c = ent.Components[0].GetComponentColor();
 
 
-                GL11.glPopMatrix();
-                GL11.glDisable(GL11.GL_BLEND);
-                GL11.glColor3f(1.0F, 1.0F, 1.0F);
-                GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-                GL11.glPopMatrix();
+                            float d1 = (float) ((double) c.getRed() / 255), d2 = (float) ((double) c.getGreen() / 255), d3 = (float) ((double) c.getBlue() / 255);
+                            GL11.glColor3f(d1, d2, d3);
+
+                            GL11.glPushMatrix();
+
+                            this.drawItem(tessellator, iicon);
+
+                            GL11.glPopMatrix();
+
+
+                        }
+                    }
+
+
+                    GL11.glDisable(GL11.GL_BLEND);
+                    GL11.glColor3f(1.0F, 1.0F, 1.0F);
+                    GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+                    GL11.glPopMatrix();
+                }
+
+
             }
         }
+
+
     }
 
     @Override

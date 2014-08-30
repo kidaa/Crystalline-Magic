@@ -30,9 +30,8 @@ public class Projectile implements SpellType {
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide){
         EntitySpellProjectile EntSpell = new EntitySpellProjectile(world, player, 2.0F, SpellUtils.GetSpellComponents(SpellStack), SpellStack);
 
-        if (!world.isRemote) {
             world.spawnEntityInWorld(EntSpell);
-        }
+
 
         return true;
     }

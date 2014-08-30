@@ -14,8 +14,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.awt.*;
-
 public class Touch implements SpellType {
     @Override
     public String GetName() {
@@ -55,7 +53,8 @@ public class Touch implements SpellType {
 
 
         if(t){
-            MagicEffects.SpawnMagicEffect(world, (double)x, (double)y, (double)z, 1, 1, new Color(127, 250, 255));
+            if(Comps[0].GetComponentColor() != null)
+            MagicEffects.SpawnMagicEffect(world, (double)x - 0.8, (double)y, (double)z - 0.8, 12, 2, Comps[0].GetComponentColor());
         }
 
         return t;

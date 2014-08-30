@@ -24,7 +24,7 @@ public class EffectUpdate {
 
         if (event.entityLiving.isPotionActive(CrystMagic.GravityEffect)) {
 
-            MagicEffects.SpawnMagicEffect(event.entityLiving.worldObj, event.entityLiving.posX - 0.8, event.entityLiving.posY + event.entityLiving.getEyeHeight(), event.entityLiving.posZ - 0.8, 2, 1, new Color(255, 151, 136));
+            MagicEffects.SpawnMagicEffect(event.entityLiving.worldObj, event.entityLiving.posX - 0.8, event.entityLiving.posY + event.entityLiving.getEyeHeight(), event.entityLiving.posZ - 0.8, 2, 1, new Color(255, 107, 89));
 
             if(event.entityLiving.isAirBorne){
                 event.entityLiving.addVelocity(0, -0.5, 0);
@@ -39,9 +39,9 @@ public class EffectUpdate {
             event.entityLiving.setVelocity(event.entityLiving.motionX, m, event.entityLiving.motionZ);
 
             if(event.entityLiving.worldObj.isRemote)
-            MagicEffects.SpawnMagicEffect(event.entityLiving.worldObj, event.entityLiving.posX - 1.2, event.entityLiving.posY - (event.entityLiving.getEyeHeight() * 15), event.entityLiving.posZ - 1.2, 3, 2, new Color(201, 234, 255));
+            MagicEffects.SpawnMagicEffect(event.entityLiving.worldObj, event.entityLiving.posX - 1.2, event.entityLiving.posY - (event.entityLiving.getEyeHeight() * 15), event.entityLiving.posZ - 1.2, 3, 2, new Color(216, 243, 255));
             else
-                MagicEffects.SpawnMagicEffect(event.entityLiving.worldObj, event.entityLiving.posX - 1.2, event.entityLiving.posY - (event.entityLiving.getEyeHeight()), event.entityLiving.posZ - 1.2, 3, 2, new Color(201, 234, 255));
+                MagicEffects.SpawnMagicEffect(event.entityLiving.worldObj, event.entityLiving.posX - 1.2, event.entityLiving.posY - (event.entityLiving.getEyeHeight()), event.entityLiving.posZ - 1.2, 3, 2, new Color(216, 243, 255));
         }
 
 

@@ -48,6 +48,8 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         super(p_i1753_1_);
         this.renderDistanceWeight = 10.0D;
         this.setSize(0.5F, 0.5F);
+
+        SpawnParticles();
     }
 
     public EntitySpellProjectile(World p_i1754_1_, double p_i1754_2_, double p_i1754_4_, double p_i1754_6_)

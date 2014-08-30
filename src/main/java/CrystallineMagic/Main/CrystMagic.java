@@ -4,6 +4,7 @@ import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUtils;
+import CrystallineMagic.Effects.EffectUpdate;
 import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineMagic.Event.EntityConstructingEvent;
 import CrystallineMagic.Event.InvisibilityEvents;
@@ -12,21 +13,15 @@ import CrystallineMagic.Event.LevelUpHandeling;
 import CrystallineMagic.Event.MagicRecharge;
 import CrystallineMagic.Event.MagicSendParticleEvent;
 import CrystallineMagic.Event.OnPlayerRespawn;
-import CrystallineMagic.Event.RenderMagicEffects;
 import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
+import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
 import CrystallineMagic.Packets.MagicSendParticleSync;
 import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
-import CrystallineMagic.Utils.Config;
-import CrystallineMagic.Utils.CraftingRecipes;
-import CrystallineMagic.Effects.EffectUpdate;
-import CrystallineMagic.Keybinds.Keybinds;
-import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Proxies.ServerProxy;
-import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.Spells.SpellComponents.Damage;
 import CrystallineMagic.Spells.SpellComponents.Dig;
 import CrystallineMagic.Spells.SpellComponents.ExplodeBlock;
@@ -48,6 +43,10 @@ import CrystallineMagic.Spells.SpellTypes.Projectile;
 import CrystallineMagic.Spells.SpellTypes.Self;
 import CrystallineMagic.Spells.SpellTypes.Target;
 import CrystallineMagic.Spells.SpellTypes.Touch;
+import CrystallineMagic.Utils.Config;
+import CrystallineMagic.Utils.CraftingRecipes;
+import CrystallineMagic.Utils.MagicalMaterialUtils;
+import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
 import MiscUtils.Register.KeyBind.KeybindRegistry;
@@ -179,7 +178,6 @@ public class CrystMagic {
 
         if(event.getSide() == Side.CLIENT){
             MinecraftForge.EVENT_BUS.register(new GuiOverlayMagicEnergy());
-            MinecraftForge.EVENT_BUS.register(new RenderMagicEffects());
         }
 
 
