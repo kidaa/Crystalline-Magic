@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class TeleportTarget implements SpellComponent {
 
 
@@ -70,5 +72,10 @@ public class TeleportTarget implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return null;
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(67, 67, 134);
     }
 }

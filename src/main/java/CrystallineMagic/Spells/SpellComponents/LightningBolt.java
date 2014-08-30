@@ -10,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class LightningBolt implements SpellComponent {
 
     @Override
@@ -53,5 +55,10 @@ public class LightningBolt implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return null;
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(34,0, 143);
     }
 }

@@ -3,12 +3,15 @@ package CrystallineMagic.Event;
 import CrystallineMagic.Entity.FX.EntityMagicEffectFX;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import org.lwjgl.opengl.GL11;
 
-public class RenderWorldLastEvent {
+public class RenderMagicEffects {
 
+
+    //TODO Fix delay with particles for the spell projectile
     @SubscribeEvent
-    public void onRenderWorldLast(net.minecraftforge.client.event.RenderWorldLastEvent event)
+    public void onRenderWorldLast(RenderWorldLastEvent event)
     {
 
         GL11.glPushMatrix();

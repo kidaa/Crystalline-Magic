@@ -12,6 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.awt.*;
 import java.util.Random;
 
 public class TeleportRandom implements SpellComponent {
@@ -73,5 +74,10 @@ public class TeleportRandom implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return new SpellModifier[]{new StrengthUpgrade()};
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(93, 56, 169);
     }
 }

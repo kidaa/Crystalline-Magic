@@ -12,7 +12,7 @@ import CrystallineMagic.Event.LevelUpHandeling;
 import CrystallineMagic.Event.MagicRecharge;
 import CrystallineMagic.Event.MagicSendParticleEvent;
 import CrystallineMagic.Event.OnPlayerRespawn;
-import CrystallineMagic.Event.RenderWorldLastEvent;
+import CrystallineMagic.Event.RenderMagicEffects;
 import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
@@ -179,7 +179,7 @@ public class CrystMagic {
 
         if(event.getSide() == Side.CLIENT){
             MinecraftForge.EVENT_BUS.register(new GuiOverlayMagicEnergy());
-            MinecraftForge.EVENT_BUS.register(new RenderWorldLastEvent());
+            MinecraftForge.EVENT_BUS.register(new RenderMagicEffects());
         }
 
 

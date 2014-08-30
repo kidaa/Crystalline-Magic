@@ -13,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class Fire implements SpellComponent {
 
 
@@ -94,5 +96,11 @@ public class Fire implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return new SpellModifier[]{new StrengthUpgrade()};
+    }
+
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(216, 66, 4);
     }
 }

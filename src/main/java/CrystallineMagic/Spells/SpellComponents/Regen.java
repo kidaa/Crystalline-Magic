@@ -14,6 +14,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionHealth;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class Regen implements SpellComponent{
 
 
@@ -63,5 +65,10 @@ public class Regen implements SpellComponent{
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return new SpellModifier[]{new StrengthUpgrade()};
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(255, 91, 82);
     }
 }

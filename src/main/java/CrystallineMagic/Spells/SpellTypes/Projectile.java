@@ -34,7 +34,6 @@ public class Projectile implements SpellType {
             world.spawnEntityInWorld(EntSpell);
         }
 
-
         return true;
     }
 

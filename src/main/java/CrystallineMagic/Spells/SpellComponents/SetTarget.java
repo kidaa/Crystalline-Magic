@@ -10,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class SetTarget implements SpellComponent {
 
 
@@ -51,5 +53,10 @@ public class SetTarget implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return null;
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(174, 174, 174);
     }
 }

@@ -13,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class Damage implements SpellComponent {
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
@@ -57,5 +59,10 @@ public class Damage implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return new SpellModifier[]{new StrengthUpgrade()};
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(107,0, 7);
     }
 }

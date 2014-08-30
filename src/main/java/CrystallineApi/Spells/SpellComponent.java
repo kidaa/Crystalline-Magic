@@ -6,6 +6,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public interface SpellComponent{
 
     //Activated when the spell component is used on a entity
@@ -29,6 +31,9 @@ public interface SpellComponent{
 
     //The different modifiers the component accepts (null for no compatible modifiers)
     public SpellModifier[] CompatibleModifiers();
+
+    //The color used for different effects
+    public Color GetComponentColor();
 
 
 }

@@ -2,6 +2,7 @@ package CrystallineMagic.Entity;
 
 import CrystallineApi.Spells.SpellComponent;
 import CrystallineMagic.Main.CrystMagic;
+import CrystallineMagic.Utils.MagicEffects;
 import MiscUtils.Handlers.ParticleHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -20,12 +21,13 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import java.awt.*;
 import java.util.List;
 
 public class EntitySpellProjectile extends Entity implements IProjectile
 {
     EntityPlayer Shooter;
-    SpellComponent[] Components;
+    public SpellComponent[] Components;
     ParticleHelper helper;
     ItemStack stack;
 
@@ -55,6 +57,8 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         this.setSize(0.5F, 0.5F);
         this.setPosition(p_i1754_2_, p_i1754_4_, p_i1754_6_);
         this.yOffset = 0.0F;
+
+        SpawnParticles();
     }
 
     public EntitySpellProjectile(World p_i1755_1_, EntityPlayer p_i1755_2_, EntityLivingBase p_i1755_3_, float p_i1755_4_, float p_i1755_5_)
@@ -63,6 +67,7 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         this.renderDistanceWeight = 10.0D;
         this.Shooter = p_i1755_2_;
 
+        SpawnParticles();
 
         this.posY = p_i1755_2_.posY + (double)p_i1755_2_.getEyeHeight() - 0.10000000149011612D;
         double d0 = p_i1755_3_.posX - p_i1755_2_.posX;
@@ -81,6 +86,7 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             float f4 = (float)d3 * 0.2F;
             this.setThrowableHeading(d0, d1 + (double)f4, d2, p_i1755_4_, p_i1755_5_);
         }
+        SpawnParticles();
     }
 
     public EntitySpellProjectile(World p_i1756_1_, EntityPlayer p_i1756_2_, float p_i1756_3_, SpellComponent[] Components, ItemStack stack)
@@ -94,6 +100,10 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         this.Components = Components;
         this.helper = new ParticleHelper(worldObj, CrystMagic.config.CanSpawnParticles());
 
+
+        SpawnParticles();
+
+
         this.setSize(0.5F, 0.5F);
         this.setLocationAndAngles(p_i1756_2_.posX, p_i1756_2_.posY + (double)p_i1756_2_.getEyeHeight(), p_i1756_2_.posZ, p_i1756_2_.rotationYaw, p_i1756_2_.rotationPitch);
         this.posX -= (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
@@ -105,16 +115,23 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
         this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
         this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, p_i1756_3_ * 1.5F, 1.0F);
+        SpawnParticles();
+
     }
 
     protected void entityInit()
     {
         this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
+
+        SpawnParticles();
     }
 
 
     public void setThrowableHeading(double p_70186_1_, double p_70186_3_, double p_70186_5_, float p_70186_7_, float p_70186_8_)
     {
+
+        SpawnParticles();
+
         float f2 = MathHelper.sqrt_double(p_70186_1_ * p_70186_1_ + p_70186_3_ * p_70186_3_ + p_70186_5_ * p_70186_5_);
         p_70186_1_ /= (double)f2;
         p_70186_3_ /= (double)f2;
@@ -131,11 +148,16 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         float f3 = MathHelper.sqrt_double(p_70186_1_ * p_70186_1_ + p_70186_5_ * p_70186_5_);
         this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(p_70186_1_, p_70186_5_) * 180.0D / Math.PI);
         this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(p_70186_3_, (double)f3) * 180.0D / Math.PI);
+
+
+       SpawnParticles();
     }
 
     @SideOnly(Side.CLIENT)
     public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
     {
+        SpawnParticles();
+
         this.setPosition(p_70056_1_, p_70056_3_, p_70056_5_);
         this.setRotation(p_70056_7_, p_70056_8_);
     }
@@ -143,6 +165,8 @@ public class EntitySpellProjectile extends Entity implements IProjectile
     @SideOnly(Side.CLIENT)
     public void setVelocity(double p_70016_1_, double p_70016_3_, double p_70016_5_)
     {
+        SpawnParticles();
+
         this.motionX = p_70016_1_;
         this.motionY = p_70016_3_;
         this.motionZ = p_70016_5_;
@@ -156,11 +180,24 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             this.prevRotationYaw = this.rotationYaw;
             this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
         }
+
+        SpawnParticles();
     }
 
 
+    public void onEntityUpdate()
+    {
+
+        SpawnParticles();
+
+        super.onEntityUpdate();
+    }
+
     public void onUpdate()
     {
+
+        onEntityUpdate();
+
         super.onUpdate();
 
 
@@ -271,9 +308,9 @@ public class EntitySpellProjectile extends Entity implements IProjectile
                     this.z = movingobjectposition.blockZ;
                     this.field_145790_g = this.worldObj.getBlock(this.x, this.y, this.z);
                     this.inData = this.worldObj.getBlockMetadata(this.x, this.y, this.z);
-                    this.motionX = (double) ((float) (movingobjectposition.hitVec.xCoord - this.posX));
-                    this.motionY = (double) ((float) (movingobjectposition.hitVec.yCoord - this.posY));
-                    this.motionZ = (double) ((float) (movingobjectposition.hitVec.zCoord - this.posZ));
+                    this.motionX = (double) ((float) (movingobjectposition.hitVec.xCoord - this.posX)) / 2;
+                    this.motionY = (double) ((float) (movingobjectposition.hitVec.yCoord - this.posY)) / 2;
+                    this.motionZ = (double) ((float) (movingobjectposition.hitVec.zCoord - this.posZ)) / 2;
                     f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
                     this.posX -= this.motionX / (double) f2 * 0.05000000074505806D;
                     this.posY -= this.motionY / (double) f2 * 0.05000000074505806D;
@@ -307,8 +344,14 @@ public class EntitySpellProjectile extends Entity implements IProjectile
             this.motionX *= (double)f3;
             this.motionY *= (double)f3;
             this.motionZ *= (double)f3;
+
+        SpawnParticles();
+
             this.setPosition(this.posX, this.posY, this.posZ);
-            this.func_145775_I();
+
+        SpawnParticles();
+
+        this.func_145775_I();
 
         if(inGround){
                                 if(Components != null && Components.length > 0)
@@ -374,5 +417,17 @@ public class EntitySpellProjectile extends Entity implements IProjectile
         return false;
     }
 
+
+    public void SpawnParticles(){
+        if(Components != null && Components.length > 0){
+            Color c = new Color(255,255,255);
+
+            if(Components[0].GetComponentColor() != null)
+                c = Components[0].GetComponentColor();
+
+            MagicEffects.SpawnMagicEffect(worldObj, (posX - 0.8) + motionX, posY + motionY, (posZ - 0.8) + motionZ, 2, 1, c);
+        }
+
+    }
 
 }

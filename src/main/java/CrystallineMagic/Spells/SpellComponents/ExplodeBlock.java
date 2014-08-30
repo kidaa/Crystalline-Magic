@@ -11,6 +11,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class ExplodeBlock implements SpellComponent {
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
@@ -52,5 +54,10 @@ public class ExplodeBlock implements SpellComponent {
     @Override
     public SpellModifier[] CompatibleModifiers() {
         return null;
+    }
+
+    @Override
+    public Color GetComponentColor() {
+        return new Color(59,0,0);
     }
 }
