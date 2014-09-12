@@ -1,10 +1,10 @@
 package CrystallineMagic.Utils.NEI;
 
 import CrystallineMagic.Utils.NEI.CustomRecipes.InfusionRecipeHandler;
-import codechicken.nei.api.API;
-import codechicken.nei.api.IConfigureNEI;
+import codechicken.nei.api.*;
 
-public class NEIConfig implements IConfigureNEI{
+
+public class NEIConfig implements IConfigureNEI {
     @Override
     public void loadConfig() {
 

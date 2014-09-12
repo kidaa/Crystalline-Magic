@@ -3,10 +3,12 @@ package CrystallineMagic.Proxies;
 import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineMagic.Entity.FX.EntityMagicEffectFX;
 import CrystallineMagic.Entity.Render.EntitySpellProjectileRender;
+import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.Rendering.Items.PowerCrystalItemRender;
 import CrystallineMagic.Rendering.TileEntitys.TileEntityPowerCrystalRender;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
+import MiscUtils.Register.KeyBind.KeybindRegistry;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -31,6 +33,9 @@ public class ClientProxy extends ServerProxy {
 
 
 
+    public void RegisterKeybindings(){
+        KeybindRegistry.RegisterKeybind(Keybinds.KeyBindMagicInfo);
+    }
 
     @SideOnly(Side.CLIENT)
     @Override

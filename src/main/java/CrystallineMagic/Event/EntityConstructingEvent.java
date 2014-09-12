@@ -20,4 +20,5 @@ public class EntityConstructingEvent
         if (event.entity instanceof EntityPlayer && event.entity.getExtendedProperties(MagicInfoStorage.EXT_PROP_NAME) == null)
             event.entity.registerExtendedProperties(MagicInfoStorage.EXT_PROP_NAME, new MagicInfoStorage((EntityPlayer) event.entity));
     }
+
 }

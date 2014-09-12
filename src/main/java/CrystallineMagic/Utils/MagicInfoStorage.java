@@ -2,11 +2,9 @@ package CrystallineMagic.Utils;
 
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
-import MiscUtils.Network.PacketHandler;
 import MiscUtils.Handlers.ChatMessageHandler;
+import MiscUtils.Network.PacketHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -44,15 +42,10 @@ public class MagicInfoStorage implements IExtendedEntityProperties
 
         if(stack.getTagCompound() != null){
             if(stack.getTagCompound().getString("Player") != null){
-
-                if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT){
-                    player = Minecraft.getMinecraft().thePlayer;
-
-                }else{
                     player = FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().func_152612_a(stack.getTagCompound().getString("Player"));
 
 
-                }
+
 
             }
         }

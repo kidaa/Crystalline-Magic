@@ -16,7 +16,6 @@ import CrystallineMagic.Event.OnPlayerRespawn;
 import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
-import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
 import CrystallineMagic.Packets.MagicSendParticleSync;
 import CrystallineMagic.Packets.ServerSyncInvisPlayers;
@@ -46,10 +45,10 @@ import CrystallineMagic.Spells.SpellTypes.Touch;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
+import CrystallineMagic.Utils.RecipeUtils.SpellPartCopy;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
-import MiscUtils.Register.KeyBind.KeybindRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -65,6 +64,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.RecipeSorter;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -153,8 +153,7 @@ public class CrystMagic {
 
         proxy.registerRenderThings();
 
-
-        KeybindRegistry.RegisterKeybind(Keybinds.KeyBindMagicInfo);
+        proxy.RegisterKeybindings();
 
 
         MinecraftForge.EVENT_BUS.register(new EntityConstructingEvent());
@@ -181,6 +180,7 @@ public class CrystMagic {
         }
 
 
+        RecipeSorter.register("CrystMagic:SpellPartCopy", SpellPartCopy.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 
 
         Collections.sort(SpellUtils.Types, new Comparator<SpellType>() {
@@ -221,8 +221,8 @@ public class CrystMagic {
     @Mod.EventHandler
     public void Init(FMLInitializationEvent event){
 
-       this.levitation = (new CrystallineMagic.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.levitation");
-       this.GravityEffect = (new CrystallineMagic.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
+        levitation = (new CrystallineMagic.Effects.GravityEffect(32, false, 0)).setIconIndex(0, 0).setPotionName("potion.levitation");
+        GravityEffect = (new CrystallineMagic.Effects.GravityEffect(33, false, 0)).setIconIndex(0, 0).setPotionName("potion.gravity");
         this.LowGravityEffect = (new CrystallineMagic.Effects.GravityEffect(34, false, 0)).setIconIndex(0, 0).setPotionName("potion.lowGravity");
 
         GameRegistry.registerWorldGenerator(new ModWorlGen(), 3);
