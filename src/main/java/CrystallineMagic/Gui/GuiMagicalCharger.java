@@ -48,7 +48,7 @@ public class GuiMagicalCharger extends GuiContainer {
         double Energy = ((tile.GetStoredEnergy() / tile.GetMaxEnergy())) * 100;
         int en = (int)((Energy/100)*73);
 
-        drawString(fontRendererObj, "Energy: " + EnumChatFormatting.AQUA + (int)tile.GetStoredEnergy() + "/" + (int)tile.GetMaxEnergy(), x + 65, y + 70, 0xffffff);
+        drawString(fontRendererObj, "Energy: " + EnumChatFormatting.AQUA + (int)tile.GetStoredEnergy() + "/" + (int)tile.GetMaxEnergy() + EnumChatFormatting.RESET, x + 65, y + 70, 0xffffff);
 
         Minecraft.getMinecraft().renderEngine.bindTexture(Texture);
 

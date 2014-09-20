@@ -67,6 +67,8 @@ public class ModItemSpellType extends Item implements ISpellPart {
     public void getSubItems(Item item, CreativeTabs tab, List list)
     {
 
+        list.add(new ItemStack(item));
+
         for(int i = 0; i < SpellUtils.Types.size(); i++){
             ItemStack stack = new ItemStack(item);
 

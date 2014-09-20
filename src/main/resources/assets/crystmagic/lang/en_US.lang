@@ -37,6 +37,7 @@ tile.bluecrystalore.name=Blue Crystal ore
 tile.greencrystalore.name=Green Crystal ore
 tile.redcrystalore.name=Red Crystal ore
 tile.spellcreationtable.name=Spell Creation Table
+tile.spellwritingtable.name=Spell Writing Table
 
 items.desc.soulorb.bound=Orb bound to: $player
 items.desc.soulorb.unbound=Orb not bound
@@ -64,6 +65,7 @@ gui.magicinfo.nomagic=Player has not unlocked magical abilities yet
 gui.magicinfo.creativemode=Creative mode only:
 gui.magicinfo.creativemode.increaselevel=Increase level
 gui.magicinfo.creativemode.increaseenergy=Increase energy
+gui.writingspell.create=Create
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 

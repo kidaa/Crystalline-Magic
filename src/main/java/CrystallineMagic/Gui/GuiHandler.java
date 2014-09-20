@@ -4,10 +4,12 @@ import CrystallineMagic.Container.ContainerMagicalCharger;
 import CrystallineMagic.Container.ContainerMagicalDeconstructor;
 import CrystallineMagic.Container.ContainerMagicalInfuser;
 import CrystallineMagic.Container.ContainerSpellCreation;
+import CrystallineMagic.Container.ContainerWriting;
 import CrystallineMagic.TileEntities.TileEntityMagicalDecontructor;
 import CrystallineMagic.TileEntities.TileEntityMagicalEnergyRecharger;
 import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
 import CrystallineMagic.TileEntities.TileEntitySpellCreationTable;
+import CrystallineMagic.TileEntities.TileEntitySpellWritingTable;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -42,6 +44,10 @@ public class GuiHandler implements IGuiHandler {
             return new ContainerSpellCreation(player.inventory, (TileEntitySpellCreationTable) tile_entity);
 
 
+        if(tile_entity instanceof TileEntitySpellWritingTable)
+            return new ContainerWriting(player.inventory, (TileEntitySpellWritingTable)tile_entity);
+
+
 
         return null;
     }
@@ -72,6 +78,10 @@ public class GuiHandler implements IGuiHandler {
 
         if(tile_entity instanceof TileEntitySpellCreationTable)
             return new GuiSpellCreationTable(player.inventory, (TileEntitySpellCreationTable) tile_entity);
+
+
+        if(tile_entity instanceof TileEntitySpellWritingTable)
+            return new GuiWritingTable(player.inventory, (TileEntitySpellWritingTable) tile_entity);
 
 
         if(ID == EnumGuis.Magic_Info.Id){

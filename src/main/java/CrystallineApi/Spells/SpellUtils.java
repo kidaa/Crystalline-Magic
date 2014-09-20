@@ -9,6 +9,10 @@ import java.util.HashMap;
 public class SpellUtils {
 
 
+    public static HashMap<String, SpellComponent> StringComps = new HashMap<String, SpellComponent>();
+    public static HashMap<String, SpellModifier> StringMods = new HashMap<String, SpellModifier>();
+    public static HashMap<String, SpellType> StringTypes = new HashMap<String, SpellType>();
+
     public static ArrayList<SpellComponent> Components = new ArrayList<SpellComponent>();
     public static HashMap<String, SpellComponent> Comps = new HashMap<String, SpellComponent>();
 
@@ -24,21 +28,38 @@ public class SpellUtils {
     public static void RegisterComponents(SpellComponent comp){
         Components.add(comp);
         Comps.put(comp.GetId(), comp);
+
+        StringComps.put(comp.GetId(), comp);
     }
 
 
     public static void RegisterTypes(SpellType comp){
         Types.add(comp);
         Type.put(comp.GetId(), comp);
+
+        StringTypes.put(comp.GetId(), comp);
     }
 
     public static void RegisterModifiers(SpellModifier comp){
         Modifiers.add(comp);
         Mods.put(comp.GetId(), comp);
+
+        StringMods.put(comp.GetId(), comp);
     }
 
 
 
+    public static SpellComponent GetRegisteredComponent(String id){
+        return StringComps.get(id);
+    }
+
+    public static SpellModifier GetRegisteredModifier(String id){
+        return StringMods.get(id);
+    }
+
+    public static SpellType GetRegisteredType(String id){
+        return StringTypes.get(id);
+    }
 
 
 

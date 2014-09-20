@@ -1,10 +1,13 @@
 package CrystallineMagic.Main;
 
+import CrystallineApi.Elements.ElementRegistry;
 import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Effects.EffectUpdate;
+import CrystallineMagic.Elements.*;
+import CrystallineMagic.Elements.Void;
 import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineMagic.Event.EntityConstructingEvent;
 import CrystallineMagic.Event.InvisibilityEvents;
@@ -17,6 +20,7 @@ import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
+import CrystallineMagic.Packets.CreateWriting;
 import CrystallineMagic.Packets.MagicSendParticleSync;
 import CrystallineMagic.Packets.ServerSyncInvisPlayers;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
@@ -145,6 +149,7 @@ public class CrystMagic {
         MagicalMaterialUtils.RegisterAutomaticValues();
 
         RegisterSpellParts();
+        RegisterElements();
 
         ModItems.RegisterItems();
         ModBlocks.RegisterBlocks();
@@ -248,6 +253,7 @@ public class CrystMagic {
         Utils.handler.RegisterPacket(ClientSyncInvisPlayers.class);
         Utils.handler.RegisterPacket(ServerSyncInvisPlayers.class);
         Utils.handler.RegisterPacket(MagicSendParticleSync.class);
+        Utils.handler.RegisterPacket(CreateWriting.class);
 
     }
 
@@ -284,6 +290,37 @@ public class CrystMagic {
 
     }
 
+
+    public void RegisterElements(){
+
+        ElementRegistry.RegisterElement(new Air());
+        ElementRegistry.RegisterElement(new Water());
+        ElementRegistry.RegisterElement(new Earth());
+        ElementRegistry.RegisterElement(new CrystallineMagic.Elements.Fire());
+
+        ElementRegistry.RegisterElement(new Nature());
+        ElementRegistry.RegisterElement(new Sky());
+        ElementRegistry.RegisterElement(new Ice());
+        ElementRegistry.RegisterElement(new Metal());
+
+        ElementRegistry.RegisterElement(new Energy());
+        ElementRegistry.RegisterElement(new Force());
+        ElementRegistry.RegisterElement(new Lightning());
+
+        ElementRegistry.RegisterElement(new Void());
+        ElementRegistry.RegisterElement(new Alien());
+
+        ElementRegistry.RegisterElement(new Light());
+        ElementRegistry.RegisterElement(new Darkness());
+
+        ElementRegistry.RegisterElement(new Control());
+        ElementRegistry.RegisterElement(new CrystallineMagic.Elements.Target());
+        ElementRegistry.RegisterElement(new Motion());
+        ElementRegistry.RegisterElement(new Time());
+
+
+
+    }
 
     public void RegisterEntities(){
 

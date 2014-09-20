@@ -44,6 +44,8 @@ public class ModItemSpellModifier extends Item implements ISpellPart {
     public void getSubItems(Item item, CreativeTabs tab, List list)
     {
 
+        list.add(new ItemStack(item));
+
         if(SpellUtils.Modifiers.size() > 0)
         for(int i = 0; i < SpellUtils.Modifiers.size(); i++){
             ItemStack stack = new ItemStack(item);

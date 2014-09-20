@@ -6,10 +6,13 @@ import CrystallineApi.Spells.SpellType;
 import CrystallineApi.Spells.SpellUseType;
 import CrystallineApi.Spells.SpellUtils;
 import CrystallineMagic.Entity.EntitySpellProjectile;
+import CrystallineMagic.Utils.MagicEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.awt.*;
 
 public class Projectile implements SpellType {
     @Override
@@ -30,7 +33,18 @@ public class Projectile implements SpellType {
     public boolean OnUse(ItemStack SpellStack, EntityPlayer player, Entity ent, World world, int x, int y, int z, int BlockSide){
         EntitySpellProjectile EntSpell = new EntitySpellProjectile(world, player, 2.0F, SpellUtils.GetSpellComponents(SpellStack), SpellStack);
 
-            world.spawnEntityInWorld(EntSpell);
+
+        if(SpellUtils.GetSpellComponents(SpellStack) != null && SpellUtils.GetSpellComponents(SpellStack).length > 0){
+            Color c = new Color(255,255,255);
+
+            if(SpellUtils.GetSpellComponents(SpellStack)[0].GetComponentColor() != null)
+                c = SpellUtils.GetSpellComponents(SpellStack)[0].GetComponentColor();
+
+            MagicEffects.SpawnMagicEffect(world, (x - 0.8) + EntSpell.motionX, y + EntSpell.motionY, (z - 0.8) + EntSpell.motionZ, 2, 1, c);
+        }
+
+
+        world.spawnEntityInWorld(EntSpell);
 
 
         return true;

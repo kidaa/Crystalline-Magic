@@ -9,6 +9,7 @@ import CrystallineMagic.Blocks.ModBlockMagicalInfuser;
 import CrystallineMagic.Blocks.ModBlockPowerCrystal;
 import CrystallineMagic.Blocks.ModBlockRedCrystalOre;
 import CrystallineMagic.Blocks.ModBlockSpellCreationTable;
+import CrystallineMagic.Blocks.ModBlockSpellWritingTable;
 import CrystallineMagic.ItemBlocks.ModItemBlockEnergyBattery;
 import CrystallineMagic.ItemBlocks.ModItemBlockPowerCrystal;
 import CrystallineMagic.TileEntities.TileEntityEnergyBattery;
@@ -17,6 +18,7 @@ import CrystallineMagic.TileEntities.TileEntityMagicalEnergyRecharger;
 import CrystallineMagic.TileEntities.TileEntityMagicalInfuser;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
 import CrystallineMagic.TileEntities.TileEntitySpellCreationTable;
+import CrystallineMagic.TileEntities.TileEntitySpellWritingTable;
 import CrystallineMagic.Utils.Ref;
 import MiscUtils.Register.BlockRegister;
 import net.minecraft.block.Block;
@@ -33,7 +35,7 @@ public class ModBlocks {
     public static Block MagicalRecharger;
     public static Block MagicalDeconstructor;
     public static Block BlueCrystalOre, GreenCrystalOre, RedCrystalOre;
-    public static Block SpellCreationTable;
+    public static Block SpellCreationTable, SpellWritingTable;
     
     
     public static void RegisterBlocks(){
@@ -66,6 +68,9 @@ public class ModBlocks {
 
         SpellCreationTable = new ModBlockSpellCreationTable().setCreativeTab(CrystMagic.CreativeTab);
         Utils.Register(SpellCreationTable, "SpellCreationTable", TileEntitySpellCreationTable.class);
+
+        SpellWritingTable = new ModBlockSpellWritingTable().setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(SpellWritingTable, "SpellWritingTable", TileEntitySpellWritingTable.class);
 
         InfusedGemBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":InfusedGemBlock").setHardness(2F);
         Utils.Register(InfusedGemBlock, "InfusedGemBlock");

@@ -1,9 +1,25 @@
 package CrystallineMagic.Utils;
 
+import CrystallineApi.Elements.ElementBase;
+import CrystallineApi.Elements.ElementRegistry;
 import CrystallineApi.Recipes.RecipeHandler;
+import CrystallineApi.Recipes.WritingRecipeHandler;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.Main.ModItems;
+import CrystallineMagic.Spells.SpellComponents.Damage;
+import CrystallineMagic.Spells.SpellComponents.Dig;
+import CrystallineMagic.Spells.SpellComponents.ExplodeBlock;
+import CrystallineMagic.Spells.SpellComponents.Fire;
+import CrystallineMagic.Spells.SpellComponents.Gravity;
+import CrystallineMagic.Spells.SpellComponents.Heal;
+import CrystallineMagic.Spells.SpellComponents.LightningBolt;
+import CrystallineMagic.Spells.SpellComponents.LowGravity;
+import CrystallineMagic.Spells.SpellComponents.Regen;
+import CrystallineMagic.Spells.SpellComponents.SetTarget;
+import CrystallineMagic.Spells.SpellComponents.TeleportRandom;
+import CrystallineMagic.Spells.SpellComponents.TeleportTarget;
+import CrystallineMagic.Spells.SpellComponents.levitation;
 import CrystallineMagic.Utils.RecipeUtils.CrystalToolUpgradeRecipe;
 import CrystallineMagic.Utils.RecipeUtils.ItemRechargeRecipe;
 import CrystallineMagic.Utils.RecipeUtils.SpellPartCopy;
@@ -79,6 +95,23 @@ public class CraftingRecipes {
 
 
 
+        //Component Writing Recipes
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("FIRE"), ElementRegistry.GetElement("AIR"), ElementRegistry.GetElement("NATURE")}, new Fire());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("DARKNESS"), ElementRegistry.GetElement("CONTROL")}, new Damage());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("EARTH"), ElementRegistry.GetElement("VOID"), ElementRegistry.GetElement("DARKNESS"), ElementRegistry.GetElement("CONTROL")}, new Dig());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("ENERGY"), ElementRegistry.GetElement("DARKNESS"), ElementRegistry.GetElement("EARTH"), ElementRegistry.GetElement("FORCE")}, new ExplodeBlock());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("AIR"), ElementRegistry.GetElement("EARTH"), ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION")}, new Gravity());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("LIGHT"), ElementRegistry.GetElement("ENERGY")}, new Heal());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("SKY"), ElementRegistry.GetElement("LIGHTNING"), ElementRegistry.GetElement("FORCE"), ElementRegistry.GetElement("ENERGY")}, new LightningBolt());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("LIGHT"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("SKY")}, new LowGravity());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("TARGET")}, new SetTarget());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("LIGHT"), ElementRegistry.GetElement("ENERGY"), ElementRegistry.GetElement("TIME")}, new Regen());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("ALIEN")}, new TeleportRandom());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("ALIEN"), ElementRegistry.GetElement("TARGET")}, new TeleportTarget());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("SKY"), ElementRegistry.GetElement("AIR"), ElementRegistry.GetElement("TIME"), ElementRegistry.GetElement("MOTION")}, new levitation());
+
+
+        
 
     }
 }
