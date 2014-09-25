@@ -49,7 +49,7 @@ import CrystallineMagic.Spells.SpellTypes.Touch;
 import CrystallineMagic.Utils.Config;
 import CrystallineMagic.Utils.CraftingRecipes;
 import CrystallineMagic.Utils.MagicalMaterialUtils;
-import CrystallineMagic.Utils.RecipeUtils.SpellPartCopy;
+import CrystallineMagic.Utils.RecipeUtils.WritingRecipePageCreation;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.Network.ChannelUtils;
@@ -185,7 +185,7 @@ public class CrystMagic {
         }
 
 
-        RecipeSorter.register("CrystMagic:SpellPartCopy", SpellPartCopy.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
+        RecipeSorter.register("CrystMagic:SpellPartCopy", WritingRecipePageCreation.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 
 
         Collections.sort(SpellUtils.Types, new Comparator<SpellType>() {

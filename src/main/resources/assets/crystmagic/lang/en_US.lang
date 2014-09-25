@@ -25,6 +25,7 @@ item.spelltype.name=Spell Type
 item.spellmodifier.name=Spell Modifier
 item.spell.compound.name=Compound Spell
 item.spell.name=Spell
+item.writingrecipepage.name=Writing Recipe Page
 
 tile.powercrystal.name=Power Crystal
 tile.energybattery.name=Energy Battery
@@ -49,6 +50,7 @@ items.desc.spell.usage.block=Usage: Blocks
 items.desc.spell.usage.both=Usage: Blocks and Entities
 items.desc.spell.compatibleMods=Compatible modifiers:
 items.modifer.compatibleWithAll=Compatible with all spells
+items.desc.resPage.recipe=Recipe: $res
 
 gui.spellcreation.components=Components
 gui.spellcreation.modifiers=Modifiers
@@ -66,6 +68,8 @@ gui.magicinfo.creativemode=Creative mode only:
 gui.magicinfo.creativemode.increaselevel=Increase level
 gui.magicinfo.creativemode.increaseenergy=Increase energy
 gui.writingspell.create=Create
+gui.writingspell.load=Load: $load
+gui.writingspell.clear=Clear
 
 damage.soulorb.overuse=%1$s overused his magical abilities
 

@@ -5,6 +5,7 @@ import CrystallineApi.Spells.SpellComponent;
 import CrystallineApi.Spells.SpellModifier;
 import CrystallineApi.Spells.SpellType;
 import CrystallineMagic.Main.ModItems;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
@@ -13,11 +14,20 @@ import java.util.ArrayList;
 
 public class WritingRecipeHandler {
 
-    public static ArrayList recipes = new ArrayList();
+    public static ArrayList<WritingRecipe> recipes = new ArrayList<WritingRecipe>();
 
 
+    public static ArrayList<Item> Items(){
+        ArrayList<Item> t = new ArrayList<Item>();
 
-    private static boolean AreStacksEqual(ItemStack stack1, ItemStack stack2){
+        for(WritingRecipe res : recipes){
+            t.add(res.Output.getItem());
+        }
+
+        return t;
+    }
+
+    public static boolean AreStacksEqual(ItemStack stack1, ItemStack stack2){
         return stack1 == null && stack2 == null ||
                 stack1 != null && stack2 == null ? false :
                 stack1 == null && stack2 != null ? false :

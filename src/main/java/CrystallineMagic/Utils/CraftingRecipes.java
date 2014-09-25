@@ -20,9 +20,18 @@ import CrystallineMagic.Spells.SpellComponents.SetTarget;
 import CrystallineMagic.Spells.SpellComponents.TeleportRandom;
 import CrystallineMagic.Spells.SpellComponents.TeleportTarget;
 import CrystallineMagic.Spells.SpellComponents.levitation;
+import CrystallineMagic.Spells.SpellModifiers.AreaIncludePlayer;
+import CrystallineMagic.Spells.SpellModifiers.CostDecreaser;
+import CrystallineMagic.Spells.SpellModifiers.RangeExtender;
+import CrystallineMagic.Spells.SpellModifiers.StrengthUpgrade;
+import CrystallineMagic.Spells.SpellTypes.Area;
+import CrystallineMagic.Spells.SpellTypes.Projectile;
+import CrystallineMagic.Spells.SpellTypes.Self;
+import CrystallineMagic.Spells.SpellTypes.Target;
+import CrystallineMagic.Spells.SpellTypes.Touch;
 import CrystallineMagic.Utils.RecipeUtils.CrystalToolUpgradeRecipe;
 import CrystallineMagic.Utils.RecipeUtils.ItemRechargeRecipe;
-import CrystallineMagic.Utils.RecipeUtils.SpellPartCopy;
+import CrystallineMagic.Utils.RecipeUtils.WritingRecipePageCreation;
 import MiscUtils.Utils.CraftingUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
@@ -81,7 +90,7 @@ public class CraftingRecipes {
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.blaze_rod), Enchantment.silkTouch, 1));
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.ender_pearl), Enchantment.fortune, 2));
 
-        Utils.AddRecipe(new SpellPartCopy(new ItemStack(ModItems.SpellComponent)));
+        Utils.AddRecipe(new WritingRecipePageCreation(new ItemStack(ModItems.WritingRecipePage)));
 
         Utils.AddRecipe(new ItemRechargeRecipe(50, 0, new ItemStack(ModItems.InvisibilityCore), new ItemStack(ModItems.ChargedCrystal, 1, 0)));
         Utils.AddRecipe(new ItemRechargeRecipe(2, 0, new ItemStack(ModItems.ChargedCrystal), new ItemStack(Items.redstone, 1)));
@@ -110,8 +119,21 @@ public class CraftingRecipes {
         WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("ALIEN"), ElementRegistry.GetElement("TARGET")}, new TeleportTarget());
         WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("SKY"), ElementRegistry.GetElement("AIR"), ElementRegistry.GetElement("TIME"), ElementRegistry.GetElement("MOTION")}, new levitation());
 
+        //Type Writing Recipes
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellType), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("TARGET"), ElementRegistry.GetElement("FORCE")}, new Area());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellType), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("FORCE"), ElementRegistry.GetElement("AIR")}, new Projectile());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellType), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("TARGET"), ElementRegistry.GetElement("LIGHT")}, new Self());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellType), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("TARGET"), ElementRegistry.GetElement("NATURE")}, new Touch());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellType), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("TARGET")}, new Target());
 
-        
+        //Modifier Writing Recipes
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellModifier), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("NATURE"), ElementRegistry.GetElement("FORCE")}, new AreaIncludePlayer());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellModifier), new ElementBase[]{ElementRegistry.GetElement("FORCE"), ElementRegistry.GetElement("ENERGY"), ElementRegistry.GetElement("LIGHT")}, new StrengthUpgrade());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellModifier), new ElementBase[]{ElementRegistry.GetElement("FORCE"), ElementRegistry.GetElement("ENERGY"), ElementRegistry.GetElement("VOID"), ElementRegistry.GetElement("ALIEN")}, new CostDecreaser());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellModifier), new ElementBase[]{ElementRegistry.GetElement("ALIEN"), ElementRegistry.GetElement("NATURE"), ElementRegistry.GetElement("VOID"), ElementRegistry.GetElement("FORCE"), ElementRegistry.GetElement("TARGET")}, new RangeExtender());
+
+
+
 
     }
 }

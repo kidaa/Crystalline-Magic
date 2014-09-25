@@ -1,5 +1,6 @@
 package CrystallineMagic.Container;
 
+import CrystallineMagic.Gui.GuiObjects.Slots.SlotWritingRecipe;
 import CrystallineMagic.TileEntities.TileEntitySpellWritingTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -30,6 +31,7 @@ public class ContainerWriting extends Container {
         }
 
         addSlotToContainer(new Slot(tile, 0, 78, 52));
+        addSlotToContainer(new SlotWritingRecipe(tile, 1, 9, 53));
 
     }
 

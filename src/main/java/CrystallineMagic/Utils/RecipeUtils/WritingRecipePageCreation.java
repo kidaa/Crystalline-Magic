@@ -1,22 +1,20 @@
 package CrystallineMagic.Utils.RecipeUtils;
 
+import CrystallineApi.Recipes.WritingRecipeHandler;
+import CrystallineMagic.Items.WritingRecipePage;
 import CrystallineMagic.Main.ModItems;
-import CrystallineMagic.Spells.ISpellPart;
-import CrystallineApi.Spells.SpellComponent;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-
-public class SpellPartCopy implements IRecipe
+public class WritingRecipePageCreation implements IRecipe
 {
     ItemStack CopyItem;
 
 
-    public SpellPartCopy(ItemStack sp)
+    public WritingRecipePageCreation(ItemStack sp)
     {
         CopyItem = sp.copy();
     }
@@ -24,9 +22,9 @@ public class SpellPartCopy implements IRecipe
     @Override
     public boolean matches (InventoryCrafting inventorycrafting, World world) {
         int invLength = inventorycrafting.getSizeInventory();
-        boolean foundCopy = false;
-        boolean foundComp = false;
-        boolean foundParch = false;
+        boolean foundPage = false;
+        boolean foundPart = false;
+
 
         ItemStack tmpStack;
         for (int i = 0; i < invLength; ++i) {
@@ -34,30 +32,23 @@ public class SpellPartCopy implements IRecipe
             if (tmpStack != null && tmpStack.getItem() != null) {
 
 
-                if (tmpStack.getItem() instanceof ISpellPart) {
+                if (tmpStack.getItem() instanceof WritingRecipePage) {
 
-                    if (foundCopy)
+                    if (foundPage)
                         return false;
 
                     CopyItem = tmpStack;
 
-                    foundCopy = true;
+                    foundPage = true;
 
-                } else if (tmpStack.getItem() == ModItems.Parchment) {
+                } else if (WritingRecipeHandler.Items().contains(tmpStack.getItem())) {
 
-                    if(foundParch)
+                    if(foundPart)
                         return false;
 
-                    foundParch = true;
+                    foundPart = true;
 
-                } else if (tmpStack.getItem() == Items.dye && tmpStack.getItemDamage() == 0) {
-
-                    if(foundComp)
-                        return false;
-
-                    foundComp = true;
-
-                } else {
+                }  else {
 
 
                     if(tmpStack != null && tmpStack.getItem() != null)
@@ -65,7 +56,7 @@ public class SpellPartCopy implements IRecipe
                 }
             }
 
-            if (foundComp && foundCopy && foundParch) {
+            if (foundPage && foundPart) {
                 return true;
             }
 
@@ -78,47 +69,52 @@ public class SpellPartCopy implements IRecipe
     {
 
         int invLength = inventorycrafting.getSizeInventory();
-        ItemStack newSpell = null;
+        ItemStack out = new ItemStack(ModItems.WritingRecipePage);
 
         ItemStack tmpStack;
         ItemStack tg = null;
 
-        ArrayList<SpellComponent> list = new ArrayList<SpellComponent>();
 
         for (int i = 0; i < invLength; ++i)
         {
             tmpStack = inventorycrafting.getStackInSlot(i);
+
             if (tmpStack instanceof ItemStack)
             {
-                if (tmpStack.getItem() instanceof ISpellPart)
+                if (WritingRecipeHandler.Items().contains(tmpStack.getItem()))
                 {
                     tg = tmpStack;
                 }
             }
         }
 
+        if(tg != null) {
+            for(int i = 0; i < WritingRecipeHandler.recipes.size(); i++){
+                ItemStack stack = WritingRecipeHandler.recipes.get(i).Output;
 
-        newSpell = tg.copy();
+                if(WritingRecipeHandler.AreStacksEqual(tg, stack)){
+                    out.setTagCompound(new NBTTagCompound());
+                    out.getTagCompound().setInteger("ResNum", i);
 
-        if(newSpell != null) {
+                    CopyItem = out.copy();
 
-            CopyItem = newSpell.copy();
+                    return out;
+                }
 
-            newSpell.stackSize = 2;
-            return newSpell;
+            }
 
         }
 
 
 
 
-        return CopyItem;
+        return null;
     }
 
     @Override
     public int getRecipeSize ()
     {
-        return 9;
+        return 4;
     }
 
     @Override

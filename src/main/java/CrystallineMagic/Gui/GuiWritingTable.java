@@ -6,6 +6,9 @@ import CrystallineApi.Recipes.WritingRecipe;
 import CrystallineApi.Recipes.WritingRecipeHandler;
 import CrystallineMagic.Container.ContainerWriting;
 import CrystallineMagic.Gui.GuiObjects.Buttons.ElementButton;
+import CrystallineMagic.Gui.GuiObjects.Buttons.WritingClearGrid;
+import CrystallineMagic.Gui.GuiObjects.Buttons.WritingRecipeLoadButton;
+import CrystallineMagic.Items.WritingRecipePage;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Packets.CreateWriting;
 import CrystallineMagic.TileEntities.TileEntitySpellWritingTable;
@@ -15,6 +18,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -73,6 +77,11 @@ public class GuiWritingTable  extends GuiContainer {
 
     GuiButton Create;
     GuiButton Up, Down;
+    WritingRecipeLoadButton Load;
+    WritingClearGrid Clear;
+
+    ItemStack stackReq;
+
 
     int posMin = 0, posMax = 8;
     int Els = ElementRegistry.Elements.size();
@@ -89,9 +98,12 @@ public class GuiWritingTable  extends GuiContainer {
         int y = (this.height - this.ySize) / 2;
 
 
-        Create = new GuiButton(0, x + 63, y + 111, 46, 20, EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("gui.writingspell.create"));
+        Create = new GuiButton(0, x + 63, y + 111, 46, 20, EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("gui.writingspell.create") + EnumChatFormatting.RESET);
         Up = new GuiButton(1, x + 171, y + 5, 38, 20, "/" + ("\\"));
         Down = new GuiButton(2, x + 171, y + 97, 38, 20, "\\" + "/");
+
+        Load = new WritingRecipeLoadButton(Els * 2, x + 9, y + 75);
+        Clear = new WritingClearGrid(Els * 2 + 1, x + 9, y + 95);
 
 
         if((Els < 8)) {
@@ -115,6 +127,15 @@ public class GuiWritingTable  extends GuiContainer {
 
         }
 
+        Load.enabled = false;
+
+        if(tile.getStackInSlot(1) != null && tile.getStackInSlot(1).getItem() instanceof WritingRecipePage){
+            WritingRecipePage res = (WritingRecipePage)tile.getStackInSlot(1).getItem();
+            Load.enabled = res.GetStoredRecipe(tile.getStackInSlot(1)) != null;
+
+
+        }
+
         Create.enabled = Valid;
 
 
@@ -122,6 +143,8 @@ public class GuiWritingTable  extends GuiContainer {
         buttonList.add(Up);
         buttonList.add(Down);
         buttonList.add(Create);
+        buttonList.add(Load);
+        buttonList.add(Clear);
 
 
         for(int i = posMin; i < posMax; i++){
@@ -153,6 +176,64 @@ public class GuiWritingTable  extends GuiContainer {
 
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
+
+        if(bt instanceof WritingRecipeLoadButton){
+            if(tile.getStackInSlot(1) != null && tile.getStackInSlot(1).getItem() instanceof WritingRecipePage){
+
+                ItemStack stack = tile.getStackInSlot(1);
+                WritingRecipePage red = (WritingRecipePage)tile.getStackInSlot(1).getItem();
+
+                if(red.GetStoredRecipe(stack) != null){
+
+                    WritingRecipe res = red.GetStoredRecipe(stack);
+
+
+                    if(tile.getStackInSlot(0) != null){
+                        if(tile.getStackInSlot(0).getItem() == res.InputItem.getItem()){
+                            stackReq = res.InputItem;
+
+                        }
+                    }else if (tile.getStackInSlot(0) == null){
+                        stackReq = res.InputItem;
+                    }else{
+                        stackReq = null;
+                    }
+
+                    for(int i = 0; i < Elements.length; i++){
+                        Elements[i] = null;
+
+                    }
+
+                    for(ElementBase r : res.Elements){
+
+                        for(int i = 0; i < Elements.length; i++){
+                            if(Elements[i] == null){
+                                Elements[i] = new ElementButton(i + (Els + 50), x + GetPos((i+1))[0], y + GetPos((i+1))[1], r);
+                                break;
+                            }
+
+                        }
+                    }
+
+
+                }
+
+            }
+
+
+        }
+
+
+        if(bt instanceof WritingClearGrid){
+
+                    for(int i = 0; i < Elements.length; i++){
+                        Elements[i] = null;
+
+                    }
+
+            stackReq = null;
+
+        }
 
         if(bt instanceof ElementButton){
             if(id < Els + 50){
@@ -212,6 +293,7 @@ public class GuiWritingTable  extends GuiContainer {
 
                 PacketHandler.sendToServer(new CreateWriting(tile.xCoord, tile.yCoord, tile.zCoord, res.Elements, res.InputItem), CrystMagic.Utils.channels);
 
+                stackReq = null;
 
                 for(int i = 0; i < Elements.length; i++){
                    Elements[i] = null;
@@ -255,6 +337,27 @@ public class GuiWritingTable  extends GuiContainer {
 
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
+
+
+        if(stackReq != null && tile.getStackInSlot(0) != null && tile.getStackInSlot(0).getItem() != stackReq.getItem() || stackReq != null && tile.getStackInSlot(0) == null){
+
+            GL11.glPushMatrix();
+
+            float a = 0.4F;
+            float c = 0.8F;
+
+            GL11.glColor4f(c,c,c, a);
+
+            itemRender.renderWithColor = false;
+
+            itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), stackReq, x + 78, y + 52);
+
+            itemRender.renderWithColor = true;
+
+
+            GL11.glPopMatrix();
+
+        }
 
         initGui();
 
@@ -322,16 +425,68 @@ public class GuiWritingTable  extends GuiContainer {
 
 
         for (int i = 0; i < buttonList.size(); i++) {
+
+
             if (buttonList.get(i) instanceof ElementButton) {
+
                 GuiButton btn = (GuiButton) buttonList.get(i);
                 if (btn.func_146115_a()) {
-                    ElementButton el = (ElementButton)btn;
+                    ElementButton el = (ElementButton) btn;
 
-                    String[] desc = { el.element.Name };
+                    String[] desc = {el.element.Name};
 
                     List temp = Arrays.asList(desc);
                     drawHoveringText(temp, x, y, fontRendererObj);
                 }
+
+
+            }else if(buttonList.get(i) instanceof WritingRecipeLoadButton){
+                    GuiButton btn = (GuiButton) buttonList.get(i);
+
+                    if (btn.func_146115_a()){
+
+
+                        if(tile.getStackInSlot(1) != null && tile.getStackInSlot(1).getItem() instanceof WritingRecipePage){
+
+                            ItemStack stack = tile.getStackInSlot(1);
+
+                            WritingRecipePage itm = (WritingRecipePage)stack.getItem();
+
+                            if(itm.GetStoredRecipe(stack) != null){
+
+
+                                List temp = new ArrayList();
+                                temp.add(StatCollector.translateToLocal("gui.writingspell.load").replace("$load", itm.GetStoredRecipe(stack).Output.getDisplayName()));
+
+                                drawHoveringText(temp, x, y, fontRendererObj);
+
+                            }
+
+
+                        }
+
+
+
+                    }
+
+
+
+
+            }else if(buttonList.get(i) instanceof WritingClearGrid){
+                GuiButton btn = (GuiButton) buttonList.get(i);
+
+                if (btn.func_146115_a()) {
+
+
+                    List temp = new ArrayList();
+                    temp.add(StatCollector.translateToLocal("gui.writingspell.clear"));
+
+                    drawHoveringText(temp, x, y, fontRendererObj);
+
+                }
+
+
+
             }else if (buttonList.get(i) instanceof GuiButton){
 
                 GuiButton btn = (GuiButton) buttonList.get(i);

@@ -26,12 +26,22 @@ public class ModItemSpellType extends Item implements ISpellPart {
         setCreativeTab(CrystMagic.SpellPart);
     }
 
+
+    public String getItemStackDisplayName(ItemStack stack)
+    {
+
+        if(stack.getTagCompound() != null) {
+            return ("" + StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim() + " " + (stack.getTagCompound().getString("Type"));
+        }
+
+
+        return ("" + StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    }
+
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 
         if(stack.getTagCompound() != null){
-            list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC + "* " + stack.getTagCompound().getString("Type"));
-
 
             SpellType type = SpellUtils.GetTypeFromSpellType(stack);
 

@@ -37,12 +37,13 @@ public class ElementButton extends GuiButton {
             p_146112_1_.getTextureManager().bindTexture(element.Icon.iconL);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
+            int size = 16;
 
-            float scX = (float)16 / element.Icon.Xsize, scY = (float)16 / element.Icon.Ysize;
+            float scX = (float)size / element.Icon.Xsize, scY = (float)size / element.Icon.Ysize;
 
             GL11.glScalef(scX, scY, scX);
 
-            drawTexturedModalRect(xPosition * (element.Icon.Xsize / 16), yPosition * (element.Icon.Ysize / 16), element.Icon.Xpos, element.Icon.Ypos, element.Icon.Xsize, element.Icon.Ysize);
+            drawTexturedModalRect((int)(xPosition * ((double)element.Icon.Xsize / (double)size)), (int)(yPosition * ((double)element.Icon.Ysize / (double)size)), element.Icon.Xpos, element.Icon.Ypos, element.Icon.Xsize, element.Icon.Ysize);
 
 
             GL11.glPopMatrix();

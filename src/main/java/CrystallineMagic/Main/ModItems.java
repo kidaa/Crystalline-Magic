@@ -26,6 +26,7 @@ public class ModItems {
     public static Item Parchment;
     public static Item Spell;
     public static Item SpellComponent, SpellType, SpellModifier;
+    public static Item WritingRecipePage;
 
     public static Item SpellIconItem;
 
@@ -85,6 +86,9 @@ public class ModItems {
 
         Parchment = new Item().setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":Parchment").setMaxStackSize(1);
         Utils.Register(Parchment, "Parchment");
+
+        WritingRecipePage = new CrystallineMagic.Items.WritingRecipePage().setCreativeTab(CrystMagic.CreativeTab).setMaxStackSize(1).setTextureName(Ref.ModId + ":WritingRecipePage");
+        Utils.Register(WritingRecipePage, "WritingRecipePage");
 
         Spell = new ModItemSpell().setTextureName(Ref.ModId + ":Spell").setMaxStackSize(1).setCreativeTab(CrystMagic.SpellPart);
         Utils.Register(Spell, "Spell");
