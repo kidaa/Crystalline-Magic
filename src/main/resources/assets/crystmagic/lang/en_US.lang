@@ -25,7 +25,7 @@ item.spelltype.name=Spell Type
 item.spellmodifier.name=Spell Modifier
 item.spell.compound.name=Compound Spell
 item.spell.name=Spell
-item.writingrecipepage.name=Writing Recipe Page
+item.writingrecipepage.name=Spell Writing Recipe Page
 
 tile.powercrystal.name=Power Crystal
 tile.energybattery.name=Energy Battery

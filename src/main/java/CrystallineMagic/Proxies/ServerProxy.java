@@ -1,6 +1,6 @@
 package CrystallineMagic.Proxies;
 
-import CrystallineApi.Spells.SpellUtils;
+import CrystallineApi.Recipes.WritingRecipeHandler;
 import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModItems;
 import CrystallineMagic.Packets.SyncPlayerPropsPacket;
@@ -84,14 +84,13 @@ public class ServerProxy {
 
         int i1 = 0;
         int i2 = 1;
-        int i3 = 4;
+        int i3 = 1;
 
-        for(int i = 0; i < SpellUtils.Components.size(); i++){
-            ItemStack stack = new ItemStack(ModItems.SpellComponent);
+        for(int i = 0; i < WritingRecipeHandler.recipes.size(); i++){
+            ItemStack stack = new ItemStack(ModItems.WritingRecipePage);
 
             stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Comp", SpellUtils.Components.get(i).GetName());
-            stack.getTagCompound().setString("CompId", SpellUtils.Components.get(i).GetId());
+            stack.getTagCompound().setInteger("ResNum", i);
 
 
             ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
@@ -100,92 +99,18 @@ public class ServerProxy {
             chestGen = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST);
             chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
 
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
             chestGen = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH);
             chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
 
             chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST);
             chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
 
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
 
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
 
 
 
         }
 
 
-
-        for(int i = 0; i < SpellUtils.Modifiers.size(); i++){
-            ItemStack stack = new ItemStack(ModItems.SpellModifier);
-
-            stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Mod", SpellUtils.Modifiers.get(i).GetName());
-            stack.getTagCompound().setString("ModId", SpellUtils.Modifiers.get(i).GetId());
-
-
-            ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-
-
-        }
-
-
-        for(int i = 0; i < SpellUtils.Types.size(); i++){
-            ItemStack stack = new ItemStack(ModItems.SpellType);
-
-            stack.setTagCompound(new NBTTagCompound());
-            stack.getTagCompound().setString("Type", SpellUtils.Types.get(i).GetName());
-            stack.getTagCompound().setString("TypeId", SpellUtils.Types.get(i).GetId());
-
-
-            ChestGenHooks chestGen = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-            chestGen = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY);
-            chestGen.addItem(new WeightedRandomChestContent(stack, i1, i2, i3));
-
-
-
-        }
     }
 }
