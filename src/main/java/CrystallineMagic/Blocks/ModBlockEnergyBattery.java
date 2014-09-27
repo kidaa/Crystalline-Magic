@@ -23,6 +23,26 @@ import net.minecraft.world.World;
 public class ModBlockEnergyBattery extends ModBlockContainer {
 
 
+    @Override
+    public int getRenderType() {
+        return -1;
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l){
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube(){
+        return false;
+    }
+
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
+
+
     IIcon off, on;
 
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
@@ -103,7 +123,8 @@ public class ModBlockEnergyBattery extends ModBlockContainer {
 
             stack.stackTagCompound.setDouble("Power", tile.GetStoredEnergy());
 
-            if(stack != null){
+
+            if(stack != null && tile.GetStoredEnergy() > 0.0){
                 float spawnX = x + World.rand.nextFloat();
                 float spawnY = y + World.rand.nextFloat();
                 float spawnZ = z + World.rand.nextFloat();

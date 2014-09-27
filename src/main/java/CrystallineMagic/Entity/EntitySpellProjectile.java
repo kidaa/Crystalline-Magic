@@ -421,6 +421,8 @@ public class EntitySpellProjectile extends Entity implements IProjectile
 
 
     public void SpawnParticles(){
+
+
         if(Components != null && Components.length > 0){
             Color c = new Color(255,255,255);
 

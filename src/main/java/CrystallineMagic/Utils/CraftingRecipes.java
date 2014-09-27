@@ -91,6 +91,10 @@ public class CraftingRecipes {
         Utils.AddRecipe(new CrystalToolUpgradeRecipe(new ItemStack(ModItems.CrystalPickaxe), new ItemStack(Items.ender_pearl), Enchantment.fortune, 2));
 
         Utils.AddRecipe(new WritingRecipePageCreation(new ItemStack(ModItems.WritingRecipePage)));
+        Utils.AddShapelessRecipe(new ItemStack(ModItems.SpellComponent), new Object[]{ModItems.Spell, new ItemStack(Items.dye, 1, 4)});
+        Utils.AddShapelessRecipe(new ItemStack(ModItems.SpellModifier), new Object[]{ModItems.Spell, new ItemStack(Items.dye, 1, 1)});
+        Utils.AddShapelessRecipe(new ItemStack(ModItems.SpellType), new Object[]{ModItems.Spell, new ItemStack(Items.dye, 1, 11)});
+        Utils.AddShapelessRecipe(new ItemStack(ModItems.WritingRecipePage), new Object[]{ModItems.Parchment, Items.paper, new ItemStack(Items.dye, 1, 0)});
 
         Utils.AddRecipe(new ItemRechargeRecipe(50, 0, new ItemStack(ModItems.InvisibilityCore), new ItemStack(ModItems.ChargedCrystal, 1, 0)));
         Utils.AddRecipe(new ItemRechargeRecipe(2, 0, new ItemStack(ModItems.ChargedCrystal), new ItemStack(Items.redstone, 1)));
@@ -98,6 +102,7 @@ public class CraftingRecipes {
         Utils.AddRecipe(new ItemStack(ModItems.Parchment), new Object[]{"S  ", " P ", "  S", 'S', Items.stick, 'P', Items.paper});
         Utils.AddRecipe(new ItemStack(ModItems.Spell), new Object[]{"PPP", "PBP", "PPP", 'P', Items.paper, 'B', ModItems.Parchment});
         Utils.AddRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.SpellCreationTable), new Object[]{"WSW", "WPW", "WWW", Character.valueOf('W'), "plankWood", 'S', new ItemStack(ModItems.Spell), 'P', ModItems.Parchment}));
+        Utils.AddRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.SpellWritingTable), new Object[]{"WSW", "WPW", "WWW", Character.valueOf('W'), "plankWood", 'S', new ItemStack(ModItems.WritingRecipePage), 'P', ModItems.Parchment}));
 
         Utils.AddRecipe(new ItemStack(ModBlocks.PowerCrystal), new Object[]{"BPB", "GRG", "BPB", 'B', ModItems.BlueCrystal, 'P', ModItems.ChargedCrystal, 'G', ModItems.GreenCrystal, 'R', ModItems.RedCrystal});
 

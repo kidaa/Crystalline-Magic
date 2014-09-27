@@ -7,7 +7,6 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import org.lwjgl.opengl.GL11;
 
 public class EntityMagicEffectFX extends EntityFX {
 
@@ -46,7 +45,8 @@ public class EntityMagicEffectFX extends EntityFX {
     public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5)
     {
 
-        GL11.glPushMatrix();
+
+
         Minecraft.getMinecraft().renderEngine.bindTexture(particles);
 
         float agescale = 0.0F;
@@ -61,6 +61,7 @@ public class EntityMagicEffectFX extends EntityFX {
         float f12 = (float)(this.prevPosY + (this.posY - this.prevPosY) * f - interpPosY);
         float f13 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * f - interpPosZ);
 
+
         tessellator.setBrightness(240);
         tessellator.setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, 0.5F);
         tessellator.addVertexWithUV(f11 - f1 * f10 - f4 * f10, f12 - f2 * f10, f13 - f3 * f10 - f5 * f10, 0.0D, 1.0D);
@@ -68,7 +69,6 @@ public class EntityMagicEffectFX extends EntityFX {
         tessellator.addVertexWithUV(f11 + f1 * f10 + f4 * f10, f12 + f2 * f10, f13 + f3 * f10 + f5 * f10, 1.0D, 0.0D);
         tessellator.addVertexWithUV(f11 + f1 * f10 - f4 * f10, f12 - f2 * f10, f13 + f3 * f10 - f5 * f10, 0.0D, 0.0D);
 
-        GL11.glPopMatrix();
 
     }
 

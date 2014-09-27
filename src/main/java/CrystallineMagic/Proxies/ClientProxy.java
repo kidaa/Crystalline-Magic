@@ -5,8 +5,11 @@ import CrystallineMagic.Entity.FX.EntityMagicEffectFX;
 import CrystallineMagic.Entity.Render.EntitySpellProjectileRender;
 import CrystallineMagic.Keybinds.Keybinds;
 import CrystallineMagic.Main.ModBlocks;
+import CrystallineMagic.Rendering.Items.EnergyBatteryItemRender;
 import CrystallineMagic.Rendering.Items.PowerCrystalItemRender;
+import CrystallineMagic.Rendering.TileEntitys.TileEntityEnergyBatteryRender;
 import CrystallineMagic.Rendering.TileEntitys.TileEntityPowerCrystalRender;
+import CrystallineMagic.TileEntities.TileEntityEnergyBattery;
 import CrystallineMagic.TileEntities.TileEntityPowerCrystal;
 import MiscUtils.Register.KeyBind.KeybindRegistry;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -24,8 +27,10 @@ public class ClientProxy extends ServerProxy {
 
     public void registerRenderThings() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPowerCrystal.class, new TileEntityPowerCrystalRender());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnergyBattery.class, new TileEntityEnergyBatteryRender());
 
         MinecraftForgeClient.registerItemRenderer(new ItemStack(ModBlocks.PowerCrystal).getItem(), new PowerCrystalItemRender());
+        MinecraftForgeClient.registerItemRenderer(new ItemStack(ModBlocks.EnergyBattery).getItem(), new EnergyBatteryItemRender());
 
         RenderingRegistry.registerEntityRenderingHandler(EntitySpellProjectile.class, new EntitySpellProjectileRender());
 
