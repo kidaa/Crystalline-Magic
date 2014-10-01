@@ -19,6 +19,7 @@ import CrystallineMagic.Event.OnPlayerRespawn;
 import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
+import CrystallineMagic.Items.ModItemMagicArmor;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
 import CrystallineMagic.Packets.CreateWriting;
 import CrystallineMagic.Packets.MagicSendParticleSync;
@@ -65,6 +66,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
@@ -329,6 +331,36 @@ public class CrystMagic {
         EntityRegistry.registerModEntity(EntitySpellProjectile.class, "SpellProjectile", 0, this, 128, 1, true);
 
 
+    }
+
+
+    public static boolean HasMagicRoobes(EntityPlayer player){
+        if(player != null && player.inventory.armorInventory != null) {
+
+            if (player.inventory.armorInventory[0] != null
+                    && player.inventory.armorInventory[1] != null
+                    && player.inventory.armorInventory[2] != null
+                    && player.inventory.armorInventory[3] != null) {
+                if (
+
+                        player.inventory.armorInventory[0].getItem() instanceof ModItemMagicArmor
+                                && player.inventory.armorInventory[1].getItem() instanceof ModItemMagicArmor
+                                && player.inventory.armorInventory[2].getItem() instanceof ModItemMagicArmor
+                                && player.inventory.armorInventory[3].getItem() instanceof ModItemMagicArmor) {
+
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }else {
+                return false;
+
+            }
+        }
+
+
+        return true;
     }
 
 }

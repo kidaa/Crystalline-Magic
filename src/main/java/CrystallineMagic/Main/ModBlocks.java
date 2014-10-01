@@ -36,6 +36,7 @@ public class ModBlocks {
     public static Block MagicalDeconstructor;
     public static Block BlueCrystalOre, GreenCrystalOre, RedCrystalOre;
     public static Block SpellCreationTable, SpellWritingTable;
+
     
     
     public static void RegisterBlocks(){

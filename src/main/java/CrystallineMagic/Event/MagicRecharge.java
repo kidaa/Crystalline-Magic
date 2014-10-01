@@ -1,5 +1,6 @@
 package CrystallineMagic.Event;
 
+import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Utils.MagicInfoStorage;
 import CrystallineMagic.Utils.MagicRef;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -22,8 +23,11 @@ public class MagicRecharge {
 
           int g = (data.GetPlayerLevel() / 3);
 
+
+
           if(g <= 0)
               g = 1;
+
 
 
           data.Recharge = MagicRef.BaseRechargeTime / g;
@@ -36,7 +40,15 @@ public class MagicRecharge {
               if(data.RechargeTime >= data.Recharge){
                   data.RechargeTime = 0;
 
-                 data.IncreasePlayerEnergy(1 + (data.GetPlayerMaxEnergy() / 500));
+                  double x = 1 + (data.GetPlayerMaxEnergy() / 500);
+
+                  if(CrystMagic.HasMagicRoobes(event.player))
+                  {
+
+                      x *= 3;
+                  }
+
+                 data.IncreasePlayerEnergy(x);
 
 
               }else{

@@ -3,8 +3,9 @@ package CrystallineMagic.Main;
 import CrystallineMagic.Items.ModItemChargedCrystal;
 import CrystallineMagic.Items.ModItemCrystalBlade;
 import CrystallineMagic.Items.ModItemCrystalPickaxe;
-import CrystallineMagic.Items.ModItemInvisArmor;
-import CrystallineMagic.Items.ModItemInvisibilityCore;
+import CrystallineMagic.Items.ModItemEnderBlade;
+import CrystallineMagic.Items.ModItemMagicArmor;
+import CrystallineMagic.Items.ModItemInvisibilityAmulet;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
 import CrystallineMagic.Items.ModItemSpellComponent;
@@ -20,13 +21,12 @@ public class ModItems {
 
 
     public static Item InvisHelmet, InvisChestPlate, InvisLeggings, InvisBoots;
-    public static Item BlueCrystal, GreenCrystal, RedCrystal, ChargedCrystal, InvisibilityCore;
+    public static Item BlueCrystal, GreenCrystal, RedCrystal, ChargedCrystal, InvisibilityAmulet;
     public static Item CrystalSilk, CrystalBlade, CrystalPickaxe, CrystalInfusedMetal, CrystalInfusedGem;
-    public static Item SoulOrb;
-    public static Item Parchment;
-    public static Item Spell;
+    public static Item SoulOrb, Spell, Parchment;
     public static Item SpellComponent, SpellType, SpellModifier;
     public static Item WritingRecipePage;
+    public static Item DarkIngot, EnderIngot, DragonScale, EnderGem, EnderBlade;
 
     public static Item SpellIconItem;
 
@@ -39,16 +39,16 @@ public class ModItems {
         ItemRegister Utils = new ItemRegister(CrystMagic.config, Ref.ModId);
 
 
-        InvisHelmet =  (new ModItemInvisArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 0, 1)).setUnlocalizedName("InvisHelmet").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisHelmet");
+        InvisHelmet =  (new ModItemMagicArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 0, 1)).setUnlocalizedName("InvisHelmet").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisHelmet");
         Utils.Register(InvisHelmet, "InvisHelmet");
 
-        InvisChestPlate =  (new ModItemInvisArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 1, 2)).setUnlocalizedName("InvisChestPlate").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisChestPlate");
+        InvisChestPlate =  (new ModItemMagicArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 1, 2)).setUnlocalizedName("InvisChestPlate").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisChestPlate");
         Utils.Register(InvisChestPlate, "InvisChestPlate");
 
-        InvisLeggings =  (new ModItemInvisArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 2, 3)).setUnlocalizedName("InvisLeggings").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisLeggings");
+        InvisLeggings =  (new ModItemMagicArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 2, 3)).setUnlocalizedName("InvisLeggings").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisLeggings");
         Utils.Register(InvisLeggings, "InvisLeggings");
 
-        InvisBoots =  (new ModItemInvisArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 3, 4)).setUnlocalizedName("InvisBoots").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisBoots");
+        InvisBoots =  (new ModItemMagicArmor(InvisArmor, CrystMagic.proxy.addArmor("Invis"), 3, 4)).setUnlocalizedName("InvisBoots").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:InvisBoots");
         Utils.Register(InvisBoots, "InvisBoots");
 
         BlueCrystal = new Item().setUnlocalizedName("BlueCrystal").setCreativeTab(CrystMagic.CreativeTab).setTextureName("crystmagic:BlueCrystal");
@@ -66,8 +66,8 @@ public class ModItems {
         SoulOrb = new ModItemSoulOrb().setUnlocalizedName("SoulOrb").setCreativeTab(CrystMagic.CreativeTab).setTextureName(Ref.ModId + ":SoulOrb");
         Utils.Register(SoulOrb, "SoulOrb");
 
-        InvisibilityCore = new ModItemInvisibilityCore().setUnlocalizedName("InvisibilityCore").setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(InvisibilityCore, "InvisibilityCore");
+        InvisibilityAmulet = new ModItemInvisibilityAmulet().setUnlocalizedName("InvisibilityCore").setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(InvisibilityAmulet, "InvisibilityAmulet");
 
         CrystalSilk = new Item().setCreativeTab(CrystMagic.CreativeTab).setUnlocalizedName("CrystalSilk").setTextureName("crystmagic:CrystalSilk");
         Utils.Register(CrystalSilk, "CrystalSilk");
@@ -101,6 +101,26 @@ public class ModItems {
 
         SpellModifier = new ModItemSpellModifier().setTextureName(Ref.ModId + ":SpellModifier");
         Utils.Register(SpellModifier, "SpellModifier");
+
+
+
+        //Ender
+
+        EnderIngot = new Item().setTextureName(Ref.ModId + ":EnderIngot").setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(EnderIngot, "EnderIngot");
+
+        DarkIngot = new Item().setTextureName(Ref.ModId + ":DarkMetalIngot").setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(DarkIngot, "DarkMetalIngot");
+
+        DragonScale = new Item().setTextureName(Ref.ModId + ":DragonScale").setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(DragonScale, "DragonScale");
+
+        EnderGem = new Item().setTextureName(Ref.ModId + ":EnderGem").setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(EnderGem, "EnderGem");
+
+        EnderBlade = new ModItemEnderBlade().setTextureName(Ref.ModId + ":EnderBlade").setCreativeTab(CrystMagic.CreativeTab);
+        Utils.Register(EnderBlade, "EnderBlade");
+
 
 
 

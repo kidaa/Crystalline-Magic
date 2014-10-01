@@ -88,6 +88,7 @@ dependencies {
 		"Libs/CodeChickenCore-${config.minecraft_version}-${config.ccc_version}-dev.jar",
 		"Libs/NotEnoughItems-${config.minecraft_version}-${config.nei_version}-dev.jar",
 		"Libs/MiscUtils-deobf-${config.minecraft_version}-${config.miscutils_version}.jar",
+		"Libs/Baubles-deobf-${config.minecraft_version}-${config.baubles_version}.jar",
 		)
 }
 

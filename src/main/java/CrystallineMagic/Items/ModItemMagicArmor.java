@@ -8,13 +8,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-public class ModItemInvisArmor extends ItemArmor {
+public class ModItemMagicArmor extends ItemArmor {
 
     private String iconName;
     private int ArmorTypeNumber;
 
 
-    public ModItemInvisArmor(ArmorMaterial par2EnumArmorMaterial, int par3, int par4, int par5) {
+    public ModItemMagicArmor(ArmorMaterial par2EnumArmorMaterial, int par3, int par4, int par5) {
         super(par2EnumArmorMaterial, par3, par4);
 
     }
