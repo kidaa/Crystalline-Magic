@@ -16,6 +16,7 @@ import net.minecraftforge.common.ChestGenHooks;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class ServerProxy {
 
@@ -85,8 +86,9 @@ public class ServerProxy {
         int i1 = 0;
         int i2 = 1;
         int i3 = 1;
+        int g = new Random().nextInt(WritingRecipeHandler.recipes.size());
 
-        for(int i = 0; i < WritingRecipeHandler.recipes.size(); i++){
+        for(int i = 0; i < g; i++){
             ItemStack stack = new ItemStack(ModItems.WritingRecipePage);
 
             stack.setTagCompound(new NBTTagCompound());

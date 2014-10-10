@@ -53,9 +53,6 @@ public class CraftingRecipes {
         RecipeHandler.RegisterInfusionRecipe(ModBlocks.InfusedMetalBlock, new ItemStack(Blocks.iron_block), new Object[]{ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal}, 90);
         RecipeHandler.RegisterInfusionRecipe(ModBlocks.InfusedGemBlock, new ItemStack(Blocks.diamond_block), new Object[]{ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal}, 90);
         RecipeHandler.RegisterInfusionRecipe(new ItemStack(ModItems.ChargedCrystal, 1, ModItems.ChargedCrystal.getMaxDamage()), new ItemStack(ModItems.RedCrystal), new Object[]{ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal, ModItems.BlueCrystal}, 150);
-        RecipeHandler.RegisterInfusionRecipe(ModItems.EnderGem, new ItemStack(ModItems.CrystalInfusedGem), new Object[]{Blocks.end_stone, Blocks.end_stone, Blocks.end_stone, Blocks.end_stone, Items.ender_pearl, Items.ender_pearl, Items.ender_pearl, Items.ender_pearl}, 150);
-        RecipeHandler.RegisterInfusionRecipe(ModItems.EnderIngot, new ItemStack(Items.iron_ingot), new Object[]{Items.ender_pearl, Items.ender_pearl, Items.ender_pearl, Items.ender_pearl, ModItems.EnderGem}, 200);
-        RecipeHandler.RegisterInfusionRecipe(ModItems.DarkIngot, new ItemStack(ModItems.EnderIngot), new Object[]{ModItems.EnderGem, ModItems.EnderGem, ModItems.EnderGem, ModItems.EnderGem, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot}, 200);
 
         RecipeHandler.RegisterInfusionRecipe(ModItems.CrystalPickaxe, new ItemStack(Items.diamond_pickaxe), new Object[]{ModItems.CrystalInfusedMetal, ModItems.CrystalInfusedMetal, ModItems.CrystalInfusedGem, ModItems.GreenCrystal, ModItems.GreenCrystal, ModItems.RedCrystal, ModItems.RedCrystal, ModItems.ChargedCrystal}, 1000);
         RecipeHandler.RegisterInfusionRecipe(ModItems.CrystalBlade, new ItemStack(Items.diamond_sword), new Object[]{ModItems.CrystalInfusedMetal, ModItems.CrystalInfusedMetal, ModItems.CrystalInfusedGem, ModItems.GreenCrystal, ModItems.GreenCrystal, ModItems.RedCrystal, ModItems.RedCrystal, ModItems.ChargedCrystal}, 1000);
@@ -107,7 +104,6 @@ public class CraftingRecipes {
         Utils.AddRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.SpellWritingTable), new Object[]{"WSW", "WPW", "WWW", Character.valueOf('W'), "plankWood", 'S', new ItemStack(ModItems.WritingRecipePage), 'P', ModItems.Parchment}));
 
         Utils.AddRecipe(new ItemStack(ModBlocks.PowerCrystal), new Object[]{"BPB", "GRG", "BPB", 'B', ModItems.BlueCrystal, 'P', ModItems.ChargedCrystal, 'G', ModItems.GreenCrystal, 'R', ModItems.RedCrystal});
-        Utils.AddRecipe(new ItemStack(ModItems.EnderBlade), new Object[]{"E", "E", "S", 'E', ModItems.EnderIngot, 'S', Items.stick});
 
 
 

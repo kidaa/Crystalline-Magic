@@ -132,7 +132,7 @@ public class CrystMagic {
                 }
             }
             catch (Exception e) {
-                System.err.println("Severe error, please report this to the mod author:");
+                System.err.println("Potion modification crashed in CrystallineMagic");
                 System.err.println(e);
             }
         }

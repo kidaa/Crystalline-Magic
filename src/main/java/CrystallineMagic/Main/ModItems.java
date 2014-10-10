@@ -3,9 +3,8 @@ package CrystallineMagic.Main;
 import CrystallineMagic.Items.ModItemChargedCrystal;
 import CrystallineMagic.Items.ModItemCrystalBlade;
 import CrystallineMagic.Items.ModItemCrystalPickaxe;
-import CrystallineMagic.Items.ModItemEnderBlade;
-import CrystallineMagic.Items.ModItemMagicArmor;
 import CrystallineMagic.Items.ModItemInvisibilityAmulet;
+import CrystallineMagic.Items.ModItemMagicArmor;
 import CrystallineMagic.Items.ModItemSoulOrb;
 import CrystallineMagic.Items.ModItemSpell;
 import CrystallineMagic.Items.ModItemSpellComponent;
@@ -26,7 +25,6 @@ public class ModItems {
     public static Item SoulOrb, Spell, Parchment;
     public static Item SpellComponent, SpellType, SpellModifier;
     public static Item WritingRecipePage;
-    public static Item DarkIngot, EnderIngot, DragonScale, EnderGem, EnderBlade;
 
     public static Item SpellIconItem;
 
@@ -101,28 +99,6 @@ public class ModItems {
 
         SpellModifier = new ModItemSpellModifier().setTextureName(Ref.ModId + ":SpellModifier");
         Utils.Register(SpellModifier, "SpellModifier");
-
-
-
-        //Ender
-
-        EnderIngot = new Item().setTextureName(Ref.ModId + ":EnderIngot").setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(EnderIngot, "EnderIngot");
-
-        DarkIngot = new Item().setTextureName(Ref.ModId + ":DarkMetalIngot").setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(DarkIngot, "DarkMetalIngot");
-
-        DragonScale = new Item().setTextureName(Ref.ModId + ":DragonScale").setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(DragonScale, "DragonScale");
-
-        EnderGem = new Item().setTextureName(Ref.ModId + ":EnderGem").setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(EnderGem, "EnderGem");
-
-        EnderBlade = new ModItemEnderBlade().setTextureName(Ref.ModId + ":EnderBlade").setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(EnderBlade, "EnderBlade");
-
-
-
 
 
 
