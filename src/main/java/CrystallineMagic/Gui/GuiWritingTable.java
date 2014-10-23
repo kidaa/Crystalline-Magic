@@ -33,6 +33,7 @@ public class GuiWritingTable  extends GuiContainer {
 
     private final ResourceLocation Texture = new ResourceLocation(Ref.ModId.toLowerCase(), "textures/gui/SpellWritingGui.png");
 
+    public int x, y, z;
 
     /**
      * Recipe location slots
@@ -70,7 +71,7 @@ public class GuiWritingTable  extends GuiContainer {
         return new int[]{0,0};
     }
 
-    ElementButton[] Elements = new ElementButton[8];
+    public ElementButton[] Elements = new ElementButton[8];
     WritingRecipe res = null;
 
     TileEntitySpellWritingTable tile;
@@ -251,6 +252,10 @@ public class GuiWritingTable  extends GuiContainer {
 
 
 
+
+
+
+
             }else{
 
 
@@ -309,6 +314,10 @@ public class GuiWritingTable  extends GuiContainer {
         this.xSize = 216;
         this.ySize = 217;
         this.tile = tile;
+
+            x = tile.xCoord;
+            y = tile.yCoord;
+            z = tile.zCoord;
 
             if(Els < 8)
                 posMax = Els;
