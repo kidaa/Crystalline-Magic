@@ -8,7 +8,7 @@ import java.io.File;
 public class Config extends ConfigBase{
 
     public Config(String Loc){
-        super(new Configuration(new File(Loc + "/tm1990's mods/CrystallineMagic.cfg")));
+        super(new Configuration(new File(Loc + "/MiscUtils mods/CrystallineMagic.cfg")));
         InitConfig();
     }
 
