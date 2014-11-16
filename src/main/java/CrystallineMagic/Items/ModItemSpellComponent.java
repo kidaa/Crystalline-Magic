@@ -34,7 +34,7 @@ public class ModItemSpellComponent extends Item implements ISpellPart{
         }
 
 
-        return ("" + StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return StatCollector.translateToLocal("items.desc.spellComponent.blank");
     }
 
     @SideOnly(Side.CLIENT)

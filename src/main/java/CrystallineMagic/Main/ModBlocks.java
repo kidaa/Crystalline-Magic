@@ -44,40 +44,40 @@ public class ModBlocks {
 
 
         BlueCrystalOre = new ModBlockBlueCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId.toLowerCase() + ":BlueCrystalOre");
-        Utils.Register(BlueCrystalOre, "BlueCrystalOre");
+        Utils.Register(BlueCrystalOre, "Blue Crystal Ore");
 
         GreenCrystalOre = new ModBlockGreenCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId.toLowerCase() + ":GreenCrystalOre");
-        Utils.Register(GreenCrystalOre, "GreenCrystalOre");
+        Utils.Register(GreenCrystalOre, "Green Crystal Ore");
 
         RedCrystalOre = new ModBlockRedCrystalOre().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId.toLowerCase() + ":RedCrystalOre");
-        Utils.Register(RedCrystalOre, "RedCrystalOre");
+        Utils.Register(RedCrystalOre, "Red Crystal Ore");
 
         PowerCrystal = new ModBlockPowerCrystal().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":PowerCrystal");
-        Utils.Register(PowerCrystal, ModItemBlockPowerCrystal.class, "PowerCrystal", TileEntityPowerCrystal.class);
+        Utils.Register(PowerCrystal, ModItemBlockPowerCrystal.class, "Power Crystal", TileEntityPowerCrystal.class);
 
         MagicalDeconstructor = new ModBlockMagicalDeconstructor().setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(MagicalDeconstructor, "MagicalDeconstructor", TileEntityMagicalDecontructor.class);
+        Utils.Register(MagicalDeconstructor, "Magical material De-constructor", TileEntityMagicalDecontructor.class);
 
         MagicalInfuser = new ModBlockMagicalInfuser().setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(MagicalInfuser, "MagicalInfuser", TileEntityMagicalInfuser.class);
+        Utils.Register(MagicalInfuser, "Magical Infuser", TileEntityMagicalInfuser.class);
 
         EnergyBattery = new ModBlockEnergyBattery().setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":EnergyBattery");
-        Utils.Register(EnergyBattery, ModItemBlockEnergyBattery.class, "EnergyBattery", TileEntityEnergyBattery.class);
+        Utils.Register(EnergyBattery, ModItemBlockEnergyBattery.class, "Energy Battery", TileEntityEnergyBattery.class);
 
         MagicalRecharger = new ModBlockMagicalEnergyRecharger().setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(MagicalRecharger, "MagicalEnergyRecharger", TileEntityMagicalEnergyRecharger.class);
+        Utils.Register(MagicalRecharger, "Magical Energy Re-charger", TileEntityMagicalEnergyRecharger.class);
 
         SpellCreationTable = new ModBlockSpellCreationTable().setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(SpellCreationTable, "SpellCreationTable", TileEntitySpellCreationTable.class);
+        Utils.Register(SpellCreationTable, "Spell Creation Table", TileEntitySpellCreationTable.class);
 
         SpellWritingTable = new ModBlockSpellWritingTable().setCreativeTab(CrystMagic.CreativeTab);
-        Utils.Register(SpellWritingTable, "SpellWritingTable", TileEntitySpellWritingTable.class);
+        Utils.Register(SpellWritingTable, "Spell Writing Table", TileEntitySpellWritingTable.class);
 
         InfusedGemBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":InfusedGemBlock").setHardness(2F);
-        Utils.Register(InfusedGemBlock, "InfusedGemBlock");
+        Utils.Register(InfusedGemBlock, "Infused Gem Block");
 
         InfusedMetalBlock = new BlockCompressed(MapColor.blueColor).setCreativeTab(CrystMagic.CreativeTab).setBlockTextureName(Ref.ModId + ":InfusedMetalBlock").setHardness(2F);
-        Utils.Register(InfusedMetalBlock, "InfusedMetalBlock");
+        Utils.Register(InfusedMetalBlock, "Infused Metal Block");
 
 
         

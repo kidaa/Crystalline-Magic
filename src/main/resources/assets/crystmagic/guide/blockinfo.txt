@@ -1,0 +1,23 @@
+//Ores
+block.info.blue_crystal_ore=The blue crystal ore is the first of three crystal worldgen ores which each gives a different type of crystal when mined.
+block.info.green_crystal_ore=The blue crystal ore is the second of three crystal worldgen ores which each gives a different type of crystal when mined.
+block.info.red_crystal_ore=The red crystal ore is the third of three crystal worldgen ores which each gives a different type of crystal when mined.
+
+//PowerGeneration
+block.info.power_crystal=The power crystal is a magical structure that will over time generate energy and emit it to nearby blocks that can accept it.
+block.info.magical_material_de-constructor=The magical material de-constructor is another energy generation source. It generates its energy when given items. When given a item the item will be consumed and turned into energy that can then be emitted by applying a redstone signal to the block.
+ 
+ //PowerConsumption
+ block.info.magical_infuser=The magical infuser is a energy accepting block which can be used to infuse different items with others and magic to create other magical items.
+ block.info.magical_energy_re-charger=The magical energy re-charger is another energy accepting block. When the re-charger receives energy it will then try to use that energy to charge the item stored inside of it. It will only be successful if the item has been made to accept it. 
+ 
+ //PowerStorage
+ block.info.energy_battery=The energy battery is a energy storage unit which will receive energy from nearby energy source and will store it until applied a redstone signal then it will emit it to another accepting block nearby.
+ 
+ //SpellCreation
+ block.info.spell_creation_table=The spell creation table is one of the main parts in the spell creation system. The spell creation table is used to assemble different spell parts into a finished spell. The spell creation table requires a spell type, and at least one spell component but it can accept up to 9 components and up to 9 modifiers. To successful assemble the spell the soul energy capacity of the soul orbs owner has to be equal or grater to that amount it would take to cast the spell.
+ block.info.spell_writing_table=The spell writing table is used to create the different spell parts that are used to assemble a spell in the spell creation table. The spell writing table takes a one unfinished spell part in the middle and up to 8 different elements that make up the spell part. For easier creation of spell spell writing recipe pages can be found in dungeons and can then be loaded into the spell writing table.
+ 
+ //GemBlocks
+ block.info.crystal_infused_gem_block=The crystal infused gem block together with the crystal infused metal block is a storage block for the item components and a crafting component in some recipes.
+  block.info.crystal_infused_metal_block=The crystal infused metal block together with the crystal infused gem block is a storage block for the item components and a crafting component in some recipes.

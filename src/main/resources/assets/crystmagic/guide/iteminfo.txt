@@ -1,0 +1,32 @@
+//Armor
+item.info.crystal_infused_hood=The crystal infused hood is a part of the crystal infused armor set. The armor does not protect against any type of damage but does not break either. What the armor does when the whole set is worn is to reduce the cost of spell casting.
+item.info.crystal_infused_robes=The crystal infused robes is a part of the crystal infused armor set. The armor does not protect against any type of damage but does not break either. What the armor does when the whole set is worn is to reduce the cost of spell casting.
+item.info.crystal_infused_leggings=The crystal infused leggings is a part of the crystal infused armor set. The armor does not protect against any type of damage but does not break either. What the armor does when the whole set is worn is to reduce the cost of spell casting.
+item.info.crystal_infused_boots=The crystal infused boots is a part of the crystal infused armor set. The armor does not protect against any type of damage but does not break either. What the armor does when the whole set is worn is to reduce the cost of spell casting.
+
+//Crystals
+item.info.blue_crystal=The blue crystal is the first of the three items that are obtained by mining one of the three worldgen ores added by CrystallineMagic.
+item.info.green_crystal=The green crystal is second of the three items that are obtained by mining one of the three worldgen ores added by CrystallineMagic.
+item.info.red_crystal=The red crystal is the third of the three items that are obtained by mining one of the three worldgen ores added by CrystallineMagic.
+
+//EnergyStorage
+item.info.charged_crystal=The charged crystal is a energy storage item. It can be charged by either combining it with redstone or glowstone in a crafting grid or by putting it in a magical energy re-charger. The charged crystal can also be used as a power source for some items like the crystal blade in order to increase the attack damage.
+ 
+//SpellSystem
+item.info.soul_orb=The soul orb is what you have to use in order to access your soul energy to perform spell or spell creation. When the soul orb is created it is unbound simply shift-right click with it in your hand in order to link it. When it is linked you unlock the ability to use spells.
+item.info.invisibility_amulet=The invisibility amulet requires the mod Baubles to be installed in order to work properly. To use it place it in your baubles amulet slot and then it will start draining your soul energy but make you invisible as long as you have enough energy. While invisible no mobs or players can see you.
+item.info.parchment=The spell parchment is crafting item used for creating the unfinished spell parts and in the creation of the spell writing and creation table.
+item.info.writing_recipe_page=The spell writing recipe page is a item that can be found in different dungeon chest and can then be used to load a recipe into the spell writing table. The spell writing recipe page can also be made by combining a spell parchment, a piece of paper and a ink sac in a crafting grid. And you can also store a spell part on a empty page by combining them in a crafting grid.
+item.info.spell=The blank spell item is the main item when creating a spell. The spell item wont do anything as long as it is blank to add functionality you have to assemble a spell in the spell creation table. When assembled the spell can be activated by the method the spell type decides for example Spell Type Touch will activate when right-clicking something with the spell. The spell will also only be activated if the player has enough energy to cast it. The players energy capacity will increase over time with spell usage. 
+item.info.spell_type=The spell type is the most important of the three spell parts and is a required component. The spell type decides how the spell will be activated and how the spell will work.
+item.info.spell_component=The spell component is the second most important spell part and at least one component is required for each spell. Each component increases the spell cost and each component adds a functionality to the spell.
+item.info.spell_modifier=The spell modifier is a optional spell part which changes minor things with the spell like the spell strength or range. Most spell modifiers increase the spell cost when modifying the spell.
+
+//CraftingItem
+item.info.crystal_infused_silk=The crystal infused silk is string and leather infused with a blue crystal and magic to create a stronger magical silk which can be used to create different equipment like the invisibility amulet and the crystal infused armor.
+item.info.crystal_infused_metal=Crystal infused metal is a component created when infusing iron with crystals and small amounts of magic. The result is a stronger metal which can then be used to create tools like the Crystal Pickaxe or the Crystal Blade.
+item.info.crystal_infused_gem=The crystal infused game is a product of the same treatment as the crystal infused metal and there for has some of the same effects as the crystal infused metal only stronger.
+
+//Tools
+item.info.crystal_blade=The crystal blade is powerful sword made by infusing a diamond sword with high amounts of energy and magical resources to create a unbreakable sword. When in use the crystal blade will try to drain any charged crystal in your inventory in order to increase the hit. The crystal blade can also be upgraded through different unknown recipes.
+item.info.crystal_pickaxe=The crystal pickaxe when undergone the same treatment as the crystal blade will gain some of the same abilities as the crystal blade. The crystal pickaxe is also unbreakable and can also be upgraded just like the crystal blade.  

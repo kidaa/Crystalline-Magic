@@ -44,10 +44,12 @@ public class ModItemSpell extends Item {
         if(SpellUtils.GetSpellType(stack) != null){
             if(SpellUtils.GetSpellComponents(stack).length > 1){
                 return StatCollector.translateToLocal("item.spell.compound.name");
+            }else if(SpellUtils.GetSpellComponents(stack).length > 0){
+                return StatCollector.translateToLocal("item.spell.name");
             }
         }
 
-        return StatCollector.translateToLocal("item.spell.name");
+        return StatCollector.translateToLocal("items.desc.spell.blank");
     }
 
     @Override
@@ -248,8 +250,6 @@ public class ModItemSpell extends Item {
 
         if(Comps.length > 0){
             list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.cost").replace("$cost", (int)SpellUtils.GetSpellCost(stack) + ""));
-        }else{
-            list.add(EnumChatFormatting.BLUE + "" + EnumChatFormatting.ITALIC + "* " + StatCollector.translateToLocal("items.desc.spell.empty"));
         }
     }
 }

@@ -20,6 +20,8 @@ import CrystallineMagic.Event.SpellCastEvent;
 import CrystallineMagic.Gui.GuiHandler;
 import CrystallineMagic.Gui.Overlay.GuiOverlayMagicEnergy;
 import CrystallineMagic.Items.ModItemMagicArmor;
+import CrystallineMagic.Main.Guide.CrystaMagicGuideIntegration;
+import CrystallineMagic.Main.Guide.InfuserGuideRecipeType;
 import CrystallineMagic.Packets.ClientSyncInvisPlayers;
 import CrystallineMagic.Packets.CreateWriting;
 import CrystallineMagic.Packets.MagicSendParticleSync;
@@ -53,7 +55,9 @@ import CrystallineMagic.Utils.MagicalMaterialUtils;
 import CrystallineMagic.Utils.RecipeUtils.WritingRecipePageCreation;
 import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.WorldGen.ModWorlGen;
+import MiscUtils.GuideBase.Registry.GuideModRegistry;
 import MiscUtils.Network.ChannelUtils;
+import MiscUtils.Utils.Recipe.RecipeUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -145,6 +149,10 @@ public class CrystMagic {
 
 
         config = new Config(event.getModConfigurationDirectory() + "");
+
+        //Guide Integration
+        GuideModRegistry.RegisterModToGuide(new CrystaMagicGuideIntegration());
+        RecipeUtils.RecipeTypeRenders.add(new InfuserGuideRecipeType());
 
 
         MagicalMaterialUtils.RegisterManualValues();
