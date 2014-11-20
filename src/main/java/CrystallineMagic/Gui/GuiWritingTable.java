@@ -330,7 +330,7 @@ public class GuiWritingTable  extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
-        fontRendererObj.drawString(StatCollector.translateToLocal("tile.spellwritingtable.name"), 8, 3, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal("tile.spell_writing_table.name"), 8, 3, 4210752);
 
     }
 

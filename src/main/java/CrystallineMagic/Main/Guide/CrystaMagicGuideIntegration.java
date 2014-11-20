@@ -39,7 +39,7 @@ public class CrystaMagicGuideIntegration extends GuideInstance {
 
     @Override
     public String ModDescription() {
-        return "Crsytalline Magic is a crystal based magic mod.";
+        return "Crystalline Magic is a magic mod based around energy generation and usage through spells and other means of magic usage.";
     }
 
     ModGuideText MainTab;

@@ -29,7 +29,7 @@ public class GuiMagicalCharger extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
-        fontRendererObj.drawString(StatCollector.translateToLocal("tile.magicalenergyrecharger.name"), 7, 3, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal("tile.magical_energy_re-charger.name"), 7, 3, 4210752);
 
     }
 

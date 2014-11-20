@@ -29,7 +29,7 @@ public class GuiMagicalDeconstructor extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
-        fontRendererObj.drawString(StatCollector.translateToLocal("tile.magicaldeconstructor.name"), 0, 3, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal("tile.magical_material_de-constructor.name"), 0, 3, 4210752);
 
     }
 

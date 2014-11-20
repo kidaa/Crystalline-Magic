@@ -29,7 +29,7 @@ public class GuiSpellCreationTable extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
-        fontRendererObj.drawString(StatCollector.translateToLocal("tile.spellcreationtable.name"), 8, 3, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal("tile.spell_creation_table.name"), 8, 3, 4210752);
 
         fontRendererObj.drawString(StatCollector.translateToLocal("gui.spellcreation.components"), 48, 15, 4210752);
         fontRendererObj.drawString(StatCollector.translateToLocal("gui.spellcreation.modifiers"), 124, 15, 4210752);

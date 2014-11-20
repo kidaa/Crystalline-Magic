@@ -25,9 +25,6 @@ import java.util.List;
 
 public class ModItemSpell extends Item {
 
-
-    //TODO Make spell projectile have custom color given by the first component in the list (All components should have a color which can then be used for spell effects)
-
     public int getMaxItemUseDuration(ItemStack itemStack)
     {
         return 25;
