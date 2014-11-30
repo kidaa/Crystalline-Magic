@@ -57,6 +57,7 @@ import CrystallineMagic.Utils.Ref;
 import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.GuideBase.Registry.GuideModRegistry;
 import MiscUtils.Network.ChannelUtils;
+import MiscUtils.Utils.LocalizationUpdater;
 import MiscUtils.Utils.Recipe.RecipeUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -96,6 +97,8 @@ public class CrystMagic {
     public static Config config;
 
     public static ChannelUtils Utils;
+
+    public static LocalizationUpdater localizationUpdater;
 
     public static CreativeTabs CreativeTab = new CreativeTabs("tabMod") {
         @Override
@@ -146,9 +149,12 @@ public class CrystMagic {
         Utils = new ChannelUtils(Ref.ModChannel, Ref.ModId);
         RegisterPackets();
 
-
-
         config = new Config(event.getModConfigurationDirectory() + "");
+
+        localizationUpdater = new LocalizationUpdater("tm1990", "Crystalline-Magic", "master", "src/main/resources/assets/crystmagic/lang/");
+        localizationUpdater.initializeThread(config.GetConfigFile());
+
+        proxy.PreInit();
 
         //Guide Integration
         GuideModRegistry.RegisterModToGuide(new CrystaMagicGuideIntegration());

@@ -23,6 +23,10 @@ public class ServerProxy {
     private static final Map<String, NBTTagCompound> extendedEntityData = new HashMap<String, NBTTagCompound>();
 
 
+    public void PreInit(){
+
+    }
+
     public void RegisterKeybindings(){
 
     }

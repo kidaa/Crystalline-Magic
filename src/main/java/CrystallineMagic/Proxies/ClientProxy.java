@@ -4,6 +4,7 @@ import CrystallineMagic.Entity.EntitySpellProjectile;
 import CrystallineMagic.Entity.FX.EntityMagicEffectFX;
 import CrystallineMagic.Entity.Render.EntitySpellProjectileRender;
 import CrystallineMagic.Keybinds.Keybinds;
+import CrystallineMagic.Main.CrystMagic;
 import CrystallineMagic.Main.ModBlocks;
 import CrystallineMagic.Rendering.Items.EnergyBatteryItemRender;
 import CrystallineMagic.Rendering.Items.PowerCrystalItemRender;
@@ -36,6 +37,10 @@ public class ClientProxy extends ServerProxy {
 
     }
 
+    public void PreInit(){
+
+        CrystMagic.localizationUpdater.registerListener();
+    }
 
 
     public void RegisterKeybindings(){
