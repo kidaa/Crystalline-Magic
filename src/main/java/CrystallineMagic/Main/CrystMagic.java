@@ -58,7 +58,7 @@ import CrystallineMagic.WorldGen.ModWorlGen;
 import MiscUtils.GuideBase.Registry.GuideModRegistry;
 import MiscUtils.Network.ChannelUtils;
 import MiscUtils.Utils.LocalizationUpdater;
-import MiscUtils.Utils.Recipe.RecipeUtils;
+import MiscUtils.GuideBase.Recipe.RecipeUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
