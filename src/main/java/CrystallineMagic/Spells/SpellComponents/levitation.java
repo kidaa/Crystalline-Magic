@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import java.awt.*;
 
-public class levitation implements SpellComponent {
+public class Levitation implements SpellComponent {
     @Override
     public boolean OnUseOnEntity(ItemStack Spell, World world, Entity entityHit, EntityPlayer player) {
 

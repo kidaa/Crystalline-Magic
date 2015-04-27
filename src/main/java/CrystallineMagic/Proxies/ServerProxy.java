@@ -14,6 +14,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -55,7 +56,7 @@ public class ServerProxy {
 
 
 
-    public void MagicEffect(World world, double x, double y, double z, float r, float g, float b, float size, float motionx, float motiony, float motionz, float maxAgeMul)
+    public void MagicEffect(World world, double x, double y, double z, Color color, float size, float motionx, float motiony, float motionz, float maxAgeMul)
     {
 
     }

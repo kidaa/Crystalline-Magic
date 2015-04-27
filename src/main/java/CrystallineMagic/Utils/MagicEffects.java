@@ -33,8 +33,7 @@ public class MagicEffects {
             double Y =  y +        (double) (rand.nextFloat() * width);
             double Z = (z + 0.2) + (double) (rand.nextFloat() * width);
 
-            CrystMagic.proxy.MagicEffect(world,X,Y,Z, (float)((double)c.getRed() / 255), (float)((double)c.getGreen() / 255), (float)((double)c.getBlue() / 255), rand.nextFloat() - 0.5F, 0, gravity, 0, life);
-
+            CrystMagic.proxy.MagicEffect(world,X,Y,Z, c, rand.nextFloat() - 0.5F, 0, gravity, 0, life);
         }
 
     }

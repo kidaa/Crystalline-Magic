@@ -22,6 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 
+import java.awt.*;
+
 public class ClientProxy extends ServerProxy {
 
     public static boolean HasValidInvisibilityArmor = false;
@@ -53,13 +55,13 @@ public class ClientProxy extends ServerProxy {
         return RenderingRegistry.addNewArmourRendererPrefix(armor);
     }
 
-    public void MagicEffect(World world, double x, double y, double z, float r, float g, float b, float size, float motionx, float motiony, float motionz, float maxAgeMul)
+    public void MagicEffect(World world, double x, double y, double z, Color color, float size, float motionx, float motiony, float motionz, float maxAgeMul)
     {
         if (!doParticle()) {
             return;
         }
 
-        EntityMagicEffectFX effectFX = new EntityMagicEffectFX(world, x, y, z, size, r, g, b, maxAgeMul);
+        EntityMagicEffectFX effectFX = new EntityMagicEffectFX(world, x, y, z, color, size, maxAgeMul);
         effectFX.motionZ = motionx;
         effectFX.motionY = motiony;
         effectFX.motionZ = motionz;

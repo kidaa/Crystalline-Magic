@@ -69,6 +69,6 @@ public class Gravity implements SpellComponent {
 
     @Override
     public Color GetComponentColor() {
-        return new Color(79, 79, 79);
+        return new Color(39, 32, 17);
     }
 }

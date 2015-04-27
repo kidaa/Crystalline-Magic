@@ -19,7 +19,7 @@ import CrystallineMagic.Spells.SpellComponents.Regen;
 import CrystallineMagic.Spells.SpellComponents.SetTarget;
 import CrystallineMagic.Spells.SpellComponents.TeleportRandom;
 import CrystallineMagic.Spells.SpellComponents.TeleportTarget;
-import CrystallineMagic.Spells.SpellComponents.levitation;
+import CrystallineMagic.Spells.SpellComponents.Levitation;
 import CrystallineMagic.Spells.SpellModifiers.AreaIncludePlayer;
 import CrystallineMagic.Spells.SpellModifiers.CostDecreaser;
 import CrystallineMagic.Spells.SpellModifiers.RangeExtender;
@@ -120,7 +120,7 @@ public class CraftingRecipes {
         WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("LIGHT"), ElementRegistry.GetElement("ENERGY"), ElementRegistry.GetElement("TIME")}, new Regen());
         WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("ALIEN")}, new TeleportRandom());
         WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("MOTION"), ElementRegistry.GetElement("ALIEN"), ElementRegistry.GetElement("TARGET")}, new TeleportTarget());
-        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("SKY"), ElementRegistry.GetElement("AIR"), ElementRegistry.GetElement("TIME"), ElementRegistry.GetElement("MOTION")}, new levitation());
+        WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellComponent), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("SKY"), ElementRegistry.GetElement("AIR"), ElementRegistry.GetElement("TIME"), ElementRegistry.GetElement("MOTION")}, new Levitation());
 
         //Type Writing Recipes
         WritingRecipeHandler.RegisterWriting(new ItemStack(ModItems.SpellType), new ElementBase[]{ElementRegistry.GetElement("CONTROL"), ElementRegistry.GetElement("TARGET"), ElementRegistry.GetElement("FORCE")}, new Area());
